@@ -1,271 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ThriveSpace — Mental Wellness for Students Worldwide</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ThriveSpace - Mental Wellness for Every Student</title>
+  <link rel="stylesheet" href="styles.css"/>
   <style>
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      background: linear-gradient(160deg, #EAF5F0 0%, #FAFAF7 50%, #F5F0FF 100%);
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 70% 40%, rgba(61,139,110,0.12) 0%, transparent 60%),
-                  radial-gradient(ellipse at 20% 80%, rgba(196,87,106,0.07) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .hero-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; align-items: center;
-    }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: white; border: 1px solid var(--border);
-      padding: 6px 14px; border-radius: 100px;
-      font-size: 0.8rem; font-weight: 600; color: var(--green-dark);
-      margin-bottom: 24px; box-shadow: var(--shadow-sm);
-    }
-    .hero-tag span { width: 8px; height: 8px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
-    .hero h1 {
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
-      line-height: 1.1; margin-bottom: 22px;
-      color: var(--charcoal);
-    }
-    .hero h1 em { font-style: italic; color: var(--green); }
-    .hero p {
-      font-size: 1.1rem; color: var(--muted); line-height: 1.75;
-      margin-bottom: 36px; max-width: 480px;
-    }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-    .hero-stats {
-      display: flex; gap: 32px; margin-top: 48px;
-      padding-top: 32px; border-top: 1px solid var(--border);
-    }
-    .hero-stat-num {
-      font-family: 'Instrument Serif', serif;
-      font-size: 2rem; color: var(--charcoal); line-height: 1;
-    }
-    .hero-stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: calc(var(--nav) + 48px) 0 80px;
+  position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(46,204,122,.1) 0%, transparent 65%);
+  top: 50%; left: 60%; transform: translate(-50%,-50%);
+  pointer-events: none; animation: glowPulse 5s ease-in-out infinite;
+}
+.hero-glow-2 {
+  position: absolute; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(245,166,35,.07) 0%, transparent 65%);
+  top: 20%; left: 10%; pointer-events: none;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--raised); border: 1px solid var(--gb1);
+  padding: 6px 14px; border-radius: var(--r4);
+  font-family: var(--fm); font-size: .73rem; color: var(--g);
+  margin-bottom: 22px;
+}
+.hero-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g); animation: pulse 1.6s infinite; }
+.hero h1 {
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  letter-spacing: -.04em; margin-bottom: 20px; line-height: 1.05;
+}
+.hero h1 em { font-style: italic; color: var(--g); }
+.hero-sub {
+  font-size: 1.08rem; color: var(--t2); line-height: 1.78;
+  margin-bottom: 36px; max-width: 480px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-ticker {
+  font-family: var(--fm); font-size: .72rem; color: var(--t3);
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 0;
+}
+.hero-stats {
+  display: flex; gap: 36px; padding-top: 36px;
+  border-top: 1px solid var(--gb0);
+}
+.hero-stat-num {
+  font-family: var(--fd); font-size: 2rem; font-weight: 800;
+  color: var(--g); line-height: 1;
+}
+.hero-stat-label { font-size: .78rem; color: var(--t3); margin-top: 4px; }
 
-    /* PHONE MOCKUP */
-    .phone-wrap {
-      position: relative; display: flex; justify-content: center; align-items: center;
-    }
-    .phone-glow {
-      position: absolute; width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(61,139,110,0.25), transparent 70%);
-      border-radius: 50%; filter: blur(40px);
-    }
-    .phone {
-      position: relative; z-index: 2;
-      width: 260px;
-      background: var(--charcoal);
-      border-radius: 40px;
-      padding: 12px;
-      box-shadow: 0 40px 100px rgba(26,26,36,0.3), 0 0 0 1px rgba(255,255,255,0.1);
-    }
-    .phone-screen {
-      background: linear-gradient(160deg, #1F5C46, #3D8B6E, #5BAF8E);
-      border-radius: 30px; padding: 28px 20px;
-      min-height: 480px; color: white; position: relative; overflow: hidden;
-    }
-    .phone-notch {
-      width: 80px; height: 8px; background: rgba(0,0,0,0.4);
-      border-radius: 100px; margin: 0 auto 20px;
-    }
-    .phone-time { font-size: 0.72rem; text-align: center; opacity: 0.7; margin-bottom: 24px; }
-    .phone-greeting { font-family: 'Instrument Serif', serif; font-size: 1.3rem; margin-bottom: 4px; }
-    .phone-sub { font-size: 0.75rem; opacity: 0.8; margin-bottom: 24px; }
-    .phone-card {
-      background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
-      border-radius: 16px; padding: 16px; margin-bottom: 12px;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .phone-card-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.8; margin-bottom: 4px; }
-    .phone-card-main { font-family: 'Instrument Serif', serif; font-size: 1.1rem; }
-    .phone-icons { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 8px; }
-    .phone-icon-item {
-      background: rgba(255,255,255,0.15); border-radius: 12px;
-      padding: 10px 4px; text-align: center; font-size: 1.2rem;
-    }
-    .phone-icon-label { font-size: 0.55rem; opacity: 0.8; margin-top: 2px; }
-    .floating-badge {
-      position: absolute; background: white; border-radius: 12px;
-      padding: 10px 14px; box-shadow: var(--shadow-md);
-      font-size: 0.8rem; font-weight: 600; color: var(--charcoal);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .fb-1 { top: 20%; left: -60px; animation: float 4s 0s ease-in-out infinite; }
-    .fb-2 { bottom: 20%; right: -50px; animation: float 4s 1s ease-in-out infinite; }
-    .fb-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-green { background: var(--green); }
-    .dot-gold { background: var(--gold); }
+/* ── PHONE ── */
+.phone-wrap {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.phone-halo {
+  position: absolute; width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(46,204,122,.18) 0%, transparent 70%);
+  border-radius: 50%; filter: blur(20px);
+}
+.phone {
+  position: relative; z-index: 2;
+  width: 270px; background: #0a1009;
+  border-radius: 44px; padding: 12px;
+  box-shadow: 0 48px 120px rgba(0,0,0,.6), 0 0 0 1px rgba(46,204,122,.15), inset 0 0 0 1px rgba(255,255,255,.05);
+  animation: float 5s ease-in-out infinite;
+}
+.phone-screen {
+  background: linear-gradient(160deg, #1a3a22, #0d2015);
+  border-radius: 34px; padding: 24px 18px;
+  min-height: 500px; overflow: hidden; position: relative;
+}
+.phone-bar {
+  width: 72px; height: 6px; background: rgba(0,0,0,.5);
+  border-radius: 100px; margin: 0 auto 20px;
+}
+.phone-time { font-family: var(--fm); font-size: .66rem; color: rgba(255,255,255,.5); text-align: center; margin-bottom: 20px; }
+.phone-greeting { font-family: var(--fd); font-size: 1.25rem; color: white; margin-bottom: 3px; }
+.phone-sub { font-size: .75rem; color: rgba(255,255,255,.6); margin-bottom: 22px; }
+.phone-card {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border-radius: 16px; padding: 14px; margin-bottom: 12px;
+}
+.phone-card-tag { font-family: var(--fm); font-size: .62rem; color: var(--g); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+.phone-card-val { font-family: var(--fd); font-size: 1.05rem; color: white; }
+.phone-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 10px; }
+.phone-ico {
+  background: rgba(255,255,255,.1); border-radius: 12px;
+  padding: 10px 4px; text-align: center;
+}
+.phone-ico-e { font-size: 1.1rem; }
+.phone-ico-l { font-size: .55rem; color: rgba(255,255,255,.65); margin-top: 3px; }
+/* Floating badges */
+.fbadge {
+  position: absolute; background: var(--raised);
+  border: 1px solid var(--gb1); border-radius: 12px;
+  padding: 9px 13px; font-size: .78rem; color: var(--t1);
+  display: flex; align-items: center; gap: 7px;
+  box-shadow: var(--shadow);
+}
+.fbadge-1 { top: 22%; left: -60px; animation: float 4s .2s ease-in-out infinite; }
+.fbadge-2 { bottom: 22%; right: -55px; animation: float 4s 1.1s ease-in-out infinite; }
+.fbdot { width: 9px; height: 9px; border-radius: 50%; }
 
-    /* PROBLEM SECTION */
-    .problem-bg {
-      background: var(--charcoal);
-      color: white; padding: 90px 0;
-    }
-    .problem-bg .section-title { color: white; }
-    .problem-bg .section-sub { color: rgba(255,255,255,0.6); }
-    .problem-bg .eyebrow { background: rgba(61,139,110,0.3); color: var(--green-light); }
-    .stat-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--r); padding: 32px;
-    }
-    .stat-card .stat-num { font-size: 3.2rem; margin-bottom: 8px; }
-    .stat-card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; }
+/* ── PROBLEM BAND ── */
+.problem-band {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--raised) 100%);
+  border-top: 1px solid var(--gb0); border-bottom: 1px solid var(--gb0);
+  padding: 72px 0;
+}
+.prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.prob-card {
+  background: var(--card); border: 1px solid var(--gb0);
+  border-radius: var(--r3); padding: 30px;
+  transition: all .25s;
+}
+.prob-card:hover { border-color: var(--gb1); box-shadow: var(--shadow-g); }
+.prob-num {
+  font-family: var(--fd); font-size: 3.2rem; font-weight: 800;
+  color: var(--amber); line-height: 1; margin-bottom: 8px;
+}
+.prob-card p { font-size: .88rem; color: var(--t3); line-height: 1.7; }
 
-    /* FEATURES PREVIEW */
-    .feat-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-    }
-    .feat-card {
-      background: var(--white); border-radius: var(--r);
-      border: 1px solid var(--border); padding: 32px;
-      transition: all 0.3s;
-    }
-    .feat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .feat-card.accent { background: var(--green-dark); color: white; }
-    .feat-card.accent .feat-title { color: white; }
-    .feat-card.accent p { color: rgba(255,255,255,0.75); }
-    .feat-card.tall { grid-row: span 2; }
-    .feat-title { font-family: 'Instrument Serif', serif; font-size: 1.4rem; margin: 12px 0 8px; }
-    .feat-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+/* ── FEATURES PREVIEW ── */
+.feat-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.feat-mosaic-card {
+  background: var(--card); border: 1px solid var(--gb0);
+  border-radius: var(--r3); padding: 28px;
+  transition: all .25s;
+}
+.feat-mosaic-card:hover { border-color: var(--gb1); transform: translateY(-4px); box-shadow: var(--shadow-g); }
+.feat-mosaic-card.tall { grid-row: span 2; background: linear-gradient(160deg, #1a3a22, var(--card)); border-color: var(--gb1); }
+.feat-ic {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 16px;
+  background: var(--gd); border: 1px solid var(--gb1);
+}
+.feat-ic.amber { background: var(--amber-d); border-color: var(--amber-b); }
+.feat-ic.teal { background: rgba(0,212,170,.1); border-color: rgba(0,212,170,.2); }
+.feat-title { font-family: var(--fd); font-size: 1.1rem; font-weight: 700; margin-bottom: 7px; }
+.feat-desc { font-size: .86rem; color: var(--t3); line-height: 1.68; }
 
-    /* MARKETS STRIP */
-    .markets-strip { background: var(--cream-2); padding: 72px 0; }
-    .country-card {
-      background: white; border-radius: var(--r);
-      border: 1px solid var(--border); padding: 32px;
-      text-align: center;
-    }
-    .country-flag { font-size: 2.5rem; margin-bottom: 12px; }
-    .country-name { font-family: 'Instrument Serif', serif; font-size: 1.3rem; margin-bottom: 6px; }
-    .country-stat { font-size: 1.8rem; font-family: 'Instrument Serif', serif; color: var(--green); }
-    .country-stat-label { font-size: 0.8rem; color: var(--muted); }
+/* ── MARKETS STRIP ── */
+.markets-strip { background: var(--surface); border-top: 1px solid var(--gb0); border-bottom: 1px solid var(--gb0); padding: 72px 0; }
+.country-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.country-card {
+  background: var(--card); border: 1px solid var(--gb0);
+  border-radius: var(--r3); padding: 28px;
+  transition: all .25s; position: relative; overflow: hidden;
+}
+.country-card::before {
+  content: attr(data-flag);
+  position: absolute; top: -10px; right: -10px;
+  font-size: 4rem; opacity: .12; pointer-events: none;
+}
+.country-card:hover { border-color: var(--gb2); transform: translateY(-4px); box-shadow: var(--shadow-g); }
+.country-name { font-family: var(--fd); font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+.country-stat-big { font-family: var(--fd); font-size: 2.4rem; font-weight: 800; color: var(--g); margin: 10px 0 3px; }
+.country-stat-sub { font-size: .8rem; color: var(--t3); margin-bottom: 14px; }
+.country-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.country-tag {
+  font-family: var(--fm); font-size: .68rem; padding: 3px 9px;
+  background: var(--gd); color: var(--g); border: 1px solid var(--gb1);
+  border-radius: var(--r4);
+}
 
-    /* TESTIMONIALS */
-    .testimonial {
-      background: white; border-radius: var(--r);
-      border: 1px solid var(--border); padding: 32px;
-    }
-    .testimonial-quote { font-family: 'Instrument Serif', serif; font-size: 1.15rem; line-height: 1.6; margin-bottom: 20px; }
-    .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .testimonial-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-    .testimonial-name { font-weight: 600; font-size: 0.88rem; }
-    .testimonial-role { font-size: 0.78rem; color: var(--muted); }
+/* ── TESTIMONIALS ── */
+.test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.test-card {
+  background: var(--card); border: 1px solid var(--gb0);
+  border-radius: var(--r3); padding: 26px; transition: all .25s;
+}
+.test-card:hover { border-color: var(--gb1); }
+.test-quote {
+  font-family: var(--fd); font-size: 1.02rem; font-weight: 600;
+  color: var(--t1); line-height: 1.6; margin-bottom: 18px;
+  font-style: italic;
+}
+.test-author { display: flex; align-items: center; gap: 10px; }
+.test-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; border: 1px solid var(--gb1);
+}
+.test-name { font-weight: 600; font-size: .86rem; }
+.test-role { font-size: .76rem; color: var(--t3); }
 
-    /* CTA SECTION */
-    .cta-section {
-      background: linear-gradient(135deg, var(--green-dark), var(--green));
-      border-radius: var(--r-lg); padding: 72px 64px; text-align: center;
-      color: white; margin: 80px 0; position: relative; overflow: hidden;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1), transparent 50%);
-    }
-    .cta-section h2 { font-size: 2.4rem; margin-bottom: 14px; }
-    .cta-section p { font-size: 1.05rem; opacity: 0.85; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+/* ── CTA SECTION ── */
+.cta-block {
+  background: linear-gradient(135deg, rgba(46,204,122,.12) 0%, rgba(245,166,35,.08) 100%);
+  border: 1px solid var(--gb1); border-radius: var(--r3);
+  padding: 72px 64px; text-align: center; position: relative; overflow: hidden;
+  margin: 80px 0;
+}
+.cta-block::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(46,204,122,.12), transparent 60%);
+  pointer-events: none;
+}
+.cta-block h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 12px; }
+.cta-block p { color: var(--t3); max-width: 480px; margin: 0 auto 28px; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .phone-wrap { display: none; }
+  .prob-grid, .country-cards, .test-grid { grid-template-columns: 1fr; }
+  .feat-mosaic { grid-template-columns: 1fr; }
+  .feat-mosaic-card.tall { grid-row: span 1; }
+  .cta-block { padding: 48px 24px; }
+}
   </style>
 </head>
 <body>
+<div id="nav-placeholder"></div>
 <div class="page-wrap">
-  <div id="nav-placeholder"></div>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container" style="width:100%">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container">
       <div class="hero-inner">
         <div>
-          <div class="hero-tag fade-up"><span></span> BPA NLC 2026 · Global Marketing Team</div>
-          <h1 class="fade-up-2">Mental wellness for <em>every</em> student on Earth</h1>
-          <p class="fade-up-3">ThriveSpace is an AI-powered mental wellness app built for teens aged 12–25. From guided meditation to CBT exercises, we're closing the mental health gap — one student at a time.</p>
-          <div class="hero-btns fade-up-4">
-            <a href="demo.html" class="btn btn-primary">Try the Demo →</a>
-            <a href="features.html" class="btn btn-outline">See Features</a>
+          <div class="hero-tag" style="animation: fadeUp .5s ease both;">
+            <span class="hero-tag-dot"></span>
+            BPA NLC 2026 · Global Marketing Team
           </div>
-          <div class="hero-stats fade-up-4">
+          <h1 style="animation: fadeUp .6s .1s ease both;">
+            Mental wellness for<br/><em>every</em> student on Earth
+          </h1>
+          <p class="hero-sub" style="animation: fadeUp .6s .2s ease both;">
+            ThriveSpace is an AI-powered mental wellness app built for teens aged 12 to 25. From guided meditation to CBT exercises, we close the mental health gap one student at a time.
+          </p>
+          <div class="hero-btns" style="animation: fadeUp .6s .3s ease both;">
+            <a href="demo.html" class="btn btn-g">Try the Demo</a>
+            <a href="features.html" class="btn btn-ghost">See Features</a>
+          </div>
+          <div class="hero-ticker" style="animation: fadeUp .6s .4s ease both;">
+            <span class="live-dot"></span>
+            <span id="ticker-text">74% of students report worsened mental health since the pandemic</span>
+          </div>
+          <div class="hero-stats" style="animation: fadeUp .6s .5s ease both;">
             <div>
-              <div class="hero-stat-num">250M+</div>
+              <div class="hero-stat-num"><span class="counter" data-target="250" data-suffix="M+">250M+</span></div>
               <div class="hero-stat-label">Youth in target markets</div>
             </div>
             <div>
-              <div class="hero-stat-num">60K</div>
+              <div class="hero-stat-num"><span class="counter" data-target="60" data-suffix="K">60K</span></div>
               <div class="hero-stat-label">Year-1 download goal</div>
             </div>
             <div>
-              <div class="hero-stat-num">3</div>
+              <div class="hero-stat-num"><span class="counter" data-target="3" data-suffix="">3</span></div>
               <div class="hero-stat-label">Countries at launch</div>
             </div>
           </div>
         </div>
 
-        <div class="phone-wrap fade-in">
-          <div class="phone-glow"></div>
-          <div class="phone float">
+        <!-- PHONE -->
+        <div class="phone-wrap" style="animation: fadeIn .8s .4s ease both;">
+          <div class="phone-halo"></div>
+          <div class="phone">
             <div class="phone-screen">
-              <div class="phone-notch"></div>
+              <div class="phone-bar"></div>
               <div class="phone-time">9:41 AM · Monday</div>
-              <div class="phone-greeting">Good morning, Priya 🌿</div>
+              <div class="phone-greeting">Good morning, Priya</div>
               <div class="phone-sub">How are you feeling today?</div>
               <div class="phone-card">
-                <div class="phone-card-title">Today's Check-In</div>
-                <div class="phone-card-main">Calm &amp; Focused ✨</div>
+                <div class="phone-card-tag">Today's Check-In</div>
+                <div class="phone-card-val">Calm and Focused</div>
               </div>
-              <div class="phone-icons">
-                <div class="phone-icon-item">🧘<div class="phone-icon-label">Meditate</div></div>
-                <div class="phone-icon-item">📓<div class="phone-icon-label">Journal</div></div>
-                <div class="phone-icon-item">💬<div class="phone-icon-label">AI Chat</div></div>
-                <div class="phone-icon-item">📈<div class="phone-icon-label">Progress</div></div>
+              <div class="phone-grid">
+                <div class="phone-ico"><div class="phone-ico-e">🧘</div><div class="phone-ico-l">Meditate</div></div>
+                <div class="phone-ico"><div class="phone-ico-e">📓</div><div class="phone-ico-l">Journal</div></div>
+                <div class="phone-ico"><div class="phone-ico-e">💬</div><div class="phone-ico-l">AI Chat</div></div>
+                <div class="phone-ico"><div class="phone-ico-e">📊</div><div class="phone-ico-l">Progress</div></div>
               </div>
             </div>
           </div>
-          <div class="floating-badge fb-1">
-            <div class="fb-dot dot-green"></div>
+          <div class="fbadge fbadge-1">
+            <span class="fbdot" style="background:var(--g);"></span>
             74% feel less stressed
           </div>
-          <div class="floating-badge fb-2">
-            <div class="fb-dot dot-gold"></div>
-            4.8 ★ user rating
+          <div class="fbadge fbadge-2">
+            <span class="fbdot" style="background:var(--amber);"></span>
+            4.8 star user rating
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROBLEM -->
-  <section class="problem-bg">
+  <!-- PROBLEM BAND -->
+  <section class="problem-band">
     <div class="container">
       <div class="eyebrow">The Mental Health Crisis</div>
-      <h2 class="section-title" style="color:white;max-width:560px;margin-bottom:14px;">Millions of students struggle in silence</h2>
-      <p class="section-sub" style="margin-bottom:56px;">Stigma, cost, and long wait times prevent teens from getting help. ThriveSpace bridges the gap.</p>
-      <div class="g3">
-        <div class="stat-card">
-          <div class="stat-num">74%</div>
-          <p>of young people report worsened mental health since the pandemic, yet most never seek professional support</p>
+      <h2 class="section-title" style="max-width:560px;margin-bottom:40px;">Millions of students suffer in silence worldwide</h2>
+      <div class="prob-grid">
+        <div class="prob-card reveal">
+          <div class="prob-num">74%</div>
+          <p>of young people report worsened mental health since the pandemic, yet most never access professional support</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">3–6 mo</div>
-          <p>NHS therapy wait times in the UK leave students without care when they need it most</p>
+        <div class="prob-card reveal">
+          <div class="prob-num">3-6<span style="font-size:1.8rem">mo</span></div>
+          <p>average NHS therapy wait time in the UK, leaving hundreds of thousands of students without care when they need it most</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">90%</div>
-          <p>of teens in India and Japan avoid therapy entirely due to cultural stigma around mental health</p>
+        <div class="prob-card reveal">
+          <div class="prob-num">&lt;1%</div>
+          <p>of Indian and Japanese students experiencing mental health struggles access any form of professional support due to cultural stigma</p>
         </div>
       </div>
     </div>
@@ -275,79 +338,90 @@
   <section class="section">
     <div class="container">
       <div class="eyebrow">Core Features</div>
-      <h2 class="section-title">Everything a student needs to <em>thrive</em></h2>
-      <p class="section-sub" style="margin-bottom:56px;">Science-backed tools, AI personalization, and cultural adaptation — all in one app.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:24px;">
-        <div class="feat-card" style="grid-row:span 2;background:var(--green-dark);color:white;">
-          <div class="icon-box" style="background:rgba(255,255,255,0.15);">🧘</div>
-          <div class="feat-title" style="color:white;font-size:1.7rem;">Guided Meditation</div>
-          <p style="color:rgba(255,255,255,0.75);">Culturally adapted meditation sessions for exam stress, social anxiety, and burnout. Available in Hindi, Japanese, and English.</p>
-          <div style="margin-top:28px;padding:20px;background:rgba(255,255,255,0.1);border-radius:12px;">
-            <div style="font-size:0.78rem;opacity:0.7;margin-bottom:6px;">Active sessions today</div>
-            <div style="font-family:'Instrument Serif',serif;font-size:2rem;">12,482</div>
-            <div style="height:6px;background:rgba(255,255,255,0.15);border-radius:100px;margin-top:10px;">
-              <div style="height:100%;width:74%;background:white;border-radius:100px;"></div>
+      <h2 class="section-title">Everything a student needs to thrive</h2>
+      <p class="section-sub">Science-backed tools, AI personalization, and cultural adaptation all in one app.</p>
+      <div class="feat-mosaic reveal">
+        <div class="feat-mosaic-card tall">
+          <div class="feat-ic" style="background:rgba(46,204,122,.2);font-size:1.5rem;width:52px;height:52px;">🧘</div>
+          <div class="feat-title" style="font-size:1.5rem;margin-bottom:12px;">Guided Meditation</div>
+          <p class="feat-desc" style="font-size:.92rem;margin-bottom:24px;">Culturally adapted sessions targeting exam stress, social anxiety, and burnout. Available in Hindi, Japanese, and English.</p>
+          <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px;">
+            <div style="font-family:var(--fm);font-size:.68rem;color:var(--t3);margin-bottom:6px;">Active sessions today</div>
+            <div class="stat-num" style="font-size:2rem;"><span class="counter" data-target="12482" data-suffix="">0</span></div>
+            <div style="height:5px;background:rgba(255,255,255,.1);border-radius:100px;margin-top:10px;">
+              <div style="height:100%;width:74%;background:var(--g);border-radius:100px;"></div>
             </div>
           </div>
         </div>
-        <div class="feat-card">
-          <div class="icon-box icon-gold">📓</div>
+        <div class="feat-mosaic-card">
+          <div class="feat-ic amber">📓</div>
           <div class="feat-title">Smart Journaling</div>
-          <p>AI-powered prompts that adapt to your mood. Track patterns, celebrate growth, and gain insight over time.</p>
+          <p class="feat-desc">AI-powered prompts that adapt to your mood. Track patterns and gain insight over time.</p>
         </div>
-        <div class="feat-card">
-          <div class="icon-box icon-rose">💬</div>
+        <div class="feat-mosaic-card">
+          <div class="feat-ic teal">💬</div>
           <div class="feat-title">AI Mental Health Chat</div>
-          <p>Always-on CBT-based support. Detects crisis keywords and routes to local emergency resources immediately.</p>
+          <p class="feat-desc">Always-on CBT-based support. Crisis keywords instantly route to local emergency resources.</p>
         </div>
-        <div class="feat-card">
-          <div class="icon-box icon-blue">📊</div>
+        <div class="feat-mosaic-card">
+          <div class="feat-ic">📊</div>
           <div class="feat-title">Mood Tracking</div>
-          <p>Daily check-ins with visual progress graphs. Share reports with counselors or keep them private — your choice.</p>
+          <p class="feat-desc">Daily check-ins with visual progress graphs. Share reports with counselors or keep them private.</p>
         </div>
-        <div class="feat-card">
-          <div class="icon-box icon-green">🎯</div>
+        <div class="feat-mosaic-card">
+          <div class="feat-ic amber">🎯</div>
           <div class="feat-title">CBT Exercises</div>
-          <p>Evidence-based cognitive behavioral therapy exercises for exam anxiety, perfectionism, and peer pressure.</p>
+          <p class="feat-desc">Evidence-based cognitive behavioral therapy for exam anxiety, perfectionism, and peer pressure.</p>
         </div>
       </div>
-      <div style="text-align:center;margin-top:40px;">
-        <a href="features.html" class="btn btn-outline">Explore all features →</a>
+      <div style="text-align:center;margin-top:36px;">
+        <a href="features.html" class="btn btn-ghost">Explore All Features</a>
       </div>
     </div>
   </section>
 
-  <!-- MARKETS -->
+  <!-- MARKETS STRIP -->
   <section class="markets-strip">
     <div class="container">
       <div class="eyebrow">Global Markets</div>
-      <h2 class="section-title" style="margin-bottom:14px;">Launching in 3 key markets</h2>
-      <p class="section-sub" style="margin-bottom:48px;">Selected for youth population size, smartphone penetration, and unmet mental health demand.</p>
-      <div class="g3">
-        <div class="country-card">
-          <div class="country-flag">🇮🇳</div>
+      <h2 class="section-title" style="margin-bottom:12px;">Launching in 3 key markets</h2>
+      <p class="section-sub">Selected for youth population, smartphone penetration, and unmet mental health demand.</p>
+      <div class="country-cards">
+        <div class="country-card reveal" data-flag="🇮🇳">
+          <span class="badge badge-amber" style="margin-bottom:12px;">South Asia</span>
           <div class="country-name">India</div>
-          <div class="country-stat">250M+</div>
-          <div class="country-stat-label">youth aged 12–25</div>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Android-first · UPI payments · WhatsApp outreach</p>
-          <a href="markets.html#india" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more →</a>
+          <div class="country-stat-big">250M+</div>
+          <div class="country-stat-sub">youth aged 12-25</div>
+          <div class="country-tags">
+            <span class="country-tag">Android-first</span>
+            <span class="country-tag">UPI payments</span>
+            <span class="country-tag">WhatsApp</span>
+          </div>
+          <a href="markets.html#india" class="btn btn-ghost" style="font-size:.82rem;padding:8px 16px;">Learn More</a>
         </div>
-        <div class="country-card" style="border-color:var(--green);box-shadow:0 0 0 1px var(--green);">
-          <div class="country-flag">🇯🇵</div>
+        <div class="country-card reveal" data-flag="🇯🇵" style="border-color:var(--gb1);">
+          <span class="badge badge-teal" style="margin-bottom:12px;">East Asia</span>
           <div class="country-name">Japan</div>
-          <div class="country-stat">15M+</div>
-          <div class="country-stat-label">students (12–25)</div>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Anime themes · Konbini payments · Discreet UI</p>
-          <a href="markets.html#japan" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more →</a>
+          <div class="country-stat-big">15M+</div>
+          <div class="country-stat-sub">students aged 12-25</div>
+          <div class="country-tags">
+            <span class="country-tag">Anime themes</span>
+            <span class="country-tag">Konbini pay</span>
+            <span class="country-tag">Discreet UI</span>
+          </div>
+          <a href="markets.html#japan" class="btn btn-ghost" style="font-size:.82rem;padding:8px 16px;">Learn More</a>
         </div>
-        <div class="country-card">
-          <div class="country-flag">🇬🇧</div>
+        <div class="country-card reveal" data-flag="🇬🇧">
+          <span class="badge badge-g" style="margin-bottom:12px;">Western Europe</span>
           <div class="country-name">United Kingdom</div>
-          <div class="country-stat">12M+</div>
-          <div class="country-stat-label">teens (12–25)</div>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">NHS complement · TikTok campaigns · Student unions</p>
-          <a href="markets.html#uk" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more →</a>
+          <div class="country-stat-big">12M+</div>
+          <div class="country-stat-sub">teens aged 12-25</div>
+          <div class="country-tags">
+            <span class="country-tag">NHS partner</span>
+            <span class="country-tag">TikTok</span>
+            <span class="country-tag">UNiDAYS</span>
+          </div>
+          <a href="markets.html#uk" class="btn btn-ghost" style="font-size:.82rem;padding:8px 16px;">Learn More</a>
         </div>
       </div>
     </div>
@@ -358,58 +432,77 @@
     <div class="container">
       <div class="eyebrow">Student Impact</div>
       <h2 class="section-title" style="margin-bottom:48px;">What students are saying</h2>
-      <div class="g3">
-        <div class="testimonial">
-          <div class="testimonial-quote">"ThriveSpace helped me manage my JEE prep anxiety. I finally felt like someone understood the pressure I was under."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--green-pale);">👩</div>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <div class="test-quote">"ThriveSpace helped me manage my JEE prep anxiety. I finally felt like someone understood the pressure I was under."</div>
+          <div class="test-author">
+            <div class="test-avatar" style="background:var(--gd);">P</div>
             <div>
-              <div class="testimonial-name">Priya S.</div>
-              <div class="testimonial-role">12th Grade · Mumbai, India</div>
+              <div class="test-name">Priya S.</div>
+              <div class="test-role">12th Grade, Mumbai, India</div>
             </div>
           </div>
         </div>
-        <div class="testimonial">
-          <div class="testimonial-quote">"試験前の不安を静める瞑想がとても役立ちました。誰にも言わずに使えるのが良いです。"</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:#FBF3E0;">🧑</div>
+        <div class="test-card reveal">
+          <div class="test-quote">"The meditation sessions before my university entrance exam made a real difference. Having private support was everything."</div>
+          <div class="test-author">
+            <div class="test-avatar" style="background:var(--amber-d);">K</div>
             <div>
-              <div class="testimonial-name">Kenji T.</div>
-              <div class="testimonial-role">University Student · Tokyo, Japan</div>
+              <div class="test-name">Kenji T.</div>
+              <div class="test-role">University Student, Tokyo, Japan</div>
             </div>
           </div>
         </div>
-        <div class="testimonial">
-          <div class="testimonial-quote">"The CBT exercises are so much better than waiting 3 months for an NHS appointment. It's genuinely helped my anxiety."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:#E8EFF8;">👧</div>
+        <div class="test-card reveal">
+          <div class="test-quote">"The CBT exercises are so much better than waiting 3 months for an NHS appointment. It has genuinely helped my anxiety."</div>
+          <div class="test-author">
+            <div class="test-avatar" style="background:rgba(0,212,170,.1);">E</div>
             <div>
-              <div class="testimonial-name">Ella M.</div>
-              <div class="testimonial-role">Year 12 · London, UK</div>
+              <div class="test-name">Ella M.</div>
+              <div class="test-role">Year 12, London, UK</div>
             </div>
           </div>
         </div>
       </div>
-      <p style="text-align:center;font-size:0.78rem;color:var(--muted);margin-top:20px;">* Sample testimonials for demonstration purposes only</p>
+      <p style="text-align:center;font-family:var(--fm);font-size:.7rem;color:var(--t4);margin-top:18px;">Sample testimonials for demonstration purposes only.</p>
     </div>
   </section>
 
   <!-- CTA -->
   <div class="container">
-    <div class="cta-section">
-      <div class="eyebrow" style="background:rgba(255,255,255,0.15);color:white;">Free to start</div>
-      <h2>Ready to thrive?</h2>
+    <div class="cta-block reveal">
+      <div class="eyebrow" style="justify-content:center;">Free to start</div>
+      <h2>Ready to help students thrive?</h2>
       <p>Join thousands of students already managing stress, anxiety, and burnout with ThriveSpace.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-        <a href="demo.html" class="btn btn-white">Try the Demo →</a>
-        <a href="pricing.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;">View Pricing</a>
+      <div class="cta-actions">
+        <a href="demo.html" class="btn btn-g">Try the Demo</a>
+        <a href="pricing.html" class="btn btn-ghost">View Pricing</a>
       </div>
     </div>
   </div>
 
-  <div id="footer-placeholder"></div>
 </div>
+<div id="footer-placeholder"></div>
 <script src="nav.js"></script>
-<script>injectNav('Home'); injectFooter();</script>
+<script>
+  injectNav('Home');
+  injectFooter();
+  document.addEventListener('DOMContentLoaded', () => { initReveal(); initCounters(); });
+  // Ticker
+  const tickers = [
+    '74% of students report worsened mental health since the pandemic',
+    'NHS therapy wait times average 3-6 months in the UK',
+    'Over 250 million youth aged 12-25 in our target markets',
+    'Less than 1% of Indian students access mental health support',
+    'Digital health market projected to grow to $17 billion by 2030'
+  ];
+  let ti = 0;
+  const tickEl = document.getElementById('ticker-text');
+  setInterval(() => {
+    ti = (ti + 1) % tickers.length;
+    if (tickEl) { tickEl.style.opacity = '0'; setTimeout(() => { tickEl.textContent = tickers[ti]; tickEl.style.opacity = '1'; }, 300); }
+  }, 4000);
+  if (tickEl) tickEl.style.transition = 'opacity .3s ease';
+</script>
 </body>
 </html>
