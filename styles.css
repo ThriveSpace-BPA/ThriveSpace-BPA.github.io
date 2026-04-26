@@ -1,302 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Global Markets - ThriveSpace</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <style>
-    .markets-hero { padding: 140px 48px 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-    .markets-hero h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; margin-bottom: 20px; }
-    .markets-hero h1 em { color: var(--green-glow); font-style: italic; }
-    .markets-hero p { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; line-height: 1.75; }
-    .market-jump-nav { display: flex; gap: 12px; padding: 0 48px; max-width: 1200px; margin: 0 auto 60px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .market-jump-nav a { padding: 10px 20px; border-radius: var(--radius); background: var(--card-bg); color: var(--text-muted); font-weight: 600; font-size: 0.9rem; border: 1px solid var(--border); transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
-    .market-jump-nav a:hover { background: rgba(46,204,74,0.1); color: var(--green-glow); border-color: var(--border-bright); }
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
 
-    /* MARKET SECTIONS */
-    .market-sec { padding: 80px 48px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-    .market-header { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-bottom: 52px; }
-    .market-flag-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-    .market-flag-big { font-size: 3.2rem; }
-    .market-header-text h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 14px; }
-    .market-header-text p { font-size: 0.97rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; }
-    .market-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .market-stat-card { background: var(--card-bg); border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--border); }
-    .market-stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: 5px; }
-    .market-stat-label { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
-    .green-num { color: var(--green-glow); }
-    .orange-num { color: var(--orange); }
+:root {
+  --green: #3D8B6E;
+  --green-light: #5BAF8E;
+  --green-pale: #EAF5F0;
+  --green-dark: #1F5C46;
+  --cream: #FAFAF7;
+  --cream-2: #F2F2EC;
+  --charcoal: #1A1A24;
+  --charcoal-mid: #3A3A4A;
+  --muted: #7A7A8C;
+  --white: #FFFFFF;
+  --gold: #C4973A;
+  --rose: #C4566A;
+  --blue: #4A7AB5;
+  --border: rgba(26,26,36,0.08);
+  --shadow-sm: 0 2px 12px rgba(26,26,36,0.06);
+  --shadow-md: 0 8px 36px rgba(26,26,36,0.10);
+  --shadow-lg: 0 24px 72px rgba(26,26,36,0.14);
+  --r: 14px;
+  --r-lg: 24px;
+}
 
-    .market-strategies { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .strategy-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; border: 1px solid var(--border); transition: transform 0.3s, border-color 0.3s; }
-    .strategy-card:hover { transform: translateY(-4px); border-color: var(--border-bright); }
-    .strategy-card h4 { font-size: 1rem; font-weight: 700; margin: 14px 0 8px; color: var(--white); }
-    .strategy-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4 { font-family: 'Instrument Serif', serif; line-height: 1.15; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
 
-    .market-marketing-box { border-radius: var(--radius); padding: 32px; margin-top: 32px; }
-    .market-marketing-box h3 { font-size: 1.2rem; margin-bottom: 18px; }
-    .mmb-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .mmb-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
-    .mmb-bullet { color: var(--green-glow); flex-shrink: 0; font-weight: 700; }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 68px;
+  background: rgba(250,250,247,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.35rem; color: var(--green-dark);
+}
+.nav-logo-mark {
+  width: 34px; height: 34px; background: var(--green);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1rem; font-family: 'Instrument Serif', serif;
+}
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a {
+  padding: 7px 15px; border-radius: 100px;
+  font-size: 0.88rem; font-weight: 500; color: var(--charcoal-mid);
+  transition: all 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { background: var(--green-pale); color: var(--green-dark); }
+.nav-cta {
+  background: var(--green) !important; color: white !important;
+  padding: 8px 20px; border-radius: 100px;
+  font-weight: 600; font-size: 0.88rem; transition: all 0.2s !important;
+}
+.nav-cta:hover { background: var(--green-dark) !important; transform: translateY(-1px); }
 
-    .india-box { background: rgba(249,115,22,0.07); border: 1px solid rgba(249,115,22,0.2); }
-    .japan-box { background: rgba(46,204,74,0.07); border: 1px solid rgba(46,204,74,0.2); }
-    .uk-box { background: rgba(100,150,255,0.07); border: 1px solid rgba(100,150,255,0.2); }
+/* LAYOUT */
+.page-wrap { padding-top: 68px; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+.section { padding: 90px 0; }
+.section-sm { padding: 60px 0; }
 
-    .market-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-bright), transparent); max-width: 1200px; margin: 0 auto; }
+/* TYPOGRAPHY */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green-pale); color: var(--green-dark);
+  padding: 5px 14px; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.section-title { font-size: clamp(2rem, 3.5vw, 2.9rem); margin-bottom: 14px; }
+.section-sub { font-size: 1.05rem; color: var(--muted); max-width: 520px; line-height: 1.7; }
 
-    /* COMPARISON TABLE */
-    .compare-wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px; position: relative; z-index: 1; }
-    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-    .compare-table th { background: var(--green-800); color: var(--white); padding: 14px 18px; text-align: left; font-weight: 600; font-size: 0.82rem; border-bottom: 1px solid var(--border-bright); }
-    .compare-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
-    .compare-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
-    .compare-table td { padding: 12px 18px; border-bottom: 1px solid var(--border); color: rgba(255,255,255,0.7); }
-    .compare-table tr:hover td { background: var(--card-bg); }
-    .compare-table td.ts { color: var(--green-glow); font-weight: 700; }
-    .cy { color: var(--green-glow); font-weight: 700; }
-    .cn { color: rgba(255,255,255,0.2); }
-    .cp { color: var(--orange); }
+/* CARDS */
+.card {
+  background: var(--white); border-radius: var(--r);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.card-pad { padding: 32px; }
 
-    @media (max-width: 900px) {
-      .markets-hero { padding: 100px 20px 40px; }
-      .market-jump-nav { padding: 0 20px; }
-      .market-sec { padding: 50px 20px; }
-      .market-header { grid-template-columns: 1fr; gap: 32px; }
-      .market-stats { grid-template-columns: 1fr 1fr; }
-      .market-strategies { grid-template-columns: 1fr; }
-      .compare-wrap { padding: 50px 20px; }
-    }
-  </style>
-</head>
-<body>
+/* GRIDS */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
-<nav>
-  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🌿</div>Thrive<span>Space</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="features.html">Features</a></li>
-    <li><a href="markets.html" class="active">Markets</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="demo.html" class="nav-cta">Try Demo</a></li>
-  </ul>
-</nav>
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 100px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600; font-size: 0.92rem;
+  cursor: pointer; border: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-primary { background: var(--green); color: white; }
+.btn-primary:hover { background: var(--green-dark); }
+.btn-dark { background: var(--charcoal); color: white; }
+.btn-outline { background: transparent; color: var(--charcoal); border: 1.5px solid rgba(26,26,36,0.2); }
+.btn-outline:hover { border-color: var(--green); color: var(--green); }
+.btn-white { background: white; color: var(--charcoal); }
 
-<div class="markets-hero animate-fade-up">
-  <div class="orb orb-green" style="width:400px;height:400px;top:-60px;right:-60px;opacity:0.4;"></div>
-  <div class="section-tag">Global expansion</div>
-  <h1>Three markets.<br>One <em>mission</em>.</h1>
-  <p style="margin-top:16px;">Each country was selected based on youth population size, smartphone penetration, mental health demand, and the gap between need and existing support.</p>
-</div>
+/* BADGES */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 11px; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 700;
+}
+.badge-green { background: var(--green-pale); color: var(--green-dark); }
+.badge-gold { background: #FBF3E0; color: var(--gold); }
+.badge-rose { background: #FBE8EC; color: var(--rose); }
+.badge-blue { background: #E8EFF8; color: var(--blue); }
 
-<div class="market-jump-nav">
-  <a href="#india">🇮🇳 India</a>
-  <a href="#japan">🇯🇵 Japan</a>
-  <a href="#uk">🇬🇧 United Kingdom</a>
-</div>
+/* ICON BOXES */
+.icon-box {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 18px;
+}
+.icon-green { background: var(--green-pale); }
+.icon-gold { background: #FBF3E0; }
+.icon-rose { background: #FBE8EC; }
+.icon-blue { background: #E8EFF8; }
 
-<!-- INDIA -->
-<div id="india"></div>
-<section class="market-sec scroll-reveal">
-  <div class="market-header">
-    <div class="market-header-text">
-      <div class="market-flag-row">
-        <span class="market-flag-big">🇮🇳</span>
-        <h2>India</h2>
-      </div>
-      <div class="section-tag section-tag-orange">Highest youth population</div>
-      <p style="margin-top:14px;">India is home to over 250 million young people aged 12-25, the world's largest youth cohort. With grueling entrance exams like JEE and NEET, intense academic competition, and deep cultural stigma around mental health, millions of students suffer in silence.</p>
-      <p>ThriveSpace offers a private, affordable, culturally sensitive digital alternative that students can use without fear of judgment or family shame.</p>
-    </div>
-    <div class="market-stats">
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">250M+</div>
-        <div class="market-stat-label">Youth aged 12-25 in India</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">800M+</div>
-        <div class="market-stat-label">Smartphone users (and growing)</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">1.5c</div>
-        <div class="market-stat-label">Average cost per GB of mobile data</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">&lt;1%</div>
-        <div class="market-stat-label">Of GDP spent on mental health</div>
-      </div>
-    </div>
-  </div>
-  <div class="market-strategies">
-    <div class="strategy-card"><div class="icon-circle icon-orange">📱</div><h4>Android-First Platform</h4><p>90%+ of Indian smartphone users are on Android. UI optimized for mid-range devices with efficient data usage and offline mode.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">💬</div><h4>WhatsApp Integration</h4><p>Students share wellness tips and app links through WhatsApp student groups, India's dominant social layer for peer communication.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">💳</div><h4>UPI Payments</h4><p>Seamless premium upgrades via UPI, the dominant payment standard in India, familiar to younger students through family accounts.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">🗣️</div><h4>Hindi and English Content</h4><p>Full bilingual support. Meditation narrations, journaling prompts, and AI coaching all available in Hindi and English.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">📚</div><h4>Exam-Focused Content</h4><p>Dedicated modules for JEE, NEET, UPSC, and board exam stress. Content addresses India's specific competitive academic calendar.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">🤝</div><h4>Family-Friendly Framing</h4><p>Wellness framed around "being your best for family and community," aligning with collectivist values rather than purely individualistic self-help language.</p></div>
-  </div>
-  <div class="market-marketing-box india-box">
-    <h3>India Marketing Strategy</h3>
-    <ul class="mmb-list">
-      <li><span class="mmb-bullet">*</span> TikTok and Instagram Reels campaigns with student creators (micro-influencers 10K to 100K followers)</li>
-      <li><span class="mmb-bullet">*</span> Partnerships with JEE/NEET coaching centers (FIITJEE, Allen, Byju's) to offer ThriveSpace as a student benefit</li>
-      <li><span class="mmb-bullet">*</span> University NCC/NSS campus ambassador programs in top 50 Indian universities</li>
-      <li><span class="mmb-bullet">*</span> Referral rewards: invite a friend, both get 1 month premium free</li>
-      <li><span class="mmb-bullet">*</span> Introductory pricing adjusted for purchasing power (INR 299/month, INR 2,499/year)</li>
-    </ul>
-  </div>
-</section>
+/* STAT */
+.stat-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.8rem; color: var(--green);
+  line-height: 1; margin-bottom: 4px;
+}
+.stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
 
-<div class="market-divider"></div>
+/* FOOTER */
+footer {
+  background: var(--charcoal); color: rgba(255,255,255,0.65);
+  padding: 64px 0 32px; margin-top: 80px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: white; margin-bottom: 10px; }
+.footer-desc { font-size: 0.88rem; line-height: 1.7; }
+.footer-col h5 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: white; margin-bottom: 14px;
+}
+.footer-col a { display: block; font-size: 0.88rem; margin-bottom: 9px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--green-light); }
+.footer-bottom {
+  padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.8rem;
+}
+.footer-disclaimer {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 10px 16px;
+  font-size: 0.78rem; color: rgba(255,255,255,0.4);
+  margin-top: 28px;
+}
 
-<!-- JAPAN -->
-<div id="japan"></div>
-<section class="market-sec scroll-reveal">
-  <div class="market-header">
-    <div class="market-header-text">
-      <div class="market-flag-row">
-        <span class="market-flag-big">🇯🇵</span>
-        <h2>Japan</h2>
-      </div>
-      <div class="section-tag">High tech adoption</div>
-      <p style="margin-top:14px;">Japanese youth face a uniquely complex combination of pressures: intense academic competition (juken), social isolation, and a deeply entrenched cultural stigma around mental illness. Many students feel that seeking help is a sign of weakness that brings shame to their family.</p>
-      <p>ThriveSpace offers discreet, culturally aligned support that respects Japanese values of harmony, effort, and mindfulness while providing genuine clinical value.</p>
-    </div>
-    <div class="market-stats">
-      <div class="market-stat-card">
-        <div class="market-stat-num green-num">17M+</div>
-        <div class="market-stat-label">Students aged 12-25 in Japan</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num green-num">94%</div>
-        <div class="market-stat-label">Smartphone penetration rate</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num green-num">3x</div>
-        <div class="market-stat-label">Higher suicide risk for students vs. general population</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num green-num">+40%</div>
-        <div class="market-stat-label">Rise in youth depression post-pandemic</div>
-      </div>
-    </div>
-  </div>
-  <div class="market-strategies">
-    <div class="strategy-card"><div class="icon-circle icon-green">🎨</div><h4>Anime-Inspired UI</h4><p>Soft, anime-style visual themes that resonate with Japanese youth culture. Comforting character companions and familiar visual language.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-green">🔕</div><h4>Discreet Branding</h4><p>The app icon and notifications are designed to not signal "mental health app," reducing stigma barriers for reluctant students.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-green">⛩️</div><h4>Mindfulness and Harmony</h4><p>Sessions grounded in Japanese mindfulness traditions: concepts of harmony (wa) and mindful reflection aligned with Zen philosophy.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-green">📲</div><h4>LINE Integration</h4><p>Reminders, streaks, and friend sharing via LINE, Japan's dominant messaging platform with 90 million monthly users.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-green">🏪</div><h4>Konbini Payments</h4><p>Premium subscriptions payable at Family Mart, Lawson, and 7-Eleven. Cash-based payment removes credit card barriers for students.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-green">🌸</div><h4>Japanese Language First</h4><p>Full localization by native-speaking content specialists. Cultural metaphors, respectful keigo registers, and student-appropriate language.</p></div>
-  </div>
-  <div class="market-marketing-box japan-box">
-    <h3>Japan Marketing Strategy</h3>
-    <ul class="mmb-list">
-      <li><span class="mmb-bullet">*</span> YouTube partnerships with student study vloggers (Studygrammers and Studytube community)</li>
-      <li><span class="mmb-bullet">*</span> Partnerships with juku (cram school) networks across Tokyo, Osaka, and Fukuoka</li>
-      <li><span class="mmb-bullet">*</span> Collaboration with school counseling offices to promote as a supplement to existing support</li>
-      <li><span class="mmb-bullet">*</span> Soft marketing: position as a "productivity and focus app" rather than "mental health app"</li>
-      <li><span class="mmb-bullet">*</span> Introductory pricing: JPY 800/month, JPY 7,800/year</li>
-    </ul>
-  </div>
-</section>
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); }
 
-<div class="market-divider"></div>
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
-<!-- UK -->
-<div id="uk"></div>
-<section class="market-sec scroll-reveal">
-  <div class="market-header">
-    <div class="market-header-text">
-      <div class="market-flag-row">
-        <span class="market-flag-big">🇬🇧</span>
-        <h2>United Kingdom</h2>
-      </div>
-      <div class="section-tag section-tag-orange">NHS gap opportunity</div>
-      <p style="margin-top:14px;">The UK has strong awareness of mental health but a chronic access problem. NHS CAMHS and counseling services face 3-6 month wait times for young people in crisis. Students know they need help but cannot get it quickly enough.</p>
-      <p>ThriveSpace fills this gap as an evidence-aligned, immediate support tool that complements, not competes with, NHS care.</p>
-    </div>
-    <div class="market-stats">
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">12M+</div>
-        <div class="market-stat-label">Students aged 12-25 in the UK</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">6 mo</div>
-        <div class="market-stat-label">Average NHS counseling wait time</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">1 in 6</div>
-        <div class="market-stat-label">UK children have a mental health disorder</div>
-      </div>
-      <div class="market-stat-card">
-        <div class="market-stat-num orange-num">96%</div>
-        <div class="market-stat-label">UK teens own a smartphone</div>
-      </div>
-    </div>
-  </div>
-  <div class="market-strategies">
-    <div class="strategy-card"><div class="icon-circle icon-orange">🏥</div><h4>NHS-Complementary Positioning</h4><p>Positioned as a bridge for students on NHS waiting lists. Partnerships with school nurses, CAMHS referral pathways, and GP practices.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">🎓</div><h4>University Partnerships</h4><p>Partnerships with University mental health teams and Student Unions at Russell Group and post-92 universities nationwide.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">📞</div><h4>UK Crisis Resources Built-In</h4><p>Samaritans, MIND, Shout, and PAPYRUS numbers are always one tap away in the app for all UK users. Fully GDPR compliant.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">🧪</div><h4>CBT-IAPT Alignment</h4><p>CBT exercises structured to align with NHS IAPT methodology, making ThriveSpace clinically credible to UK practitioners.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">📰</div><h4>British English Throughout</h4><p>No US spellings or idioms. Content addresses A-levels, GCSEs, and UK university application stress specifically.</p></div>
-    <div class="strategy-card"><div class="icon-circle icon-orange">🎯</div><h4>UK TikTok Student Community</h4><p>Investment in UK StudentTok and StudyTok communities. Partnerships with UK student creators and university student media.</p></div>
-  </div>
-  <div class="market-marketing-box uk-box">
-    <h3>UK Marketing Strategy</h3>
-    <ul class="mmb-list">
-      <li><span class="mmb-bullet">*</span> Student Union partnerships at 50+ universities including UCL, Manchester, Edinburgh, and Bristol</li>
-      <li><span class="mmb-bullet">*</span> NHS-endorsed positioning: working with GP practices to list ThriveSpace in CAMHS waiting list packs</li>
-      <li><span class="mmb-bullet">*</span> Partnerships with UK mental health charities: Young Minds, MIND, and Place2Be</li>
-      <li><span class="mmb-bullet">*</span> UK pricing: GBP 5.99/month, GBP 59.99/year (adjusted for student loan budget realities)</li>
-    </ul>
-  </div>
-</section>
+.fade-up { animation: fadeUp 0.7s ease both; }
+.fade-up-2 { animation: fadeUp 0.7s 0.12s ease both; }
+.fade-up-3 { animation: fadeUp 0.7s 0.24s ease both; }
+.fade-up-4 { animation: fadeUp 0.7s 0.36s ease both; }
+.fade-in { animation: fadeIn 0.7s ease both; }
+.float { animation: float 5s ease-in-out infinite; }
 
-<!-- COMPARISON TABLE -->
-<div class="compare-wrap scroll-reveal">
-  <div class="section-tag">Competitive analysis</div>
-  <h2 class="section-title" style="margin-bottom:32px;">How ThriveSpace compares.</h2>
-  <table class="compare-table">
-    <thead>
-      <tr>
-        <th>Feature</th>
-        <th>ThriveSpace</th>
-        <th>Calm</th>
-        <th>Headspace</th>
-        <th>BetterHelp</th>
-        <th>Wysa</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Student-specific focus</td><td class="ts">Yes</td><td><span class="cn">No</span></td><td><span class="cn">No</span></td><td><span class="cn">No</span></td><td><span class="cp">Partial</span></td></tr>
-      <tr><td>Cultural localization (3 markets)</td><td class="ts">Yes</td><td><span class="cn">No</span></td><td><span class="cp">Partial</span></td><td><span class="cn">No</span></td><td><span class="cn">No</span></td></tr>
-      <tr><td>Price per month</td><td class="ts">$7.99</td><td>$14.99</td><td>$12.99</td><td>$60-$100</td><td>$29.99</td></tr>
-      <tr><td>Free tier with real features</td><td class="ts">Yes</td><td><span class="cp">Partial</span></td><td><span class="cp">Partial</span></td><td><span class="cn">No</span></td><td><span class="cy">Yes</span></td></tr>
-      <tr><td>AI wellness coach</td><td class="ts">Yes</td><td><span class="cn">No</span></td><td><span class="cn">No</span></td><td><span class="cn">No</span></td><td><span class="cy">Yes</span></td></tr>
-      <tr><td>CBT exercises</td><td class="ts">Yes</td><td><span class="cn">No</span></td><td><span class="cp">Partial</span></td><td><span class="cy">Yes</span></td><td><span class="cy">Yes</span></td></tr>
-      <tr><td>Supplement positioning (not replacement)</td><td class="ts">Yes</td><td><span class="cy">Yes</span></td><td><span class="cy">Yes</span></td><td><span class="cn">No</span></td><td><span class="cy">Yes</span></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand"><div class="footer-brand-icon">🌿</div>ThriveSpace</div>
-      <p class="footer-desc">AI-powered mental wellness for students aged 12-25.</p>
-    </div>
-    <div class="footer-col"><h5>Product</h5><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="demo.html">Demo</a></div>
-    <div class="footer-col"><h5>Markets</h5><a href="#india">India</a><a href="#japan">Japan</a><a href="#uk">United Kingdom</a></div>
-    <div class="footer-col"><h5>Company</h5><a href="about.html">About</a><a href="about.html#team">Team</a></div>
-  </div>
-  <div class="footer-disclaimer">BPA COMPETITION DISCLAIMER: ThriveSpace is a fictional company created for the BPA Global Marketing Team competition. Independence High School, BPA NLC 2026.</div>
-  <div class="footer-bottom"><span>2026 ThriveSpace (BPA Demo)</span><span>Independence High School - BPA Global Marketing Team</span></div>
-</footer>
-
-<script src="nav.js"></script>
-</body>
-</html>
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .container { padding: 0 20px; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
