@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Markets — ThriveSpace</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .markets-hero {
+      background: var(--charcoal); color: white;
+      padding: 120px 0 80px; text-align: center;
+    }
+    .markets-hero h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 16px; }
+    .markets-hero p { font-size: 1.05rem; opacity: 0.75; max-width: 540px; margin: 0 auto; }
+    .markets-hero .eyebrow { background: rgba(61,139,110,0.3); color: var(--green-light); }
+
+    /* TAB NAV */
+    .market-tabs {
+      display: flex; gap: 0; border-bottom: 2px solid var(--border);
+      position: sticky; top: 68px; z-index: 10;
+      background: var(--cream); padding: 0 48px;
+    }
+    .market-tab {
+      padding: 16px 28px; font-weight: 600; font-size: 0.9rem;
+      color: var(--muted); cursor: pointer; border: none; background: none;
+      border-bottom: 2px solid transparent; margin-bottom: -2px;
+      transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+    }
+    .market-tab.active { color: var(--green-dark); border-bottom-color: var(--green); }
+    .market-tab:hover { color: var(--charcoal); }
+
+    /* MARKET SECTION */
+    .market-section { padding: 80px 0; }
+    .market-section + .market-section { border-top: 1px solid var(--border); }
+
+    .market-overview {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start; margin-bottom: 56px;
+    }
+    .market-flag-big { font-size: 3rem; margin-bottom: 12px; }
+    .market-name { font-size: 2.5rem; margin-bottom: 8px; }
+    .market-tagline { font-size: 1.05rem; color: var(--muted); margin-bottom: 24px; }
+    .market-rationale h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--charcoal); }
+    .market-rationale p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; }
+
+    .market-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 48px; }
+    .market-stat { background: white; border-radius: var(--r); border: 1px solid var(--border); padding: 24px; text-align: center; }
+    .market-stat .stat-num { font-size: 2.2rem; }
+
+    .market-strategy {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 48px;
+    }
+    .strategy-card {
+      background: white; border-radius: var(--r); border: 1px solid var(--border); padding: 24px;
+    }
+    .strategy-card h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .strategy-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    .barrier-box {
+      background: #FBF3E0; border: 1px solid #F0D870; border-radius: var(--r);
+      padding: 24px 28px; margin-bottom: 20px;
+    }
+    .barrier-box h4 { font-size: 0.85rem; font-weight: 700; color: #8A6B00; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .barrier-box p { font-size: 0.9rem; color: var(--charcoal-mid); line-height: 1.65; }
+
+    .solution-box {
+      background: var(--green-pale); border: 1px solid rgba(61,139,110,0.2);
+      border-radius: var(--r); padding: 24px 28px;
+    }
+    .solution-box h4 { font-size: 0.85rem; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .solution-box p { font-size: 0.9rem; color: var(--charcoal-mid); line-height: 1.65; }
+
+    /* India accent */
+    #india .market-name { color: #C4563A; }
+    #india .stat-num { color: #C4563A; }
+
+    /* Japan accent */
+    #japan .market-name { color: #C4566A; }
+    #japan .stat-num { color: #C4566A; }
+
+    /* UK accent */
+    #uk .market-name { color: #3A5BC4; }
+    #uk .stat-num { color: #3A5BC4; }
+
+    .competitive-table { width: 100%; border-collapse: collapse; }
+    .competitive-table th, .competitive-table td {
+      padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+    }
+    .competitive-table th { font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .competitive-table tr:last-child td { border-bottom: none; }
+    .competitive-table .ts-row { background: var(--green-pale); font-weight: 600; }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: var(--rose); }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div id="nav-placeholder"></div>
+
+  <section class="markets-hero">
+    <div class="container">
+      <div class="eyebrow">Global Expansion Strategy</div>
+      <h1>Three markets. One mission.</h1>
+      <p>India, Japan, and the UK share large youth populations, high smartphone usage, and a critical gap in affordable mental health access.</p>
+    </div>
+  </section>
+
+  <!-- TAB NAV -->
+  <div class="market-tabs">
+    <button class="market-tab active" onclick="scrollTo('india')">🇮🇳 India</button>
+    <button class="market-tab" onclick="scrollTo('japan')">🇯🇵 Japan</button>
+    <button class="market-tab" onclick="scrollTo('uk')">🇬🇧 United Kingdom</button>
+  </div>
+
+  <!-- INDIA -->
+  <section class="market-section section" id="india">
+    <div class="container">
+      <div class="market-overview">
+        <div>
+          <div class="market-flag-big">🇮🇳</div>
+          <h2 class="market-name">India</h2>
+          <p class="market-tagline">The world's largest youth population meets the digital wellness gap.</p>
+          <div class="barrier-box">
+            <h4>⚠️ Key Barrier</h4>
+            <p>Mental health stigma is deeply embedded in Indian culture. Students facing depression or anxiety from competitive exams (JEE, NEET, UPSC) rarely seek professional help, fearing social judgment and family disappointment.</p>
+          </div>
+          <div class="solution-box">
+            <h4>✅ ThriveSpace Solution</h4>
+            <p>Private, anonymous access via Android. No login required for core features. Frame as "study wellness" rather than "mental health" to reduce stigma barriers. UPI payments remove cost friction.</p>
+          </div>
+        </div>
+        <div>
+          <div class="market-rationale">
+            <h3>Why India?</h3>
+            <p>India has over 250 million young people aged 12–25, one of the world's largest youth demographics. With widespread 4G access, low data costs, and 700M+ smartphone users, digital health solutions can reach students at scale — even in Tier 2 and Tier 3 cities where therapists are virtually nonexistent.</p>
+            <br/>
+            <p>The competitive exam culture (JEE, NEET, UPSC, CAT) creates acute stress cycles that peak between ages 16–22 — exactly ThriveSpace's target range. Studies show over 70% of Indian students report significant anxiety yet fewer than 1% access professional mental health support.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-stats">
+        <div class="market-stat"><div class="stat-num">250M+</div><div class="stat-label">Youth (12–25)</div></div>
+        <div class="market-stat"><div class="stat-num">700M+</div><div class="stat-label">Smartphone users</div></div>
+        <div class="market-stat"><div class="stat-num">&lt;1%</div><div class="stat-label">Access mental health support</div></div>
+      </div>
+
+      <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;margin-bottom:24px;">Go-To-Market Strategy</h3>
+      <div class="market-strategy">
+        <div class="strategy-card">
+          <h4>📱 Product</h4>
+          <p>Android-first (90% of Indian market). Hindi UI option. Offline meditation mode for low-connectivity areas. Lightweight APK (&lt;30MB). Low-bandwidth journaling mode.</p>
+        </div>
+        <div class="strategy-card">
+          <h4>💰 Pricing</h4>
+          <p>Free tier with full core access. Premium at ₹199/month (≈$2.40) — localized for Indian purchasing power. Annual plan at ₹1,499. UPI, Paytm, and debit card support.</p>
+        </div>
+        <div class="strategy-card">
+          <h4>📣 Promotion</h4>
+          <p>WhatsApp student group campaigns. YouTube partnerships with study channels (Vedantu, Unacademy). College ambassador networks. Coaching center partnerships in Kota.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAPAN -->
+  <section class="market-section section" id="japan">
+    <div class="container">
+      <div class="market-overview">
+        <div>
+          <div class="market-flag-big">🇯🇵</div>
+          <h2 class="market-name">Japan</h2>
+          <p class="market-tagline">A tech-savvy population with deep stigma around asking for help.</p>
+          <div class="barrier-box">
+            <h4>⚠️ Key Barrier</h4>
+            <p>Japan's high-context culture values emotional restraint and group harmony. Seeking therapy or admitting mental health struggles is seen as a burden on others and a personal failure. University students facing "examination hell" suffer in silence.</p>
+          </div>
+          <div class="solution-box">
+            <h4>✅ ThriveSpace Solution</h4>
+            <p>Position as a private "wellness tool," not a mental health app. Anime-inspired visual theme reduces clinical stigma. Discreet app icon option. Harmony-focused CBT that aligns with Japanese values of reflection and self-improvement.</p>
+          </div>
+        </div>
+        <div>
+          <div class="market-rationale">
+            <h3>Why Japan?</h3>
+            <p>Japan has some of the highest youth academic pressure globally, with university entrance exams defining life trajectories. The phenomenon of "hikikomori" (social withdrawal) affects 1.46 million people under 39 — a population that would be nearly impossible to reach through traditional therapy.</p>
+            <br/>
+            <p>With Japan's 99% smartphone penetration and cultural affinity for technology-mediated social interaction, a discreet app-based intervention is uniquely positioned to succeed where traditional mental health services have failed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-stats">
+        <div class="market-stat"><div class="stat-num">15M+</div><div class="stat-label">Students (12–25)</div></div>
+        <div class="market-stat"><div class="stat-num">99%</div><div class="stat-label">Smartphone penetration</div></div>
+        <div class="market-stat"><div class="stat-num">1.46M</div><div class="stat-label">Hikikomori cases under 39</div></div>
+      </div>
+
+      <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;margin-bottom:24px;">Go-To-Market Strategy</h3>
+      <div class="market-strategy">
+        <div class="strategy-card">
+          <h4>📱 Product</h4>
+          <p>Anime-style visual themes. Japanese language (Kanji/Hiragana). Minimalist, calm UI aesthetic. "Wellness journal" framing — not "mental health app." Haiku-style prompts.</p>
+        </div>
+        <div class="strategy-card">
+          <h4>💰 Pricing</h4>
+          <p>¥900/month premium (≈$6). Annual ¥8,000. Konbini (convenience store) prepaid card payments — critical for Japanese teens without credit cards. Apple Pay and LINE Pay support.</p>
+        </div>
+        <div class="strategy-card">
+          <h4>📣 Promotion</h4>
+          <p>Manga-style social content on Twitter/X (dominant in Japan). University wellness center partnerships. TikTok (TikTok JP). Discreet word-of-mouth via LINE groups.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UK -->
+  <section class="market-section section" id="uk">
+    <div class="container">
+      <div class="market-overview">
+        <div>
+          <div class="market-flag-big">🇬🇧</div>
+          <h2 class="market-name">United Kingdom</h2>
+          <p class="market-tagline">High demand, long wait times, and a tech-forward youth population.</p>
+          <div class="barrier-box">
+            <h4>⚠️ Key Barrier</h4>
+            <p>NHS mental health services for young people are severely underfunded. CAMHS (Child and Adolescent Mental Health Services) wait times regularly reach 3–6 months. Many students give up on help entirely while waiting.</p>
+          </div>
+          <div class="solution-box">
+            <h4>✅ ThriveSpace Solution</h4>
+            <p>Position explicitly as an NHS complement — "support while you wait." Partner with CAMHS waiting list coordinators to recommend ThriveSpace. GDPR-compliant by design. University wellbeing centre integrations.</p>
+          </div>
+        </div>
+        <div>
+          <div class="market-rationale">
+            <h3>Why the UK?</h3>
+            <p>The UK has the highest youth mental health awareness of the three markets, reducing stigma as a barrier. Post-COVID, rates of anxiety and depression among 12–25 year olds have reached record levels, with NHS services unable to meet demand.</p>
+            <br/>
+            <p>The UK's 97% smartphone penetration among teens, TikTok-native Gen Z culture, and willingness to pay for quality apps (average UK app spend is £40/year) creates ideal conditions for ThriveSpace premium conversion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-stats">
+        <div class="market-stat"><div class="stat-num">12M+</div><div class="stat-label">Teens (12–25)</div></div>
+        <div class="market-stat"><div class="stat-num">3–6 mo</div><div class="stat-label">NHS avg. wait time</div></div>
+        <div class="market-stat"><div class="stat-num">97%</div><div class="stat-label">Teen smartphone penetration</div></div>
+      </div>
+
+      <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;margin-bottom:24px;">Go-To-Market Strategy</h3>
+      <div class="market-strategy">
+        <div class="strategy-card">
+          <h4>📱 Product</h4>
+          <p>British English. NHS resource integration (signposting to CAMHS, Samaritans). GDPR-compliant with full data export. "While you wait" positioning. Student union integrations.</p>
+        </div>
+        <div class="strategy-card">
+          <h4>💰 Pricing</h4>
+          <p>£5.99/month (slightly below US price, reflecting student purchasing power). £59.99/year. Apple Pay, Google Pay. Student discount via UNiDAYS — 20% off for verified students.</p>
+        </div>
+        <div class="strategy-card">
+          <h4>📣 Promotion</h4>
+          <p>TikTok UK mental health content. University freshers fair presence. Partnerships with Student Minds and YoungMinds. Instagram campaigns targeting secondary school students (13–18).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITIVE TABLE -->
+  <section style="background:var(--cream-2);padding:72px 0;">
+    <div class="container">
+      <div class="eyebrow">Competitive Analysis</div>
+      <h2 class="section-title" style="margin-bottom:40px;">How ThriveSpace wins</h2>
+      <div style="overflow-x:auto;">
+        <table class="competitive-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>ThriveSpace</th>
+              <th>Calm</th>
+              <th>Headspace</th>
+              <th>BetterHelp</th>
+              <th>Wysa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="ts-row">
+              <td>Student-focused content</td>
+              <td class="check">✓ Core focus</td>
+              <td class="cross">✗ General</td>
+              <td class="cross">✗ General</td>
+              <td class="cross">✗ All ages</td>
+              <td>Partial</td>
+            </tr>
+            <tr>
+              <td>Cultural localization</td>
+              <td class="check">✓ 3 markets</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+            <tr class="ts-row">
+              <td>Free core access</td>
+              <td class="check">✓ Full free tier</td>
+              <td>Limited</td>
+              <td>Limited</td>
+              <td class="cross">✗ Paid only</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Monthly price</td>
+              <td class="check">$7.99</td>
+              <td>$14.99</td>
+              <td>$12.99</td>
+              <td>$65–100</td>
+              <td>$8.99</td>
+            </tr>
+            <tr class="ts-row">
+              <td>Crisis detection &amp; hotlines</td>
+              <td class="check">✓ Auto-detect</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td>Partial</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Localized payment methods</td>
+              <td class="check">✓ UPI, Konbini</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+</div>
+<script src="nav.js"></script>
+<script>
+  injectNav('Markets'); injectFooter();
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.market-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+  window.addEventListener('scroll', () => {
+    ['india','japan','uk'].forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 200) {
+        document.querySelectorAll('.market-tab').forEach((t,ti) => t.classList.toggle('active', ti === i));
+      }
+    });
+  });
+</script>
+</body>
+</html>
