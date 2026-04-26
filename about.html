@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — ThriveSpace</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-hero {
+      background: linear-gradient(160deg, #EAF5F0 0%, #FAFAF7 60%, #F0EAF5 100%);
+      padding: 120px 0 80px;
+    }
+    .about-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-hero h1 { font-size: clamp(2.4rem, 4vw, 3.4rem); margin-bottom: 16px; }
+    .about-hero p { font-size: 1.05rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+
+    /* MISSION */
+    .mission-block {
+      background: var(--green-dark); color: white;
+      border-radius: var(--r-lg); padding: 56px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center; margin: 48px 0;
+    }
+    .mission-block h2 { font-size: 2rem; margin-bottom: 14px; }
+    .mission-block p { opacity: 0.8; line-height: 1.75; font-size: 0.95rem; }
+    .mission-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.6rem; font-style: italic;
+      line-height: 1.5; opacity: 0.9;
+      padding-left: 24px; border-left: 3px solid rgba(255,255,255,0.3);
+    }
+
+    /* VALUES */
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .value-card {
+      background: white; border-radius: var(--r); border: 1px solid var(--border);
+      padding: 28px;
+    }
+    .value-icon { font-size: 2rem; margin-bottom: 14px; }
+    .value-name { font-weight: 700; margin-bottom: 6px; }
+    .value-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .team-card {
+      background: white; border-radius: var(--r); border: 1px solid var(--border);
+      padding: 28px 20px; text-align: center;
+    }
+    .team-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+    .team-name { font-weight: 700; margin-bottom: 4px; }
+    .team-role { font-size: 0.82rem; color: var(--green-dark); font-weight: 600; margin-bottom: 6px; }
+    .team-school { font-size: 0.78rem; color: var(--muted); }
+
+    /* HR TABLE */
+    .hr-table { width: 100%; border-collapse: collapse; }
+    .hr-table th, .hr-table td {
+      padding: 12px 16px; text-align: left;
+      border-bottom: 1px solid var(--border); font-size: 0.88rem;
+    }
+    .hr-table th { font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--cream-2); }
+    .hr-table tr:last-child td { border-bottom: none; }
+    .hr-table tr:hover td { background: var(--cream); }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 36px; }
+    .timeline-dot {
+      position: absolute; left: -33px; top: 4px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--green); border: 3px solid var(--cream);
+    }
+    .timeline-quarter { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); margin-bottom: 4px; }
+    .timeline-title { font-weight: 700; margin-bottom: 4px; }
+    .timeline-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* METRICS */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .metric-card {
+      background: white; border-radius: var(--r); border: 1px solid var(--border);
+      padding: 24px; text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div id="nav-placeholder"></div>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero-inner">
+        <div>
+          <div class="eyebrow">About ThriveSpace</div>
+          <h1>Mental wellness is a right, not a luxury</h1>
+          <p>ThriveSpace was built on a simple belief: every student — regardless of where they live, what language they speak, or what they can afford — deserves access to mental health support.</p>
+          <p>We combine AI, evidence-based psychology, and deep cultural sensitivity to reach students that traditional mental healthcare has failed to serve.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;">
+            <a href="demo.html" class="btn btn-primary">Try the Demo →</a>
+            <a href="pricing.html" class="btn btn-outline">See Pricing</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="card card-pad" style="text-align:center;">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Countries at launch</div>
+          </div>
+          <div class="card card-pad" style="text-align:center;">
+            <div class="stat-num">60K</div>
+            <div class="stat-label">Year-1 download goal</div>
+          </div>
+          <div class="card card-pad" style="text-align:center;">
+            <div class="stat-num">$0</div>
+            <div class="stat-label">Cost to get started</div>
+          </div>
+          <div class="card card-pad" style="text-align:center;">
+            <div class="stat-num">15%</div>
+            <div class="stat-label">Profit margin by Year 5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow" id="mission">Our Mission</div>
+      <div class="mission-block">
+        <div>
+          <h2>Why we exist</h2>
+          <p>74% of young people report worsened mental health since the pandemic. In India, Japan, and the UK, the barriers are different — stigma, wait times, cost — but the pain is the same.</p>
+          <br/>
+          <p>ThriveSpace exists to close that gap. Not to replace therapists, but to fill the silence between "I'm struggling" and "I got help."</p>
+        </div>
+        <div class="mission-quote">
+          "Mental wellness isn't a luxury. It's what allows students to learn, grow, and become the people the world needs them to be."
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section style="background:var(--cream-2);padding:72px 0;">
+    <div class="container">
+      <div class="eyebrow">Our Values</div>
+      <h2 class="section-title" style="margin-bottom:40px;">What drives every decision</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🌍</div>
+          <div class="value-name">Accessibility First</div>
+          <div class="value-desc">Core features are free, always. No student should be locked out of mental health support because of price.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🛡️</div>
+          <div class="value-name">Safety Without Compromise</div>
+          <div class="value-desc">Crisis detection, emergency hotlines, and clinical review of all content. We take safety more seriously than engagement.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🎌</div>
+          <div class="value-name">Cultural Respect</div>
+          <div class="value-desc">We don't export Western mental health frameworks. We adapt to local values, language, and cultural context.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔒</div>
+          <div class="value-name">Privacy by Design</div>
+          <div class="value-desc">End-to-end encryption. GDPR, APPI, and DPDP compliant. Your data is yours — export or delete anytime.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div class="value-name">Supplement, Don't Replace</div>
+          <div class="value-desc">We partner with therapists and counselors. ThriveSpace bridges the gap — it doesn't try to close the door on professional care.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">📊</div>
+          <div class="value-name">Data-Driven Impact</div>
+          <div class="value-desc">Every feature is measured. If something doesn't help students, we change it. Mission and metrics aren't in conflict — they reinforce each other.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" id="team">
+    <div class="container">
+      <div class="eyebrow">Our Team</div>
+      <h2 class="section-title" style="margin-bottom:8px;">The BPA Global Marketing Team</h2>
+      <p style="color:var(--muted);margin-bottom:40px;">Independence High School · Texas · BPA NLC 2026</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar" style="background:var(--green-pale);">M</div>
+          <div class="team-name">Mithil Gajula</div>
+          <div class="team-role">Team Lead & Strategy</div>
+          <div class="team-school">Independence High School</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#FBF3E0;">V</div>
+          <div class="team-name">Vikhyat Jilla</div>
+          <div class="team-role">Market Research</div>
+          <div class="team-school">Independence High School</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#FBE8EC;">A</div>
+          <div class="team-name">Ayush Nanda</div>
+          <div class="team-role">Pricing & Finance</div>
+          <div class="team-school">Independence High School</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#E8EFF8;">S</div>
+          <div class="team-name">Srinesh Toranala</div>
+          <div class="team-role">Marketing Mix</div>
+          <div class="team-school">Independence High School</div>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:0.82rem;color:var(--muted);margin-top:20px;">Faculty Advisor: Mr. Ryan Schuldt · Submitted April 1, 2026</p>
+    </div>
+  </section>
+
+  <!-- HR OVERVIEW -->
+  <section style="background:var(--cream-2);padding:72px 0;">
+    <div class="container">
+      <div class="eyebrow">Human Resources</div>
+      <h2 class="section-title" style="margin-bottom:40px;">Organizational structure</h2>
+      <div style="overflow-x:auto;">
+        <table class="hr-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Salary Range</th>
+              <th>Experience</th>
+              <th>Responsibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Global Executive Director</strong></td><td>$135K–$210K</td><td>8–12 yrs, MBA</td><td>Global strategy, ethics oversight</td></tr>
+            <tr><td><strong>Lead Software Engineer</strong></td><td>$115K–$165K</td><td>6–10 yrs, CS</td><td>System architecture, feature development</td></tr>
+            <tr><td><strong>Country Marketing Lead</strong></td><td>$30K–$180K</td><td>5–7 yrs, Marketing</td><td>Local strategy, campaign analytics</td></tr>
+            <tr><td><strong>Clinical Advisory Consultant</strong></td><td>$110K–$175K</td><td>8–12 yrs, Doctoral</td><td>Content safety, compliance</td></tr>
+            <tr><td><strong>Data Analyst</strong></td><td>$86K–$158K</td><td>3–6 yrs, Data Science</td><td>Behavioral data, predictive models</td></tr>
+            <tr><td><strong>UI/UX Designer</strong></td><td>$70K–$130K</td><td>2–4 yrs, Design</td><td>Interface flows, accessibility</td></tr>
+            <tr><td><strong>Content Localization Specialist</strong></td><td>$52K–$75K</td><td>1–3 yrs, Linguistics</td><td>Cultural adaptation, translation</td></tr>
+            <tr><td><strong>Social Media Manager</strong></td><td>$50K–$80K</td><td>1–2 yrs</td><td>TikTok/Instagram campaigns, KPIs</td></tr>
+            <tr><td><strong>Customer Support Specialist</strong></td><td>$35K–$50K</td><td>Entry level</td><td>User support, escalation</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:12px;">* All salary ranges are estimates. Full HR requirements detailed in the BPA marketing plan submission.</p>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Marketing Timeline</div>
+      <h2 class="section-title" style="margin-bottom:48px;">12-Month Roadmap</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-quarter">Q1 · Months 1–3</div>
+            <div class="timeline-title">Foundation Phase</div>
+            <div class="timeline-desc">Localize app for India, Japan, UK. Beta test with 3,000 students. Produce marketing materials, social assets, QR codes.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-quarter">Q2 · Months 4–6</div>
+            <div class="timeline-title">Launch Phase</div>
+            <div class="timeline-desc">Social campaigns on TikTok, Instagram, YouTube. Campus launch events. Free 2-week premium trials. Target: 25,000 downloads.</div>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--gold);"></div>
+            <div class="timeline-quarter" style="color:var(--gold);">Q3 · Months 7–9</div>
+            <div class="timeline-title">Expansion Phase</div>
+            <div class="timeline-desc">Analyze user data, scale region-specific content. Increase premium adoption to 3.5%. Partner with counseling centers.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--rose);"></div>
+            <div class="timeline-quarter" style="color:var(--rose);">Q4 · Months 10–12</div>
+            <div class="timeline-title">Optimization Phase</div>
+            <div class="timeline-desc">Refine pricing, onboarding, retention. Re-engage inactive users. Annual report. Target: 60,000 total downloads, 5% conversion.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section style="background:var(--cream-2);padding:72px 0;">
+    <div class="container">
+      <div class="eyebrow">Measuring Success</div>
+      <h2 class="section-title" style="margin-bottom:40px;">Key Performance Indicators</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="stat-num">60K</div>
+          <div class="stat-label">Year-1 download target</div>
+        </div>
+        <div class="metric-card">
+          <div class="stat-num">15K</div>
+          <div class="stat-label">Monthly active users</div>
+        </div>
+        <div class="metric-card">
+          <div class="stat-num">5%</div>
+          <div class="stat-label">Free-to-premium conversion</div>
+        </div>
+        <div class="metric-card">
+          <div class="stat-num">4.5★</div>
+          <div class="stat-label">App store rating goal</div>
+        </div>
+        <div class="metric-card">
+          <div class="stat-num">12.5%</div>
+          <div class="stat-label">90-day user retention</div>
+        </div>
+        <div class="metric-card">
+          <div class="stat-num">3:1</div>
+          <div class="stat-label">LTV:CAC minimum ratio</div>
+        </div>
+        <div class="metric-card">
+          <div class="stat-num">15%</div>
+          <div class="stat-label">Profit margin by Year 5</div>
+        </div>
+        <div class="metric-card">
+          <div class="stat-num">200K+</div>
+          <div class="stat-label">Downloads by Year 3</div>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:0.85rem;color:var(--muted);margin-top:28px;max-width:580px;margin-left:auto;margin-right:auto;">All metrics are reviewed weekly via a real-time dashboard. Qualitative feedback from user surveys, app reviews, and partner institutions complements quantitative tracking.</p>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+</div>
+<script src="nav.js"></script>
+<script>injectNav('About'); injectFooter();</script>
+</body>
+</html>
