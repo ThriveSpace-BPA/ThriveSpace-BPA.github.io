@@ -6,503 +6,446 @@
   <title>ThriveSpace - Mental Wellness for Every Student</title>
   <link rel="stylesheet" href="styles.css"/>
   <style>
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: calc(var(--nav) + 48px) 0 80px;
-  position: relative; overflow: hidden;
-}
-.hero-glow {
-  position: absolute; width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(46,204,122,.1) 0%, transparent 65%);
-  top: 50%; left: 60%; transform: translate(-50%,-50%);
-  pointer-events: none; animation: glowPulse 5s ease-in-out infinite;
-}
-.hero-glow-2 {
-  position: absolute; width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(245,166,35,.07) 0%, transparent 65%);
-  top: 20%; left: 10%; pointer-events: none;
-}
-.hero-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 72px; align-items: center;
-}
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--raised); border: 1px solid var(--gb1);
-  padding: 6px 14px; border-radius: var(--r4);
-  font-family: var(--fm); font-size: .73rem; color: var(--g);
-  margin-bottom: 22px;
-}
-.hero-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g); animation: pulse 1.6s infinite; }
-.hero h1 {
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
-  letter-spacing: -.04em; margin-bottom: 20px; line-height: 1.05;
-}
-.hero h1 em { font-style: italic; color: var(--g); }
-.hero-sub {
-  font-size: 1.08rem; color: var(--t2); line-height: 1.78;
-  margin-bottom: 36px; max-width: 480px;
-}
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
-.hero-ticker {
-  font-family: var(--fm); font-size: .72rem; color: var(--t3);
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px 0;
-}
-.hero-stats {
-  display: flex; gap: 36px; padding-top: 36px;
-  border-top: 1px solid var(--gb0);
-}
-.hero-stat-num {
-  font-family: var(--fd); font-size: 2rem; font-weight: 800;
-  color: var(--g); line-height: 1;
-}
-.hero-stat-label { font-size: .78rem; color: var(--t3); margin-top: 4px; }
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 110px 48px 80px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(46,204,74,0.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 85% 70%, rgba(249,115,22,0.06) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center; position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(46,204,74,0.1); color: var(--green-glow);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 24px;
+      border: 1px solid rgba(46,204,74,0.2);
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green-glow);
+      animation: pulse-ring 2s infinite;
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 5.5vw, 4.5rem);
+      font-weight: 800; line-height: 1.05; margin-bottom: 22px;
+    }
+    .hero-title em { color: var(--green-glow); font-style: italic; }
+    .hero-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 36px; max-width: 440px; line-height: 1.75; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-trust { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--text-muted); }
+    .trust-check { color: var(--green-glow); font-size: 0.9rem; }
 
-/* ── PHONE ── */
-.phone-wrap {
-  display: flex; justify-content: center; align-items: center;
-  position: relative;
-}
-.phone-halo {
-  position: absolute; width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(46,204,122,.18) 0%, transparent 70%);
-  border-radius: 50%; filter: blur(20px);
-}
-.phone {
-  position: relative; z-index: 2;
-  width: 270px; background: #0a1009;
-  border-radius: 44px; padding: 12px;
-  box-shadow: 0 48px 120px rgba(0,0,0,.6), 0 0 0 1px rgba(46,204,122,.15), inset 0 0 0 1px rgba(255,255,255,.05);
-  animation: float 5s ease-in-out infinite;
-}
-.phone-screen {
-  background: linear-gradient(160deg, #1a3a22, #0d2015);
-  border-radius: 34px; padding: 24px 18px;
-  min-height: 500px; overflow: hidden; position: relative;
-}
-.phone-bar {
-  width: 72px; height: 6px; background: rgba(0,0,0,.5);
-  border-radius: 100px; margin: 0 auto 20px;
-}
-.phone-time { font-family: var(--fm); font-size: .66rem; color: rgba(255,255,255,.5); text-align: center; margin-bottom: 20px; }
-.phone-greeting { font-family: var(--fd); font-size: 1.25rem; color: white; margin-bottom: 3px; }
-.phone-sub { font-size: .75rem; color: rgba(255,255,255,.6); margin-bottom: 22px; }
-.phone-card {
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.15);
-  backdrop-filter: blur(8px);
-  border-radius: 16px; padding: 14px; margin-bottom: 12px;
-}
-.phone-card-tag { font-family: var(--fm); font-size: .62rem; color: var(--g); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
-.phone-card-val { font-family: var(--fd); font-size: 1.05rem; color: white; }
-.phone-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 10px; }
-.phone-ico {
-  background: rgba(255,255,255,.1); border-radius: 12px;
-  padding: 10px 4px; text-align: center;
-}
-.phone-ico-e { font-size: 1.1rem; }
-.phone-ico-l { font-size: .55rem; color: rgba(255,255,255,.65); margin-top: 3px; }
-/* Floating badges */
-.fbadge {
-  position: absolute; background: var(--raised);
-  border: 1px solid var(--gb1); border-radius: 12px;
-  padding: 9px 13px; font-size: .78rem; color: var(--t1);
-  display: flex; align-items: center; gap: 7px;
-  box-shadow: var(--shadow);
-}
-.fbadge-1 { top: 22%; left: -60px; animation: float 4s .2s ease-in-out infinite; }
-.fbadge-2 { bottom: 22%; right: -55px; animation: float 4s 1.1s ease-in-out infinite; }
-.fbdot { width: 9px; height: 9px; border-radius: 50%; }
+    /* PHONE MOCKUP */
+    .phone-wrap { display: flex; align-items: center; justify-content: center; position: relative; }
+    .phone {
+      width: 260px; height: 530px;
+      background: var(--green-800);
+      border-radius: 38px;
+      border: 2px solid rgba(46,204,74,0.25);
+      box-shadow: 0 0 60px rgba(46,204,74,0.2), 0 32px 64px rgba(0,0,0,0.6);
+      overflow: hidden; position: relative;
+      animation: float 5s ease-in-out infinite;
+    }
+    .phone-screen {
+      background: linear-gradient(160deg, #0a2d0e 0%, #041a07 100%);
+      height: 100%; padding: 10px 18px 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .phone-notch {
+      width: 90px; height: 24px; background: var(--green-800);
+      border-radius: 0 0 16px 16px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .phone-status { color: var(--text-dim); font-size: 0.65rem; display: flex; justify-content: space-between; padding: 2px 0; }
+    .phone-greeting { color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; line-height: 1.3; }
+    .phone-greeting span { color: var(--green-glow); }
+    .phone-mood-label { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+    .phone-mood-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; }
+    .mood-btn { aspect-ratio: 1; border-radius: 10px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border: 1px solid transparent; }
+    .mood-btn.active { background: rgba(46,204,74,0.2); border-color: rgba(46,204,74,0.4); }
+    .phone-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px; border: 1px solid rgba(255,255,255,0.07); }
+    .phone-card-label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+    .phone-card-val { color: var(--white); font-size: 0.82rem; font-weight: 600; }
+    .phone-bar-wrap { margin-top: 7px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
+    .phone-bar { height: 100%; width: 72%; background: var(--green-glow); border-radius: 10px; }
+    .phone-ai-bubble { background: rgba(46,204,74,0.12); border: 1px solid rgba(46,204,74,0.2); border-radius: 10px 10px 10px 0; padding: 9px 11px; font-size: 0.72rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
+    .phone-nav-bar { margin-top: auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; }
+    .phone-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 4px; border-radius: 10px; background: rgba(255,255,255,0.04); font-size: 0.6rem; color: var(--text-dim); }
+    .phone-nav-item.active { background: rgba(46,204,74,0.15); color: var(--green-glow); }
+    .phone-nav-item span { font-size: 1rem; }
 
-/* ── PROBLEM BAND ── */
-.problem-band {
-  background: linear-gradient(135deg, var(--surface) 0%, var(--raised) 100%);
-  border-top: 1px solid var(--gb0); border-bottom: 1px solid var(--gb0);
-  padding: 72px 0;
-}
-.prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-.prob-card {
-  background: var(--card); border: 1px solid var(--gb0);
-  border-radius: var(--r3); padding: 30px;
-  transition: all .25s;
-}
-.prob-card:hover { border-color: var(--gb1); box-shadow: var(--shadow-g); }
-.prob-num {
-  font-family: var(--fd); font-size: 3.2rem; font-weight: 800;
-  color: var(--amber); line-height: 1; margin-bottom: 8px;
-}
-.prob-card p { font-size: .88rem; color: var(--t3); line-height: 1.7; }
+    /* FLOATING BADGES */
+    .float-badge {
+      position: absolute; background: var(--green-800);
+      border: 1px solid var(--border-bright);
+      border-radius: 100px; padding: 8px 14px;
+      font-size: 0.75rem; font-weight: 600; color: var(--white);
+      display: flex; align-items: center; gap: 7px;
+      box-shadow: var(--shadow-card);
+      white-space: nowrap;
+    }
+    .float-badge-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .float-badge-green { background: var(--green-glow); }
+    .float-badge-orange { background: var(--orange); }
+    .fb-left { left: -60px; top: 35%; animation: float 4s 0.5s ease-in-out infinite; }
+    .fb-right { right: -30px; bottom: 25%; animation: float 4s 1s ease-in-out infinite; }
 
-/* ── FEATURES PREVIEW ── */
-.feat-mosaic {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 20px;
-}
-.feat-mosaic-card {
-  background: var(--card); border: 1px solid var(--gb0);
-  border-radius: var(--r3); padding: 28px;
-  transition: all .25s;
-}
-.feat-mosaic-card:hover { border-color: var(--gb1); transform: translateY(-4px); box-shadow: var(--shadow-g); }
-.feat-mosaic-card.tall { grid-row: span 2; background: linear-gradient(160deg, #1a3a22, var(--card)); border-color: var(--gb1); }
-.feat-ic {
-  width: 42px; height: 42px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; margin-bottom: 16px;
-  background: var(--gd); border: 1px solid var(--gb1);
-}
-.feat-ic.amber { background: var(--amber-d); border-color: var(--amber-b); }
-.feat-ic.teal { background: rgba(0,212,170,.1); border-color: rgba(0,212,170,.2); }
-.feat-title { font-family: var(--fd); font-size: 1.1rem; font-weight: 700; margin-bottom: 7px; }
-.feat-desc { font-size: .86rem; color: var(--t3); line-height: 1.68; }
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--green-800);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    .stats-bar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      padding: 0 48px;
+    }
+    .stats-bar-item {
+      padding: 32px 20px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stats-bar-item:last-child { border-right: none; }
+    .stats-bar-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--green-glow); line-height: 1; margin-bottom: 6px; }
+    .stats-bar-num.orange { color: var(--orange); }
+    .stats-bar-label { font-size: 0.82rem; color: var(--text-muted); }
 
-/* ── MARKETS STRIP ── */
-.markets-strip { background: var(--surface); border-top: 1px solid var(--gb0); border-bottom: 1px solid var(--gb0); padding: 72px 0; }
-.country-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-.country-card {
-  background: var(--card); border: 1px solid var(--gb0);
-  border-radius: var(--r3); padding: 28px;
-  transition: all .25s; position: relative; overflow: hidden;
-}
-.country-card::before {
-  content: attr(data-flag);
-  position: absolute; top: -10px; right: -10px;
-  font-size: 4rem; opacity: .12; pointer-events: none;
-}
-.country-card:hover { border-color: var(--gb2); transform: translateY(-4px); box-shadow: var(--shadow-g); }
-.country-name { font-family: var(--fd); font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
-.country-stat-big { font-family: var(--fd); font-size: 2.4rem; font-weight: 800; color: var(--g); margin: 10px 0 3px; }
-.country-stat-sub { font-size: .8rem; color: var(--t3); margin-bottom: 14px; }
-.country-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.country-tag {
-  font-family: var(--fm); font-size: .68rem; padding: 3px 9px;
-  background: var(--gd); color: var(--g); border: 1px solid var(--gb1);
-  border-radius: var(--r4);
-}
+    /* FEATURES PREVIEW */
+    .features-strip {
+      max-width: 1200px; margin: 0 auto;
+      padding: 90px 48px; position: relative; z-index: 1;
+    }
+    .features-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .feat-card {
+      background: var(--card-bg); border-radius: var(--radius); padding: 24px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .feat-card:hover { transform: translateY(-4px); border-color: var(--border-bright); background: var(--card-bg-hover); }
+    .feat-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+    .feat-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
 
-/* ── TESTIMONIALS ── */
-.test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-.test-card {
-  background: var(--card); border: 1px solid var(--gb0);
-  border-radius: var(--r3); padding: 26px; transition: all .25s;
-}
-.test-card:hover { border-color: var(--gb1); }
-.test-quote {
-  font-family: var(--fd); font-size: 1.02rem; font-weight: 600;
-  color: var(--t1); line-height: 1.6; margin-bottom: 18px;
-  font-style: italic;
-}
-.test-author { display: flex; align-items: center; gap: 10px; }
-.test-avatar {
-  width: 38px; height: 38px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; border: 1px solid var(--gb1);
-}
-.test-name { font-weight: 600; font-size: .86rem; }
-.test-role { font-size: .76rem; color: var(--t3); }
+    /* MARKET STRIP */
+    .market-strip {
+      background: var(--green-800);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: relative; z-index: 1; padding: 80px 48px;
+    }
+    .market-strip-inner { max-width: 1200px; margin: 0 auto; }
+    .market-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px; }
+    .market-card {
+      background: rgba(255,255,255,0.03); border-radius: var(--radius); padding: 28px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .market-card:hover { transform: translateY(-4px); border-color: var(--border-bright); }
+    .market-flag { font-size: 2.2rem; margin-bottom: 12px; }
+    .market-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .market-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; }
+    .market-link { font-size: 0.82rem; font-weight: 600; color: var(--green-glow); display: inline-flex; align-items: center; gap: 4px; }
+    .market-link:hover { color: var(--green-200); }
 
-/* ── CTA SECTION ── */
-.cta-block {
-  background: linear-gradient(135deg, rgba(46,204,122,.12) 0%, rgba(245,166,35,.08) 100%);
-  border: 1px solid var(--gb1); border-radius: var(--r3);
-  padding: 72px 64px; text-align: center; position: relative; overflow: hidden;
-  margin: 80px 0;
-}
-.cta-block::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(46,204,122,.12), transparent 60%);
-  pointer-events: none;
-}
-.cta-block h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 12px; }
-.cta-block p { color: var(--t3); max-width: 480px; margin: 0 auto 28px; }
-.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    /* BIG QUOTE */
+    .quote-section {
+      position: relative; z-index: 1;
+      padding: 100px 48px; text-align: center; overflow: hidden;
+    }
+    .quote-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(46,204,74,0.08) 0%, transparent 70%);
+    }
+    .quote-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+    .quote-mark { font-family: 'Syne', sans-serif; font-size: 6rem; color: rgba(46,204,74,0.15); line-height: 0.5; margin-bottom: 20px; }
+    .big-quote { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--white); margin-bottom: 20px; }
+    .quote-sub { font-size: 0.9rem; color: var(--text-muted); }
 
-@media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .phone-wrap { display: none; }
-  .prob-grid, .country-cards, .test-grid { grid-template-columns: 1fr; }
-  .feat-mosaic { grid-template-columns: 1fr; }
-  .feat-mosaic-card.tall { grid-row: span 1; }
-  .cta-block { padding: 48px 24px; }
-}
+    /* CTA SECTION */
+    .cta-section { position: relative; z-index: 1; padding: 100px 48px; text-align: center; }
+    .cta-inner { max-width: 640px; margin: 0 auto; }
+    .cta-inner h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .cta-inner p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 36px; line-height: 1.75; }
+    .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .app-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.06); color: white;
+      padding: 12px 20px; border-radius: var(--radius);
+      border: 1px solid var(--border); font-size: 0.85rem; font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .app-badge:hover { border-color: var(--border-bright); background: rgba(255,255,255,0.08); }
+    .app-badge-icon { font-size: 1.4rem; }
+    .app-badge-sub { font-size: 0.68rem; opacity: 0.55; display: block; }
+    .app-badge-name { font-size: 0.92rem; font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .hero { padding: 110px 20px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .phone-wrap { display: none; }
+      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+      .stats-bar-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .features-strip, .market-strip, .quote-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+      .features-cards, .market-cards { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<div id="nav-placeholder"></div>
-<div class="page-wrap">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="container">
-      <div class="hero-inner">
-        <div>
-          <div class="hero-tag" style="animation: fadeUp .5s ease both;">
-            <span class="hero-tag-dot"></span>
-            BPA NLC 2026 · Global Marketing Team
-          </div>
-          <h1 style="animation: fadeUp .6s .1s ease both;">
-            Mental wellness for<br/><em>every</em> student on Earth
-          </h1>
-          <p class="hero-sub" style="animation: fadeUp .6s .2s ease both;">
-            ThriveSpace is an AI-powered mental wellness app built for teens aged 12 to 25. From guided meditation to CBT exercises, we close the mental health gap one student at a time.
-          </p>
-          <div class="hero-btns" style="animation: fadeUp .6s .3s ease both;">
-            <a href="demo.html" class="btn btn-g">Try the Demo</a>
-            <a href="features.html" class="btn btn-ghost">See Features</a>
-          </div>
-          <div class="hero-ticker" style="animation: fadeUp .6s .4s ease both;">
-            <span class="live-dot"></span>
-            <span id="ticker-text">74% of students report worsened mental health since the pandemic</span>
-          </div>
-          <div class="hero-stats" style="animation: fadeUp .6s .5s ease both;">
-            <div>
-              <div class="hero-stat-num"><span class="counter" data-target="250" data-suffix="M+">250M+</span></div>
-              <div class="hero-stat-label">Youth in target markets</div>
-            </div>
-            <div>
-              <div class="hero-stat-num"><span class="counter" data-target="60" data-suffix="K">60K</span></div>
-              <div class="hero-stat-label">Year-1 download goal</div>
-            </div>
-            <div>
-              <div class="hero-stat-num"><span class="counter" data-target="3" data-suffix="">3</span></div>
-              <div class="hero-stat-label">Countries at launch</div>
-            </div>
-          </div>
-        </div>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">🌿</div>
+    Thrive<span>Space</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="markets.html">Markets</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="demo.html" class="nav-cta">Try Demo</a></li>
+  </ul>
+</nav>
 
-        <!-- PHONE -->
-        <div class="phone-wrap" style="animation: fadeIn .8s .4s ease both;">
-          <div class="phone-halo"></div>
-          <div class="phone">
-            <div class="phone-screen">
-              <div class="phone-bar"></div>
-              <div class="phone-time">9:41 AM · Monday</div>
-              <div class="phone-greeting">Good morning, Priya</div>
-              <div class="phone-sub">How are you feeling today?</div>
-              <div class="phone-card">
-                <div class="phone-card-tag">Today's Check-In</div>
-                <div class="phone-card-val">Calm and Focused</div>
-              </div>
-              <div class="phone-grid">
-                <div class="phone-ico"><div class="phone-ico-e">🧘</div><div class="phone-ico-l">Meditate</div></div>
-                <div class="phone-ico"><div class="phone-ico-e">📓</div><div class="phone-ico-l">Journal</div></div>
-                <div class="phone-ico"><div class="phone-ico-e">💬</div><div class="phone-ico-l">AI Chat</div></div>
-                <div class="phone-ico"><div class="phone-ico-e">📊</div><div class="phone-ico-l">Progress</div></div>
-              </div>
-            </div>
-          </div>
-          <div class="fbadge fbadge-1">
-            <span class="fbdot" style="background:var(--g);"></span>
-            74% feel less stressed
-          </div>
-          <div class="fbadge fbadge-2">
-            <span class="fbdot" style="background:var(--amber);"></span>
-            4.8 star user rating
-          </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb-green" style="width:500px;height:500px;top:-100px;right:-100px;opacity:0.6;"></div>
+  <div class="orb orb-orange" style="width:300px;height:300px;bottom:50px;left:100px;opacity:0.5;"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow animate-fade-up">
+        <span class="live-dot"></span>
+        BPA NLC 2026 - Global Marketing Team
+      </div>
+      <h1 class="hero-title animate-fade-up-2">
+        Mental wellness for <em>every</em> student on Earth
+      </h1>
+      <p class="hero-desc animate-fade-up-3">
+        ThriveSpace is an AI-powered mental wellness app built for teens aged 12 to 25. From guided meditation to CBT exercises, we close the mental health gap one student at a time.
+      </p>
+      <div class="hero-actions animate-fade-up-4">
+        <a href="demo.html" class="btn btn-green">Try the Demo</a>
+        <a href="features.html" class="btn btn-outline">See Features</a>
+      </div>
+      <div class="hero-trust animate-fade-in">
+        <div class="trust-item"><span class="trust-check">*</span> Digital health market projected to grow to $17 billion by 2030</div>
       </div>
     </div>
-  </section>
 
-  <!-- PROBLEM BAND -->
-  <section class="problem-band">
-    <div class="container">
-      <div class="eyebrow">The Mental Health Crisis</div>
-      <h2 class="section-title" style="max-width:560px;margin-bottom:40px;">Millions of students suffer in silence worldwide</h2>
-      <div class="prob-grid">
-        <div class="prob-card reveal">
-          <div class="prob-num">74%</div>
-          <p>of young people report worsened mental health since the pandemic, yet most never access professional support</p>
-        </div>
-        <div class="prob-card reveal">
-          <div class="prob-num">3-6<span style="font-size:1.8rem">mo</span></div>
-          <p>average NHS therapy wait time in the UK, leaving hundreds of thousands of students without care when they need it most</p>
-        </div>
-        <div class="prob-card reveal">
-          <div class="prob-num">&lt;1%</div>
-          <p>of Indian and Japanese students experiencing mental health struggles access any form of professional support due to cultural stigma</p>
-        </div>
+    <!-- PHONE -->
+    <div class="phone-wrap animate-fade-up-3">
+      <div class="float-badge fb-left">
+        <span class="float-badge-dot float-badge-green"></span>
+        74% feel less stressed
       </div>
-    </div>
-  </section>
-
-  <!-- FEATURES PREVIEW -->
-  <section class="section">
-    <div class="container">
-      <div class="eyebrow">Core Features</div>
-      <h2 class="section-title">Everything a student needs to thrive</h2>
-      <p class="section-sub">Science-backed tools, AI personalization, and cultural adaptation all in one app.</p>
-      <div class="feat-mosaic reveal">
-        <div class="feat-mosaic-card tall">
-          <div class="feat-ic" style="background:rgba(46,204,122,.2);font-size:1.5rem;width:52px;height:52px;">🧘</div>
-          <div class="feat-title" style="font-size:1.5rem;margin-bottom:12px;">Guided Meditation</div>
-          <p class="feat-desc" style="font-size:.92rem;margin-bottom:24px;">Culturally adapted sessions targeting exam stress, social anxiety, and burnout. Available in Hindi, Japanese, and English.</p>
-          <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px;">
-            <div style="font-family:var(--fm);font-size:.68rem;color:var(--t3);margin-bottom:6px;">Active sessions today</div>
-            <div class="stat-num" style="font-size:2rem;"><span class="counter" data-target="12482" data-suffix="">0</span></div>
-            <div style="height:5px;background:rgba(255,255,255,.1);border-radius:100px;margin-top:10px;">
-              <div style="height:100%;width:74%;background:var(--g);border-radius:100px;"></div>
-            </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-status"><span>9:41 AM - Monday</span><span>100%</span></div>
+          <div class="phone-greeting">Good morning, <span>Priya</span><br><span style="font-size:0.75rem;color:var(--text-muted);font-family:Inter;">How are you feeling today?</span></div>
+          <div class="phone-mood-label">Today's mood</div>
+          <div class="phone-mood-row">
+            <div class="mood-btn">😔</div>
+            <div class="mood-btn">😐</div>
+            <div class="mood-btn active">🙂</div>
+            <div class="mood-btn">😊</div>
+            <div class="mood-btn">🤩</div>
           </div>
-        </div>
-        <div class="feat-mosaic-card">
-          <div class="feat-ic amber">📓</div>
-          <div class="feat-title">Smart Journaling</div>
-          <p class="feat-desc">AI-powered prompts that adapt to your mood. Track patterns and gain insight over time.</p>
-        </div>
-        <div class="feat-mosaic-card">
-          <div class="feat-ic teal">💬</div>
-          <div class="feat-title">AI Mental Health Chat</div>
-          <p class="feat-desc">Always-on CBT-based support. Crisis keywords instantly route to local emergency resources.</p>
-        </div>
-        <div class="feat-mosaic-card">
-          <div class="feat-ic">📊</div>
-          <div class="feat-title">Mood Tracking</div>
-          <p class="feat-desc">Daily check-ins with visual progress graphs. Share reports with counselors or keep them private.</p>
-        </div>
-        <div class="feat-mosaic-card">
-          <div class="feat-ic amber">🎯</div>
-          <div class="feat-title">CBT Exercises</div>
-          <p class="feat-desc">Evidence-based cognitive behavioral therapy for exam anxiety, perfectionism, and peer pressure.</p>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:36px;">
-        <a href="features.html" class="btn btn-ghost">Explore All Features</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MARKETS STRIP -->
-  <section class="markets-strip">
-    <div class="container">
-      <div class="eyebrow">Global Markets</div>
-      <h2 class="section-title" style="margin-bottom:12px;">Launching in 3 key markets</h2>
-      <p class="section-sub">Selected for youth population, smartphone penetration, and unmet mental health demand.</p>
-      <div class="country-cards">
-        <div class="country-card reveal" data-flag="🇮🇳">
-          <span class="badge badge-amber" style="margin-bottom:12px;">South Asia</span>
-          <div class="country-name">India</div>
-          <div class="country-stat-big">250M+</div>
-          <div class="country-stat-sub">youth aged 12-25</div>
-          <div class="country-tags">
-            <span class="country-tag">Android-first</span>
-            <span class="country-tag">UPI payments</span>
-            <span class="country-tag">WhatsApp</span>
+          <div class="phone-card">
+            <div class="phone-card-label">Today's check-in</div>
+            <div class="phone-card-val">Calm and Focused</div>
+            <div class="phone-bar-wrap"><div class="phone-bar"></div></div>
           </div>
-          <a href="markets.html#india" class="btn btn-ghost" style="font-size:.82rem;padding:8px 16px;">Learn More</a>
-        </div>
-        <div class="country-card reveal" data-flag="🇯🇵" style="border-color:var(--gb1);">
-          <span class="badge badge-teal" style="margin-bottom:12px;">East Asia</span>
-          <div class="country-name">Japan</div>
-          <div class="country-stat-big">15M+</div>
-          <div class="country-stat-sub">students aged 12-25</div>
-          <div class="country-tags">
-            <span class="country-tag">Anime themes</span>
-            <span class="country-tag">Konbini pay</span>
-            <span class="country-tag">Discreet UI</span>
+          <div class="phone-ai-bubble">
+            "It sounds like you're managing well today. Let's keep that energy going with a quick 5-min breathing session."
           </div>
-          <a href="markets.html#japan" class="btn btn-ghost" style="font-size:.82rem;padding:8px 16px;">Learn More</a>
-        </div>
-        <div class="country-card reveal" data-flag="🇬🇧">
-          <span class="badge badge-g" style="margin-bottom:12px;">Western Europe</span>
-          <div class="country-name">United Kingdom</div>
-          <div class="country-stat-big">12M+</div>
-          <div class="country-stat-sub">teens aged 12-25</div>
-          <div class="country-tags">
-            <span class="country-tag">NHS partner</span>
-            <span class="country-tag">TikTok</span>
-            <span class="country-tag">UNiDAYS</span>
-          </div>
-          <a href="markets.html#uk" class="btn btn-ghost" style="font-size:.82rem;padding:8px 16px;">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section">
-    <div class="container">
-      <div class="eyebrow">Student Impact</div>
-      <h2 class="section-title" style="margin-bottom:48px;">What students are saying</h2>
-      <div class="test-grid">
-        <div class="test-card reveal">
-          <div class="test-quote">"ThriveSpace helped me manage my JEE prep anxiety. I finally felt like someone understood the pressure I was under."</div>
-          <div class="test-author">
-            <div class="test-avatar" style="background:var(--gd);">P</div>
-            <div>
-              <div class="test-name">Priya S.</div>
-              <div class="test-role">12th Grade, Mumbai, India</div>
-            </div>
-          </div>
-        </div>
-        <div class="test-card reveal">
-          <div class="test-quote">"The meditation sessions before my university entrance exam made a real difference. Having private support was everything."</div>
-          <div class="test-author">
-            <div class="test-avatar" style="background:var(--amber-d);">K</div>
-            <div>
-              <div class="test-name">Kenji T.</div>
-              <div class="test-role">University Student, Tokyo, Japan</div>
-            </div>
-          </div>
-        </div>
-        <div class="test-card reveal">
-          <div class="test-quote">"The CBT exercises are so much better than waiting 3 months for an NHS appointment. It has genuinely helped my anxiety."</div>
-          <div class="test-author">
-            <div class="test-avatar" style="background:rgba(0,212,170,.1);">E</div>
-            <div>
-              <div class="test-name">Ella M.</div>
-              <div class="test-role">Year 12, London, UK</div>
-            </div>
+          <div class="phone-nav-bar">
+            <div class="phone-nav-item active"><span>🧘</span>Meditate</div>
+            <div class="phone-nav-item"><span>📓</span>Journal</div>
+            <div class="phone-nav-item"><span>💬</span>AI Chat</div>
+            <div class="phone-nav-item"><span>📊</span>Progress</div>
           </div>
         </div>
       </div>
-      <p style="text-align:center;font-family:var(--fm);font-size:.7rem;color:var(--t4);margin-top:18px;">Sample testimonials for demonstration purposes only.</p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <div class="container">
-    <div class="cta-block reveal">
-      <div class="eyebrow" style="justify-content:center;">Free to start</div>
-      <h2>Ready to help students thrive?</h2>
-      <p>Join thousands of students already managing stress, anxiety, and burnout with ThriveSpace.</p>
-      <div class="cta-actions">
-        <a href="demo.html" class="btn btn-g">Try the Demo</a>
-        <a href="pricing.html" class="btn btn-ghost">View Pricing</a>
+      <div class="float-badge fb-right">
+        <span class="float-badge-dot float-badge-orange"></span>
+        4.8 star user rating
       </div>
     </div>
   </div>
+</section>
 
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stats-bar-item scroll-reveal">
+      <div class="stats-bar-num">250M+</div>
+      <div class="stats-bar-label">Indian youth facing academic stress</div>
+    </div>
+    <div class="stats-bar-item scroll-reveal">
+      <div class="stats-bar-num">60K</div>
+      <div class="stats-bar-label">Target downloads in Year 1</div>
+    </div>
+    <div class="stats-bar-item scroll-reveal">
+      <div class="stats-bar-num orange">3</div>
+      <div class="stats-bar-label">Global markets at launch</div>
+    </div>
+    <div class="stats-bar-item scroll-reveal">
+      <div class="stats-bar-num orange">$7.99</div>
+      <div class="stats-bar-label">Monthly premium (vs $14.99 Calm)</div>
+    </div>
+  </div>
 </div>
-<div id="footer-placeholder"></div>
+
+<!-- FEATURES -->
+<div class="features-strip">
+  <div class="section-tag">What we offer</div>
+  <h2 class="section-title">Everything a student needs<br>to <em>thrive</em>.</h2>
+  <p class="section-subtitle">Science-backed tools delivered through a beautifully simple app. Available free, anytime, anywhere.</p>
+  <div class="features-cards">
+    <div class="feat-card scroll-reveal">
+      <div class="icon-circle icon-green">🧘</div>
+      <h3>Guided Meditation</h3>
+      <p>Culturally adapted sessions for exam stress, social anxiety, sleep, and burnout. 3-minute quick resets to 20-minute deep practices.</p>
+    </div>
+    <div class="feat-card scroll-reveal">
+      <div class="icon-circle icon-orange">📓</div>
+      <h3>Smart Journaling</h3>
+      <p>AI-prompted journaling that reflects your mood patterns, highlights growth, and offers evidence-based CBT reframing exercises.</p>
+    </div>
+    <div class="feat-card scroll-reveal">
+      <div class="icon-circle icon-green">🧠</div>
+      <h3>CBT Self-Help Tools</h3>
+      <p>Cognitive behavioral therapy exercises designed for student-specific stress: thought challenging, worry time, and behavioral activation.</p>
+    </div>
+    <div class="feat-card scroll-reveal">
+      <div class="icon-circle icon-orange">🤖</div>
+      <h3>AI Wellness Coach</h3>
+      <p>Powered by advanced NLP, your personal AI coach is available 24/7. Empathetic, non-judgmental, trained on clinical best practices.</p>
+    </div>
+    <div class="feat-card scroll-reveal">
+      <div class="icon-circle icon-green">📊</div>
+      <h3>Mood Tracking</h3>
+      <p>Track how you feel daily and discover patterns over time. Insights connect mood to sleep, study load, and social activity.</p>
+    </div>
+    <div class="feat-card scroll-reveal">
+      <div class="icon-circle icon-orange">🌏</div>
+      <h3>Culturally Localized</h3>
+      <p>Adapted for India, Japan, and the UK. Native language support, local cultural references, and region-specific mental health framing.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="features.html" class="btn btn-green">Explore All Features</a>
+  </div>
+</div>
+
+<div class="glow-divider"></div>
+
+<!-- MARKETS -->
+<div class="market-strip">
+  <div class="market-strip-inner">
+    <div class="section-tag section-tag-orange">Global expansion</div>
+    <h2 class="section-title">Launching in <span class="orange">three</span> markets.</h2>
+    <p class="section-subtitle">Chosen for large youth populations, high smartphone usage, and urgent mental health needs.</p>
+    <div class="market-cards">
+      <div class="market-card scroll-reveal">
+        <div class="market-flag">🇮🇳</div>
+        <h3>India</h3>
+        <p>250M+ students facing intense exam pressure and stigma around seeking help. Android-first, WhatsApp-integrated, Hindi and English support.</p>
+        <a href="markets.html#india" class="market-link">Explore India strategy</a>
+      </div>
+      <div class="market-card scroll-reveal">
+        <div class="market-flag">🇯🇵</div>
+        <h3>Japan</h3>
+        <p>High academic pressure meets deep social stigma. Anime-inspired UI themes, mindfulness emphasis, and LINE social platform integration.</p>
+        <a href="markets.html#japan" class="market-link">Explore Japan strategy</a>
+      </div>
+      <div class="market-card scroll-reveal">
+        <div class="market-flag">🇬🇧</div>
+        <h3>United Kingdom</h3>
+        <p>NHS wait times up to 6 months. ThriveSpace fills the gap as a complementary tool with CBT focus and NHS resource integration.</p>
+        <a href="markets.html#uk" class="market-link">Explore UK strategy</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-bg"></div>
+  <div class="quote-inner scroll-reveal">
+    <div class="quote-mark">"</div>
+    <p class="big-quote">Mental wellness is not a luxury. It is a necessity. Every student, regardless of location or economic status, deserves the tools to manage stress.</p>
+    <p class="quote-sub">ThriveSpace Mission Statement</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner scroll-reveal">
+    <h2 class="section-title">Ready to see it in action?</h2>
+    <p>Explore the interactive demo. Experience ThriveSpace as a student would, no download required.</p>
+    <div class="cta-buttons">
+      <a href="demo.html" class="btn btn-green">Try Interactive Demo</a>
+      <a href="pricing.html" class="btn btn-outline">View Pricing</a>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+      <div class="app-badge">
+        <span class="app-badge-icon">🍎</span>
+        <div><span class="app-badge-sub">Download on the</span><span class="app-badge-name">App Store</span></div>
+      </div>
+      <div class="app-badge">
+        <span class="app-badge-icon">▶</span>
+        <div><span class="app-badge-sub">Get it on</span><span class="app-badge-name">Google Play</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand"><div class="footer-brand-icon">🌿</div>ThriveSpace</div>
+      <p class="footer-desc">AI-powered mental wellness for students aged 12-25. Supporting minds in India, Japan, and the United Kingdom.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Product</h5>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="demo.html">Demo</a>
+    </div>
+    <div class="footer-col">
+      <h5>Markets</h5>
+      <a href="markets.html#india">India</a>
+      <a href="markets.html#japan">Japan</a>
+      <a href="markets.html#uk">United Kingdom</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="about.html">About</a>
+      <a href="about.html#team">Team</a>
+      <a href="about.html#mission">Mission</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    BPA COMPETITION DISCLAIMER: ThriveSpace is a fictional company created for the Business Professionals of America Global Marketing Team competition. This website is a prototype demo and does not represent a real product or service. Created by Independence High School, BPA NLC 2026.
+  </div>
+  <div class="footer-bottom">
+    <span>2026 ThriveSpace (BPA Demo)</span>
+    <span>Independence High School - BPA Global Marketing Team</span>
+  </div>
+</footer>
+
 <script src="nav.js"></script>
-<script>
-  injectNav('Home');
-  injectFooter();
-  document.addEventListener('DOMContentLoaded', () => { initReveal(); initCounters(); });
-  // Ticker
-  const tickers = [
-    '74% of students report worsened mental health since the pandemic',
-    'NHS therapy wait times average 3-6 months in the UK',
-    'Over 250 million youth aged 12-25 in our target markets',
-    'Less than 1% of Indian students access mental health support',
-    'Digital health market projected to grow to $17 billion by 2030'
-  ];
-  let ti = 0;
-  const tickEl = document.getElementById('ticker-text');
-  setInterval(() => {
-    ti = (ti + 1) % tickers.length;
-    if (tickEl) { tickEl.style.opacity = '0'; setTimeout(() => { tickEl.textContent = tickers[ti]; tickEl.style.opacity = '1'; }, 300); }
-  }, 4000);
-  if (tickEl) tickEl.style.transition = 'opacity .3s ease';
-</script>
 </body>
 </html>
