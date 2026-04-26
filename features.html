@@ -1,488 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Features - ThriveSpace</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — ThriveSpace</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    .features-hero { padding: 140px 48px 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-    .features-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .features-hero h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); margin-bottom: 20px; }
-    .features-hero h1 em { color: var(--green-glow); font-style: italic; }
-    .features-hero p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
+    .feat-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      padding: 120px 0 80px; color: white; text-align: center;
+    }
+    .feat-hero h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 16px; }
+    .feat-hero p { font-size: 1.1rem; opacity: 0.85; max-width: 540px; margin: 0 auto 36px; }
+    .feat-hero .eyebrow { background: rgba(255,255,255,0.15); color: white; }
 
-    .feature-overview-card {
-      background: var(--green-800); border-radius: var(--radius-lg);
-      padding: 32px; border: 1px solid var(--border);
-      position: relative; overflow: hidden;
-    }
-    .feature-overview-card::before {
-      content: '';
-      position: absolute; top: -40px; right: -40px;
-      width: 160px; height: 160px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(46,204,74,0.12) 0%, transparent 70%);
-    }
-    .fov-label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 16px; }
-    .fov-item {
-      display: flex; align-items: center; gap: 14px;
-      background: rgba(255,255,255,0.04); border-radius: 12px; padding: 14px 16px;
-      margin-bottom: 10px; border: 1px solid var(--border);
-      transition: border-color 0.2s;
-    }
-    .fov-item:hover { border-color: var(--border-bright); }
-    .fov-icon { font-size: 1.4rem; width: 36px; text-align: center; }
-    .fov-name { font-weight: 600; font-size: 0.9rem; }
-    .fov-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
-    .fov-badge { margin-left: auto; }
-
-    /* FEATURE BLOCKS */
     .feature-block {
-      padding: 80px 48px; max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center; padding: 72px 0;
     }
     .feature-block.reverse { direction: rtl; }
     .feature-block.reverse > * { direction: ltr; }
-    .fb-text h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 14px; }
-    .fb-text h2 em { color: var(--green-glow); font-style: italic; }
-    .fb-text p { color: var(--text-muted); font-size: 0.97rem; line-height: 1.75; margin-bottom: 22px; }
-    .fb-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .fb-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.75); }
-    .fb-check { color: var(--green-glow); flex-shrink: 0; font-style: normal; }
-
-    .fb-visual {
-      background: var(--green-800); border-radius: var(--radius-lg);
-      padding: 28px; min-height: 300px;
-      border: 1px solid var(--border);
-      display: flex; flex-direction: column; gap: 12px;
-      position: relative; overflow: hidden;
+    .feature-visual {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 36px;
+      box-shadow: var(--shadow-md);
     }
-    .fb-visual::before {
-      content: '';
-      position: absolute; top: -30px; right: -30px;
-      width: 100px; height: 100px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(46,204,74,0.1) 0%, transparent 70%);
+    .feature-visual-dark {
+      background: var(--charcoal); border-radius: var(--r-lg); padding: 36px;
+      box-shadow: var(--shadow-md);
     }
-
-    /* MEDITATION VISUAL */
-    .med-ring {
-      width: 96px; height: 96px; border-radius: 50%;
-      border: 5px solid rgba(46,204,74,0.2);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 14px;
-      font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--green-glow);
-      position: relative;
+    .feature-label {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--green); margin-bottom: 10px;
     }
-    .med-ring::before {
-      content: '';
-      position: absolute; inset: -3px; border-radius: 50%;
-      border: 3px solid transparent;
-      border-top-color: var(--green-glow);
-      animation: spin 3s linear infinite;
-    }
-    .session-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(46,204,74,0.1); color: var(--green-glow); padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(46,204,74,0.2); }
-
-    /* JOURNAL VISUAL */
-    .j-entry {
-      background: rgba(255,255,255,0.04); border-radius: 11px; padding: 14px 16px;
-      font-size: 0.82rem; color: rgba(255,255,255,0.8); line-height: 1.65;
-      border: 1px solid var(--border);
-    }
-    .j-prompt { font-size: 0.7rem; color: var(--green-glow); font-weight: 700; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .j-insight {
-      background: rgba(46,204,74,0.08); border: 1px solid rgba(46,204,74,0.18);
-      border-radius: 10px; padding: 11px 14px;
-      font-size: 0.8rem; color: rgba(255,255,255,0.8); line-height: 1.6;
-    }
-
-    /* CBT VISUAL */
-    .cbt-step {
-      background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px 14px;
-      border: 1px solid var(--border); font-size: 0.82rem;
+    .feature-title { font-size: 2rem; margin-bottom: 14px; }
+    .feature-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+    .feature-list { list-style: none; }
+    .feature-list li {
       display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.9rem; margin-bottom: 10px; color: var(--charcoal-mid);
     }
-    .cbt-num {
-      width: 24px; height: 24px; border-radius: 7px;
-      background: var(--green-glow); color: var(--green-900);
+    .feature-list li::before {
+      content: '✓'; color: var(--green);
+      font-weight: 700; font-size: 0.85rem; margin-top: 2px; flex-shrink: 0;
+    }
+
+    /* Meditation visual */
+    .med-session {
+      background: linear-gradient(135deg, #1F5C46, #5BAF8E);
+      border-radius: 16px; padding: 24px; color: white; margin-bottom: 16px;
+    }
+    .med-session-title { font-family: 'Instrument Serif', serif; font-size: 1.2rem; margin-bottom: 4px; }
+    .med-session-sub { font-size: 0.8rem; opacity: 0.8; margin-bottom: 16px; }
+    .med-progress { height: 6px; background: rgba(255,255,255,0.2); border-radius: 100px; }
+    .med-progress-fill { height: 100%; border-radius: 100px; background: white; }
+    .med-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .med-tag { background: rgba(255,255,255,0.15); border-radius: 100px; padding: 4px 12px; font-size: 0.72rem; }
+
+    /* Journal visual */
+    .journal-prompt {
+      background: var(--cream); border-radius: 12px; padding: 18px;
+      margin-bottom: 12px; border: 1px solid var(--border);
+    }
+    .journal-prompt p { font-size: 0.88rem; color: var(--charcoal-mid); font-style: italic; line-height: 1.6; }
+    .journal-tags { display: flex; gap: 8px; margin-top: 10px; }
+    .mood-bar { display: flex; gap: 6px; margin-bottom: 16px; }
+    .mood-emoji {
+      width: 44px; height: 44px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+      font-size: 1.4rem; cursor: pointer; transition: transform 0.2s;
+      background: var(--cream-2);
     }
-    .cbt-step-title { font-weight: 700; color: var(--white); margin-bottom: 2px; font-size: 0.84rem; }
-    .cbt-step-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .mood-emoji.active { background: var(--green-pale); transform: scale(1.15); }
 
-    /* AI CHAT VISUAL */
+    /* AI Chat visual */
     .chat-wrap { display: flex; flex-direction: column; gap: 10px; }
-    .chat-msg { max-width: 88%; font-size: 0.8rem; line-height: 1.55; padding: 10px 13px; border-radius: 13px; }
-    .chat-ai { background: rgba(46,204,74,0.1); color: rgba(255,255,255,0.88); border-radius: 4px 13px 13px 13px; align-self: flex-start; border: 1px solid rgba(46,204,74,0.15); }
-    .chat-user { background: var(--green-600); color: white; border-radius: 13px 4px 13px 13px; align-self: flex-end; }
-    .chat-sender { font-size: 0.62rem; color: var(--text-dim); margin-bottom: 3px; }
-
-    /* MOOD CHART VISUAL */
-    .mood-chart { background: rgba(255,255,255,0.04); border-radius: 11px; padding: 14px 16px; border: 1px solid var(--border); }
-    .mood-chart-title { font-size: 0.75rem; font-weight: 600; color: var(--white); margin-bottom: 12px; }
-    .mood-bars { display: flex; align-items: flex-end; gap: 7px; height: 80px; }
-    .mood-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .mood-bar-fill { width: 100%; background: var(--green-600); border-radius: 4px 4px 0 0; }
-    .mood-bar-label { font-size: 0.6rem; color: var(--text-dim); }
-    .mood-up { color: var(--green-glow); font-weight: 600; font-size: 0.82rem; margin-top: 8px; }
-
-    /* LOCALE TABS */
-    .locale-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-    .locale-tab {
-      padding: 6px 13px; border-radius: 8px; font-size: 0.78rem; font-weight: 600;
-      cursor: pointer; transition: background 0.2s, color 0.2s;
-      background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border);
+    .chat-msg {
+      max-width: 85%; padding: 12px 16px; border-radius: 16px;
+      font-size: 0.85rem; line-height: 1.55;
     }
-    .locale-tab.active { background: rgba(46,204,74,0.15); color: var(--green-glow); border-color: rgba(46,204,74,0.3); }
-    .locale-content { display: none; background: rgba(46,204,74,0.06); border: 1px solid rgba(46,204,74,0.15); border-radius: 10px; padding: 14px 16px; font-size: 0.83rem; color: rgba(255,255,255,0.8); line-height: 1.65; }
-    .locale-content.active { display: block; }
-    .locale-title { font-weight: 700; color: var(--white); margin-bottom: 7px; font-size: 0.88rem; }
-
-    /* TIER BAND */
-    .tier-band { background: var(--green-800); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 48px; position: relative; z-index: 1; }
-    .tier-band-inner { max-width: 1200px; margin: 0 auto; }
-    .tier-band h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 40px; }
-    .tier-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .tier-col { background: rgba(255,255,255,0.04); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); }
-    .tier-col.featured { border-color: rgba(46,204,74,0.35); background: rgba(46,204,74,0.07); }
-    .tier-col-title { font-size: 1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-    .tier-col-price { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--green-glow); margin-bottom: 20px; }
-    .tier-item { display: flex; align-items: center; gap: 9px; font-size: 0.86rem; color: rgba(255,255,255,0.72); margin-bottom: 10px; }
-    .tier-check { color: var(--green-glow); }
-    .tier-x { color: rgba(255,255,255,0.2); }
-
-    @media (max-width: 900px) {
-      .features-hero { padding: 100px 20px 40px; }
-      .features-hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .feature-block { grid-template-columns: 1fr; gap: 40px; padding: 50px 20px; }
-      .feature-block.reverse { direction: ltr; }
-      .tier-compare { grid-template-columns: 1fr; }
-      .tier-band { padding: 48px 20px; }
+    .chat-ai { background: var(--green-pale); color: var(--charcoal); border-bottom-left-radius: 4px; }
+    .chat-user { background: var(--green); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .chat-name { font-size: 0.7rem; color: var(--muted); margin-bottom: 3px; }
+    .chat-input {
+      display: flex; gap: 8px; margin-top: 16px;
+      background: var(--cream); border-radius: 100px; padding: 8px 8px 8px 16px;
+      border: 1px solid var(--border); align-items: center;
     }
+    .chat-input span { font-size: 0.82rem; color: var(--muted); flex: 1; }
+    .chat-send { background: var(--green); color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; }
+
+    /* Mood tracker visual */
+    .mood-chart { display: flex; align-items: flex-end; gap: 8px; height: 100px; margin-bottom: 16px; }
+    .mood-bar-item { flex: 1; border-radius: 6px 6px 0 0; transition: height 0.3s; }
+    .mood-days { display: flex; gap: 8px; }
+    .mood-day { flex: 1; text-align: center; font-size: 0.7rem; color: var(--muted); }
+    .insights-card {
+      background: var(--green-pale); border-radius: 12px; padding: 16px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .insights-icon { font-size: 1.4rem; }
+    .insights-text { font-size: 0.82rem; color: var(--green-dark); line-height: 1.5; }
+
+    /* Safety strip */
+    .safety-strip {
+      background: #FBF3E0; border: 1px solid #F0D890;
+      border-radius: var(--r); padding: 24px 32px;
+      display: flex; gap: 16px; align-items: center;
+    }
+    .safety-strip p { font-size: 0.9rem; color: var(--charcoal-mid); line-height: 1.6; }
+
+    /* Localization */
+    .locale-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .locale-card {
+      background: white; border-radius: var(--r); border: 1px solid var(--border);
+      padding: 24px; text-align: center;
+    }
+    .locale-flag { font-size: 2rem; margin-bottom: 10px; }
+    .locale-name { font-weight: 700; margin-bottom: 6px; }
+    .locale-features { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
   </style>
 </head>
 <body>
+<div class="page-wrap">
+  <div id="nav-placeholder"></div>
 
-<nav>
-  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🌿</div>Thrive<span>Space</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="features.html" class="active">Features</a></li>
-    <li><a href="markets.html">Markets</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="demo.html" class="nav-cta">Try Demo</a></li>
-  </ul>
-</nav>
-
-<div class="features-hero">
-  <div class="orb orb-green" style="width:400px;height:400px;top:-80px;right:0;opacity:0.5;"></div>
-  <div class="features-hero-inner">
-    <div class="animate-fade-up">
-      <div class="section-tag">Core features</div>
-      <h1>Science-backed tools.<br><em>Student-centered</em> design.</h1>
-      <p style="margin-top:16px;">Every feature in ThriveSpace is grounded in clinical best practices, then adapted for the realities of student life globally. CBT, mindfulness, positive psychology, and AI, all in one app.</p>
-    </div>
-    <div class="feature-overview-card animate-fade-up-2">
-      <div class="fov-label">Available in ThriveSpace</div>
-      <div class="fov-item">
-        <div class="fov-icon">🧘</div>
-        <div><div class="fov-name">Guided Meditation</div><div class="fov-desc">120+ culturally adapted sessions</div></div>
-        <span class="fov-badge badge badge-green">Free</span>
-      </div>
-      <div class="fov-item">
-        <div class="fov-icon">📓</div>
-        <div><div class="fov-name">AI Journaling</div><div class="fov-desc">Smart prompts and mood analysis</div></div>
-        <span class="fov-badge badge badge-green">Free</span>
-      </div>
-      <div class="fov-item">
-        <div class="fov-icon">🧠</div>
-        <div><div class="fov-name">CBT Exercises</div><div class="fov-desc">Thought records, worry logs</div></div>
-        <span class="fov-badge badge badge-green">Free</span>
-      </div>
-      <div class="fov-item">
-        <div class="fov-icon">🤖</div>
-        <div><div class="fov-name">AI Wellness Coach</div><div class="fov-desc">24/7 NLP-powered support</div></div>
-        <span class="fov-badge badge badge-orange">Premium</span>
-      </div>
-      <div class="fov-item">
-        <div class="fov-icon">📊</div>
-        <div><div class="fov-name">Advanced Analytics</div><div class="fov-desc">Weekly insights and progress tracking</div></div>
-        <span class="fov-badge badge badge-orange">Premium</span>
+  <!-- HERO -->
+  <section class="feat-hero">
+    <div class="container">
+      <div class="eyebrow">Product Features</div>
+      <h1>Built for students, <em>by design</em></h1>
+      <p>Every feature is rooted in evidence-based psychology, localized for culture, and designed to reduce friction for teens who need support.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="demo.html" class="btn btn-white">Try the Demo →</a>
+        <a href="pricing.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.35);color:white;">View Pricing</a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- MEDITATION -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="feature-block">
+        <div>
+          <div class="feature-label">🧘 Feature 01</div>
+          <h2 class="feature-title">Guided Meditation &amp; Breathing</h2>
+          <p class="feature-desc">Culturally adapted sessions targeting exam anxiety, social pressure, and burnout — the exact stressors students face. Available in Hindi, Japanese, and English.</p>
+          <ul class="feature-list">
+            <li>Student-specific themes: exam prep, peer pressure, identity</li>
+            <li>5, 10, and 20-minute session options for busy schedules</li>
+            <li>Offline access — no internet required during sessions</li>
+            <li>Cultural adaptations: Japanese mindfulness, Indian breathing techniques</li>
+            <li>Sleep support sessions for pre-exam nights</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div class="med-session">
+            <div class="med-session-title">Exam Stress Relief 🌿</div>
+            <div class="med-session-sub">10-minute breathing reset</div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+              <button style="width:36px;height:36px;border-radius:50%;background:white;border:none;cursor:pointer;font-size:1rem;">⏸</button>
+              <div style="flex:1">
+                <div class="med-progress"><div class="med-progress-fill" style="width:62%"></div></div>
+              </div>
+              <span style="font-size:0.75rem;opacity:0.8;">6:12</span>
+            </div>
+            <div class="med-tags">
+              <div class="med-tag">Anxiety</div>
+              <div class="med-tag">Focus</div>
+              <div class="med-tag">Beginner</div>
+            </div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted);margin-bottom:10px;font-weight:600;">More sessions</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--cream);border-radius:10px;">
+              <span>🌙</span>
+              <div><div style="font-size:0.85rem;font-weight:600;">Sleep &amp; Unwind</div><div style="font-size:0.75rem;color:var(--muted);">15 min · Tonight's wind-down</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--cream);border-radius:10px;">
+              <span>🏃</span>
+              <div><div style="font-size:0.85rem;font-weight:600;">Quick Reset</div><div style="font-size:0.75rem;color:var(--muted);">3 min · Between classes</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- JOURNALING -->
+  <section>
+    <div class="container">
+      <div class="feature-block reverse">
+        <div>
+          <div class="feature-label">📓 Feature 02</div>
+          <h2 class="feature-title">Smart Journaling with AI Prompts</h2>
+          <p class="feature-desc">AI-generated prompts that adapt to your mood and history. Identify patterns, celebrate wins, and process difficult emotions — privately.</p>
+          <ul class="feature-list">
+            <li>Adaptive prompts based on mood history and time of day</li>
+            <li>End-to-end encrypted — only you can read your entries</li>
+            <li>Mood tagging with weekly pattern analysis</li>
+            <li>Gratitude and growth tracking over time</li>
+            <li>Export your journal (data portability — GDPR compliant)</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div class="mood-bar">
+            <div class="mood-emoji active">😌</div>
+            <div class="mood-emoji">😊</div>
+            <div class="mood-emoji">😐</div>
+            <div class="mood-emoji">😟</div>
+            <div class="mood-emoji">😔</div>
+          </div>
+          <div class="journal-prompt">
+            <div style="font-size:0.7rem;color:var(--green);font-weight:700;margin-bottom:6px;">TODAY'S PROMPT</div>
+            <p>"What's one thing that felt difficult today, and what's one small thing you handled well — even if no one noticed?"</p>
+            <div class="journal-tags">
+              <span class="badge badge-green">Reflection</span>
+              <span class="badge badge-gold">Growth</span>
+            </div>
+          </div>
+          <div style="background:var(--cream);border-radius:12px;padding:14px;font-size:0.82rem;color:var(--muted);line-height:1.6;">
+            Today's exam felt overwhelming at first, but I reminded myself to breathe and take it one section at a time...
+            <div style="display:flex;justify-content:flex-end;margin-top:8px;gap:6px;">
+              <span style="font-size:0.7rem;color:var(--muted);">128 words</span>
+              <span style="font-size:0.7rem;color:var(--green);">● Auto-saved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- AI CHAT -->
+  <section>
+    <div class="container">
+      <div class="feature-block">
+        <div>
+          <div class="feature-label">💬 Feature 03</div>
+          <h2 class="feature-title">AI Mental Health Chat</h2>
+          <p class="feature-desc">Always-available CBT-based conversations to work through anxiety, stress, and difficult emotions. Trained to be safe, empathetic, and honest about its limits.</p>
+          <ul class="feature-list">
+            <li>CBT and mindfulness techniques in every conversation</li>
+            <li>Crisis detection — instantly surfaces local emergency numbers</li>
+            <li>Never replaces therapy; encourages professional support</li>
+            <li>Multilingual: English, Hindi, Japanese</li>
+            <li>Conversation history for tracking thoughts over time</li>
+          </ul>
+          <div class="safety-strip" style="margin-top:24px;">
+            <span style="font-size:1.5rem;">🛡️</span>
+            <p><strong>Safety first:</strong> ThriveSpace AI detects crisis keywords and immediately provides local emergency hotlines. It is a supplement, never a replacement, for professional care.</p>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="chat-wrap">
+            <div>
+              <div class="chat-name">ThriveSpace AI</div>
+              <div class="chat-msg chat-ai">Hi! I'm here to help you work through whatever you're feeling. How are you doing today? 🌿</div>
+            </div>
+            <div style="align-self:flex-end;text-align:right">
+              <div class="chat-name" style="text-align:right;">You</div>
+              <div class="chat-msg chat-user">I've been so stressed about my exams. I can't sleep and I keep second-guessing everything.</div>
+            </div>
+            <div>
+              <div class="chat-name">ThriveSpace AI</div>
+              <div class="chat-msg chat-ai">That sounds really exhausting — exam stress and disrupted sleep form a tough cycle. Let's try something: can you tell me what specific thought keeps repeating most at night?</div>
+            </div>
+            <div style="align-self:flex-end;text-align:right">
+              <div class="chat-name" style="text-align:right;">You</div>
+              <div class="chat-msg chat-user">That I'm going to fail and disappoint everyone.</div>
+            </div>
+            <div>
+              <div class="chat-name">ThriveSpace AI</div>
+              <div class="chat-msg chat-ai">That's a really common thought, and it's worth examining it together. First — is there any evidence that contradicts this thought? Even small things? 💭</div>
+            </div>
+          </div>
+          <div class="chat-input">
+            <span>Type a message...</span>
+            <button class="chat-send">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MOOD TRACKING -->
+  <section>
+    <div class="container">
+      <div class="feature-block reverse">
+        <div>
+          <div class="feature-label">📊 Feature 04</div>
+          <h2 class="feature-title">Mood Tracking &amp; Progress</h2>
+          <p class="feature-desc">Daily check-ins take under 30 seconds. Over time, ThriveSpace surfaces patterns, suggests interventions, and shows you how far you've come.</p>
+          <ul class="feature-list">
+            <li>30-second daily mood check-ins with emoji-based logging</li>
+            <li>Weekly and monthly trend visualization</li>
+            <li>Pattern detection: "You tend to feel anxious on Sunday nights"</li>
+            <li>Shareable mood reports for counselors (opt-in only)</li>
+            <li>Streak rewards to build healthy check-in habits</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div style="font-weight:600;margin-bottom:12px;font-size:0.9rem;">This Week's Mood</div>
+          <div class="mood-chart">
+            <div class="mood-bar-item" style="height:60%;background:var(--rose);opacity:0.7;"></div>
+            <div class="mood-bar-item" style="height:45%;background:var(--gold);opacity:0.7;"></div>
+            <div class="mood-bar-item" style="height:70%;background:var(--green-light);"></div>
+            <div class="mood-bar-item" style="height:80%;background:var(--green);"></div>
+            <div class="mood-bar-item" style="height:65%;background:var(--green-light);"></div>
+            <div class="mood-bar-item" style="height:90%;background:var(--green);"></div>
+            <div class="mood-bar-item" style="height:75%;background:var(--green-light);"></div>
+          </div>
+          <div class="mood-days">
+            <div class="mood-day">Mon</div><div class="mood-day">Tue</div>
+            <div class="mood-day">Wed</div><div class="mood-day">Thu</div>
+            <div class="mood-day">Fri</div><div class="mood-day">Sat</div>
+            <div class="mood-day">Sun</div>
+          </div>
+          <div class="insights-card" style="margin-top:16px;">
+            <div class="insights-icon">💡</div>
+            <div class="insights-text"><strong>AI Insight:</strong> Your mood improves significantly mid-week. Try scheduling your hardest tasks for Wednesday or Thursday when your energy is highest.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZATION -->
+  <section style="background:var(--cream-2);padding:72px 0;">
+    <div class="container">
+      <div class="eyebrow">Cultural Localization</div>
+      <h2 class="section-title" style="margin-bottom:14px;">One app, three cultures</h2>
+      <p class="section-sub" style="margin-bottom:48px;">Every market gets a tailored experience — language, visuals, payment methods, and culturally appropriate messaging.</p>
+      <div class="locale-grid">
+        <div class="locale-card">
+          <div class="locale-flag">🇮🇳</div>
+          <div class="locale-name">India Edition</div>
+          <div class="locale-features">Android-first design · Hindi &amp; English · UPI payment integration · WhatsApp sharing · JEE/NEET stress programs · Low-bandwidth mode</div>
+        </div>
+        <div class="locale-card" style="border-color:var(--green);">
+          <div class="locale-flag">🇯🇵</div>
+          <div class="locale-name">Japan Edition</div>
+          <div class="locale-features">Anime-inspired visual themes · Japanese language · Konbini payment · Discreet, minimal UI · Haiku-style prompts · Harmony-focused CBT</div>
+        </div>
+        <div class="locale-card">
+          <div class="locale-flag">🇬🇧</div>
+          <div class="locale-name">UK Edition</div>
+          <div class="locale-features">NHS signposting integration · British English · NHS wait-time companion · University wellbeing partnerships · Student loan stress content</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container" style="text-align:center;">
+      <div class="eyebrow">See it live</div>
+      <h2 class="section-title" style="margin-bottom:14px;">Experience ThriveSpace yourself</h2>
+      <p style="color:var(--muted);max-width:440px;margin:0 auto 32px;">Try our interactive demo — no sign-up required. See how the features work together.</p>
+      <div style="display:flex;gap:14px;justify-content:center;">
+        <a href="demo.html" class="btn btn-primary">Open Interactive Demo →</a>
+        <a href="pricing.html" class="btn btn-outline">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
 </div>
-
-<div class="glow-divider"></div>
-
-<!-- FEATURE 1: MEDITATION -->
-<div class="feature-block scroll-reveal">
-  <div class="fb-text">
-    <div class="section-tag">Meditation</div>
-    <h2>Find calm, <em>anytime</em>.</h2>
-    <p>Over 120 sessions spanning exam stress, social anxiety, sleep, focus, and confidence. Each adapted for the specific pressures students face in India, Japan, and the UK.</p>
-    <ul class="fb-list">
-      <li><em class="fb-check">*</em> 3-minute quick resets for between classes</li>
-      <li><em class="fb-check">*</em> 20-minute deep sessions for evening wind-down</li>
-      <li><em class="fb-check">*</em> Box breathing, 4-7-8, diaphragmatic exercises</li>
-      <li><em class="fb-check">*</em> Body scan and progressive muscle relaxation</li>
-      <li><em class="fb-check">*</em> Culturally adapted narrations in local languages</li>
-    </ul>
-  </div>
-  <div class="fb-visual">
-    <div style="text-align:center;padding:16px 0 8px;">
-      <div class="med-ring">5:00</div>
-      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:4px;">Exam Stress Relief</div>
-      <div style="font-size:0.78rem;color:var(--text-muted);">Breathe in slowly, 4 counts...</div>
-    </div>
-    <div class="j-entry" style="background:rgba(46,204,74,0.07);border-color:rgba(46,204,74,0.15);">
-      <div class="j-prompt">Now playing</div>
-      Ocean Waves - Pre-exam anxiety - 5 min
-    </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      <span class="badge badge-green">Stress Relief</span>
-      <span class="badge badge-orange">Focus</span>
-      <span class="badge badge-white">Sleep</span>
-      <span class="badge badge-white">Confidence</span>
-    </div>
-  </div>
-</div>
-
-<div class="glow-divider"></div>
-
-<!-- FEATURE 2: JOURNALING -->
-<div class="feature-block reverse scroll-reveal">
-  <div class="fb-text">
-    <div class="section-tag section-tag-orange">Journaling</div>
-    <h2>Write your way to <em>clarity</em>.</h2>
-    <p>AI-powered journaling goes beyond a blank page. It prompts, reflects, and identifies patterns in your emotional wellbeing over time.</p>
-    <ul class="fb-list">
-      <li><em class="fb-check">*</em> Daily AI-generated prompts tailored to your mood</li>
-      <li><em class="fb-check">*</em> Automatic sentiment analysis and trend detection</li>
-      <li><em class="fb-check">*</em> CBT-based cognitive reframing suggestions</li>
-      <li><em class="fb-check">*</em> Gratitude journaling and strength spotting</li>
-      <li><em class="fb-check">*</em> End-to-end encrypted, only you can read your entries</li>
-    </ul>
-  </div>
-  <div class="fb-visual">
-    <div class="j-entry">
-      <div class="j-prompt">Today's prompt</div>
-      "What's one thing that felt heavy today, and what small step could make it lighter?"
-    </div>
-    <div class="j-entry">
-      <div style="font-size:0.7rem;color:var(--text-dim);margin-bottom:5px;">Your entry, 2 hours ago</div>
-      "I'm really anxious about the mock exam tomorrow. I feel like I haven't studied enough even though I've been revising all week..."
-    </div>
-    <div class="j-insight">
-      AI Insight: Your entries this week show a pattern of high self-criticism before exams. You've actually noted completing study goals 4 of the last 5 days. That's real progress.
-    </div>
-  </div>
-</div>
-
-<div class="glow-divider"></div>
-
-<!-- FEATURE 3: CBT -->
-<div class="feature-block scroll-reveal">
-  <div class="fb-text">
-    <div class="section-tag">CBT Tools</div>
-    <h2>Rewire <em>unhelpful</em> thinking.</h2>
-    <p>Cognitive Behavioral Therapy is one of the most evidence-backed approaches for anxiety and depression. ThriveSpace makes it accessible, interactive, and student-friendly.</p>
-    <ul class="fb-list">
-      <li><em class="fb-check">*</em> Thought records to challenge negative thinking</li>
-      <li><em class="fb-check">*</em> Worry time scheduling to contain anxious thoughts</li>
-      <li><em class="fb-check">*</em> Behavioral activation for low mood and depression</li>
-      <li><em class="fb-check">*</em> Fear ladders for social anxiety and avoidance</li>
-      <li><em class="fb-check">*</em> Psychoeducation modules on stress and emotions</li>
-    </ul>
-  </div>
-  <div class="fb-visual">
-    <div style="font-size:0.82rem;font-weight:700;color:var(--white);margin-bottom:10px;">Thought Record Exercise</div>
-    <div class="cbt-step">
-      <div class="cbt-num">1</div>
-      <div><div class="cbt-step-title">Situation</div><div class="cbt-step-text">Failed mock exam, got 58%</div></div>
-    </div>
-    <div class="cbt-step">
-      <div class="cbt-num">2</div>
-      <div><div class="cbt-step-title">Automatic Thought</div><div class="cbt-step-text">"I'm terrible at this. I'll never pass."</div></div>
-    </div>
-    <div class="cbt-step">
-      <div class="cbt-num" style="background:var(--orange);color:white;">3</div>
-      <div><div class="cbt-step-title">Evidence Against</div><div class="cbt-step-text">"I passed the last 3 tests. I was sleep-deprived this week."</div></div>
-    </div>
-    <div class="cbt-step">
-      <div class="cbt-num" style="background:var(--green-400);color:white;">4</div>
-      <div><div class="cbt-step-title">Balanced Thought</div><div class="cbt-step-text">"One test doesn't define me. I can review and improve."</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="glow-divider"></div>
-
-<!-- FEATURE 4: AI COACH -->
-<div class="feature-block reverse scroll-reveal">
-  <div class="fb-text">
-    <div class="section-tag section-tag-orange">AI Coach</div>
-    <h2>Someone to talk to, <em>always</em>.</h2>
-    <p>Powered by advanced NLP, your AI wellness coach listens without judgment, guides with empathy, and always knows when to refer you to professional help.</p>
-    <ul class="fb-list">
-      <li><em class="fb-check">*</em> 24/7 availability, no appointments, no wait lists</li>
-      <li><em class="fb-check">*</em> Trained on clinical mental health communication frameworks</li>
-      <li><em class="fb-check">*</em> Detects distress keywords and escalates appropriately</li>
-      <li><em class="fb-check">*</em> Provides local crisis hotline numbers when needed</li>
-      <li><em class="fb-check">*</em> Never replaces therapy, always recommends professionals</li>
-    </ul>
-  </div>
-  <div class="fb-visual">
-    <div class="chat-wrap">
-      <div>
-        <div class="chat-sender">ThriveSpace AI</div>
-        <div class="chat-msg chat-ai">Hi! I noticed you logged feeling anxious this morning. How are you doing right now? I'm here to listen.</div>
-      </div>
-      <div style="align-self:flex-end;">
-        <div class="chat-msg chat-user">I have a big presentation today and I can't stop shaking</div>
-      </div>
-      <div>
-        <div class="chat-sender">ThriveSpace AI</div>
-        <div class="chat-msg chat-ai">That shaking feeling is your nervous system doing its job. It actually means you care. Let's try the 5-4-3-2-1 grounding technique together. Ready?</div>
-      </div>
-    </div>
-    <div style="margin-top:10px;padding:10px 13px;background:rgba(46,204,74,0.08);border-radius:9px;font-size:0.77rem;color:rgba(46,204,74,0.9);border:1px solid rgba(46,204,74,0.15);">
-      Safe AI: Harmful topics auto-detected. Crisis resources always one tap away.
-    </div>
-  </div>
-</div>
-
-<div class="glow-divider"></div>
-
-<!-- FEATURE 5: MOOD -->
-<div class="feature-block scroll-reveal">
-  <div class="fb-text">
-    <div class="section-tag">Mood Tracking</div>
-    <h2>Understand your <em>patterns</em>.</h2>
-    <p>A simple daily check-in becomes a powerful data set over time, revealing connections between your mood, study schedule, sleep, and social life.</p>
-    <ul class="fb-list">
-      <li><em class="fb-check">*</em> 10-second daily mood check-in</li>
-      <li><em class="fb-check">*</em> Weekly and monthly trend graphs</li>
-      <li><em class="fb-check">*</em> Mood correlations with sleep, exercise, study load</li>
-      <li><em class="fb-check">*</em> Shareable reports for school counselors (opt-in)</li>
-      <li><em class="fb-check">*</em> Streak system to build a wellness habit</li>
-    </ul>
-  </div>
-  <div class="fb-visual">
-    <div class="mood-chart">
-      <div class="mood-chart-title">Your mood, last 7 days</div>
-      <div class="mood-bars">
-        <div class="mood-bar-wrap"><div class="mood-bar-fill" style="height:42px;background:rgba(249,115,22,0.6);"></div><span class="mood-bar-label">M</span></div>
-        <div class="mood-bar-wrap"><div class="mood-bar-fill" style="height:55px;"></div><span class="mood-bar-label">T</span></div>
-        <div class="mood-bar-wrap"><div class="mood-bar-fill" style="height:36px;background:rgba(249,115,22,0.6);"></div><span class="mood-bar-label">W</span></div>
-        <div class="mood-bar-wrap"><div class="mood-bar-fill" style="height:62px;"></div><span class="mood-bar-label">T</span></div>
-        <div class="mood-bar-wrap"><div class="mood-bar-fill" style="height:70px;"></div><span class="mood-bar-label">F</span></div>
-        <div class="mood-bar-wrap"><div class="mood-bar-fill" style="height:74px;background:var(--green-glow);"></div><span class="mood-bar-label">S</span></div>
-        <div class="mood-bar-wrap"><div class="mood-bar-fill" style="height:68px;background:var(--green-glow);"></div><span class="mood-bar-label">S</span></div>
-      </div>
-      <div class="mood-up">Trending up this week</div>
-    </div>
-    <div class="j-insight">
-      Insight: Your mood dips mid-week. This often aligns with your heavy study days. Try a 5-min reset on Wednesdays!
-    </div>
-  </div>
-</div>
-
-<div class="glow-divider"></div>
-
-<!-- FEATURE 6: LOCALIZATION -->
-<div class="feature-block reverse scroll-reveal">
-  <div class="fb-text">
-    <div class="section-tag section-tag-orange">Localization</div>
-    <h2>Built for <em>your</em> culture.</h2>
-    <p>Mental health is deeply cultural. ThriveSpace adapts language, imagery, metaphors, payment methods, and content priorities for each region.</p>
-    <ul class="fb-list">
-      <li><em class="fb-check">*</em> Full native language support (Hindi, Japanese, English)</li>
-      <li><em class="fb-check">*</em> Region-specific content priorities and stress topics</li>
-      <li><em class="fb-check">*</em> Local payment methods (UPI, Konbini, UK bank transfer)</li>
-      <li><em class="fb-check">*</em> Culturally adapted visual themes per region</li>
-      <li><em class="fb-check">*</em> GDPR, APPI, and India DPDP Act compliant</li>
-    </ul>
-  </div>
-  <div class="fb-visual">
-    <div class="locale-tabs">
-      <button class="locale-tab active" onclick="switchLocale('india',this)">India</button>
-      <button class="locale-tab" onclick="switchLocale('japan',this)">Japan</button>
-      <button class="locale-tab" onclick="switchLocale('uk',this)">UK</button>
-    </div>
-    <div id="locale-india" class="locale-content active">
-      <div class="locale-title">India Key Adaptations</div>
-      JEE/NEET exam stress focus. Android-first UI, Hindi and English support, WhatsApp sharing, UPI payments. Community framing aligned with family-centered values.
-    </div>
-    <div id="locale-japan" class="locale-content">
-      <div class="locale-title">Japan Key Adaptations</div>
-      Anime-inspired visual themes. Emphasis on harmony and mindful reflection. Discreet UI. LINE social integration, Konbini payments. Addressing school-related isolation.
-    </div>
-    <div id="locale-uk" class="locale-content">
-      <div class="locale-title">UK Key Adaptations</div>
-      NHS-complementary positioning. Signposting to Samaritans and MIND. CBT tools aligned with NHS IAPT approach. University student focus, British English throughout.
-    </div>
-  </div>
-</div>
-
-<!-- TIER BAND -->
-<div class="tier-band scroll-reveal">
-  <div class="tier-band-inner">
-    <h2>Free and <em style="color:var(--green-glow);font-style:italic;">Premium</em>, you choose.</h2>
-    <div class="tier-compare">
-      <div class="tier-col">
-        <div class="tier-col-title">Free Tier</div>
-        <div class="tier-col-price">$0 <span style="font-size:1rem;color:var(--text-muted);font-family:Inter;">forever</span></div>
-        <div class="tier-item"><span class="tier-check">*</span> 30+ guided meditations</div>
-        <div class="tier-item"><span class="tier-check">*</span> Daily mood check-in</div>
-        <div class="tier-item"><span class="tier-check">*</span> 5 journal entries per month</div>
-        <div class="tier-item"><span class="tier-check">*</span> 3 CBT exercises</div>
-        <div class="tier-item"><span class="tier-check">*</span> Limited AI coach (10 msg/day)</div>
-        <div class="tier-item"><span class="tier-x">x</span> <span style="opacity:0.3">Advanced analytics</span></div>
-        <div class="tier-item"><span class="tier-x">x</span> <span style="opacity:0.3">Expert workshops</span></div>
-      </div>
-      <div class="tier-col featured">
-        <div class="tier-col-title">Premium <span class="badge badge-green" style="font-size:0.7rem;">Most popular</span></div>
-        <div class="tier-col-price">$7.99 <span style="font-size:1rem;color:var(--text-muted);font-family:Inter;">/month</span></div>
-        <div class="tier-item"><span class="tier-check">*</span> Everything in Free</div>
-        <div class="tier-item"><span class="tier-check">*</span> 120+ meditation sessions</div>
-        <div class="tier-item"><span class="tier-check">*</span> Unlimited journaling and AI insights</div>
-        <div class="tier-item"><span class="tier-check">*</span> Full CBT toolkit (20+ exercises)</div>
-        <div class="tier-item"><span class="tier-check">*</span> Unlimited AI coach access</div>
-        <div class="tier-item"><span class="tier-check">*</span> Weekly progress analytics</div>
-        <div class="tier-item"><span class="tier-check">*</span> Expert-led live workshops</div>
-      </div>
-    </div>
-    <div style="margin-top:28px;">
-      <a href="pricing.html" class="btn btn-green">See Full Pricing</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand"><div class="footer-brand-icon">🌿</div>ThriveSpace</div>
-      <p class="footer-desc">AI-powered mental wellness for students aged 12-25.</p>
-    </div>
-    <div class="footer-col"><h5>Product</h5><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="demo.html">Demo</a></div>
-    <div class="footer-col"><h5>Markets</h5><a href="markets.html#india">India</a><a href="markets.html#japan">Japan</a><a href="markets.html#uk">United Kingdom</a></div>
-    <div class="footer-col"><h5>Company</h5><a href="about.html">About</a><a href="about.html#team">Team</a></div>
-  </div>
-  <div class="footer-disclaimer">BPA COMPETITION DISCLAIMER: ThriveSpace is a fictional company created for the BPA Global Marketing Team competition. Independence High School, BPA NLC 2026.</div>
-  <div class="footer-bottom"><span>2026 ThriveSpace (BPA Demo)</span><span>Independence High School - BPA Global Marketing Team</span></div>
-</footer>
-
 <script src="nav.js"></script>
-<script>
-function switchLocale(id, btn) {
-  document.querySelectorAll('.locale-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.locale-tab').forEach(el => el.classList.remove('active'));
-  document.getElementById('locale-' + id).classList.add('active');
-  btn.classList.add('active');
-}
-</script>
+<script>injectNav('Features'); injectFooter();</script>
 </body>
 </html>
