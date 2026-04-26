@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Try Demo — ThriveSpace</title>
+  <title>Try Demo ThriveSpace</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
     .demo-hero {
@@ -190,7 +190,7 @@
     <div class="container">
       <div class="eyebrow">Interactive Demo</div>
       <h1>Experience ThriveSpace live</h1>
-      <p>Try the AI chat, guided meditation, mood tracker, and journaling — no account needed.</p>
+      <p>Try the AI chat, guided meditation, mood tracker, and journaling no account needed.</p>
     </div>
   </section>
 
@@ -212,7 +212,7 @@
             </div>
             <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:white;border-radius:var(--r);border:1px solid var(--border);">
               <span style="font-size:1.3rem;">🧘</span>
-              <div><strong style="font-size:0.9rem;">Meditate</strong><p style="font-size:0.82rem;color:var(--muted);">Play a guided session — watch the progress bar move in real time</p></div>
+              <div><strong style="font-size:0.9rem;">Meditate</strong><p style="font-size:0.82rem;color:var(--muted);">Play a guided session watch the progress bar move in real time</p></div>
             </div>
             <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:white;border-radius:var(--r);border:1px solid var(--border);">
               <span style="font-size:1.3rem;">📓</span>
@@ -220,7 +220,7 @@
             </div>
             <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:white;border-radius:var(--r);border:1px solid var(--border);">
               <span style="font-size:1.3rem;">💬</span>
-              <div><strong style="font-size:0.9rem;">AI Chat</strong><p style="font-size:0.82rem;color:var(--muted);">Talk to the ThriveSpace AI — type your message or tap a suggestion</p></div>
+              <div><strong style="font-size:0.9rem;">AI Chat</strong><p style="font-size:0.82rem;color:var(--muted);">Talk to the ThriveSpace AI type your message or tap a suggestion</p></div>
             </div>
           </div>
 
@@ -330,7 +330,7 @@
           <div class="demo-screen" id="screen-journal">
             <div class="journal-prompt-box">
               <div class="jp-label">✨ Today's Prompt</div>
-              <div class="jp-text" id="journal-prompt">"What's one thing that felt difficult today, and what's one small thing you handled well — even if no one noticed?"</div>
+              <div class="jp-text" id="journal-prompt">"What's one thing that felt difficult today, and what's one small thing you handled well even if no one noticed?"</div>
             </div>
             <textarea class="journal-area" id="journal-text" placeholder="Start writing here... your entry is private and encrypted." oninput="updateWordCount()"></textarea>
             <div class="journal-footer">
@@ -419,11 +419,11 @@
     document.querySelectorAll('.mood-opt').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
     const responses = {
-      '😌 Calm': ['Great to hear you are feeling calm 🌿', 'Keep this energy going — maybe try a gratitude journal entry to anchor this feeling.'],
-      '😟 Anxious': ['Anxiety is valid — especially with everything on your plate 💙', 'Try our 5-minute breathing session, then let\'s talk through what\'s worrying you in the AI chat.'],
-      '😔 Sad': ['Thank you for sharing that. Sadness is okay to feel 💙', 'A gentle meditation might help, or write freely in your journal — no pressure, just space.'],
-      '😤 Stressed': ['Stress is tough — your body is working hard 🌿', 'Start with a quick 3-minute reset meditation, then break down what\'s stressing you in the journal.'],
-      '😊 Happy': ['Love to see it! 😊', 'Write a journal entry about what\'s going well — future-you will love reading it.'],
+      '😌 Calm': ['Great to hear you are feeling calm 🌿', 'Keep this energy going maybe try a gratitude journal entry to anchor this feeling.'],
+      '😟 Anxious': ['Anxiety is valid especially with everything on your plate 💙', 'Try our 5-minute breathing session, then let\'s talk through what\'s worrying you in the AI chat.'],
+      '😔 Sad': ['Thank you for sharing that. Sadness is okay to feel 💙', 'A gentle meditation might help, or write freely in your journal no pressure, just space.'],
+      '😤 Stressed': ['Stress is tough your body is working hard 🌿', 'Start with a quick 3-minute reset meditation, then break down what\'s stressing you in the journal.'],
+      '😊 Happy': ['Love to see it! 😊', 'Write a journal entry about what\'s going well future-you will love reading it.'],
       '😐 Neutral': ['Neutral days are valid too 🌿', 'Sometimes a short meditation can shift the energy. Give the 5-minute session a try.']
     };
     const [title, text] = responses[mood] || ['Thanks for checking in!', 'Try a meditation to start your wellness practice.'];
@@ -487,10 +487,10 @@
   // AI Chat
   const aiResponses = {
     'anxious': "Anxiety is really common, especially for students. Let's try to slow this down: what's the main thing triggering this right now? Is it something happening today, or a bigger worry about the future?",
-    'sleep': "Poor sleep and stress are closely linked. A few things that help: avoid screens 30 minutes before bed, try our Sleep & Unwind meditation, and try writing down tomorrow's worries in your journal before sleeping — it externalizes them.",
-    'exam': "Exam stress is one of the most common things students come to ThriveSpace with. One helpful CBT technique: write down your worst-case scenario, then ask yourself — what's the realistic outcome? Most of the time it's somewhere in the middle.",
+    'sleep': "Poor sleep and stress are closely linked. A few things that help: avoid screens 30 minutes before bed, try our Sleep & Unwind meditation, and try writing down tomorrow's worries in your journal before sleeping it externalizes them.",
+    'exam': "Exam stress is one of the most common things students come to ThriveSpace with. One helpful CBT technique: write down your worst-case scenario, then ask yourself what's the realistic outcome? Most of the time it's somewhere in the middle.",
     'lonely': "Loneliness is really painful, and it's more common than most people admit. Is it a physical loneliness (being alone) or more of a feeling that even around people, no one really sees you?",
-    'default': "I hear you. Can you tell me a bit more about what's been going on? The more context you share, the better I can help — and everything you say here stays private."
+    'default': "I hear you. Can you tell me a bit more about what's been going on? The more context you share, the better I can help and everything you say here stays private."
   };
   function getResponse(msg) {
     const m = msg.toLowerCase();
