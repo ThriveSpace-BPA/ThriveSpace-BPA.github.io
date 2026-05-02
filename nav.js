@@ -18,7 +18,7 @@ function injectNav(activePage) {
         ThriveSpace
       </a>
       <ul class="nav-links">${links}</ul>
-      <a href="demo.html" class="btn btn-primary" style="font-size:0.85rem;padding:9px 20px;">Try Free Demo →</a>
+      <a href="demo.html" class="btn btn-primary" style="font-size:0.85rem;padding:9px 20px;">Try Free Demo &rarr;</a>
     </nav>`;
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.boxShadow = window.scrollY > 10 ? 'var(--shadow-md)' : 'none';
@@ -32,7 +32,7 @@ function injectFooter() {
       <div class="container">
         <div class="footer-grid">
           <div>
-            <div class="footer-brand">🌿 ThriveSpace</div>
+            <div class="footer-brand">&#127807; ThriveSpace</div>
             <p class="footer-desc">AI-powered mental wellness for students worldwide. Supporting teens in India, Japan, and the UK.</p>
           </div>
           <div class="footer-col">
@@ -55,11 +55,11 @@ function injectFooter() {
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© 2026 ThriveSpace · All rights reserved</span>
-          <span>Privacy · Terms · Data Security</span>
+          <span>&copy; 2026 ThriveSpace &middot; All rights reserved</span>
+          <span>Privacy &middot; Terms &middot; Data Security</span>
         </div>
         <div class="footer-disclaimer">
-          ⚠️ This website is a prototype created for BPA Global Marketing Team (500) competition purposes only. ThriveSpace is a fictional company created for the Business Professionals of America National Leadership Conference. Team: Mithil Gajula, Vikhyat Jilla, Ayush Nanda, Srinesh Toranala · Independence High School.
+          &#9888;&#65039; This website is a prototype created for BPA Global Marketing Team (500) competition purposes only. ThriveSpace is a fictional company created for the Business Professionals of America National Leadership Conference. Team: Mithil Gajula, Vikhyat Jilla, Ayush Nanda, Srinesh Toranala &middot; Independence High School.
         </div>
       </div>
     </footer>`;
