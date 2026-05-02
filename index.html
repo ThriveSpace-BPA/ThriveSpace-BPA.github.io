@@ -125,19 +125,12 @@
     .stat-card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; }
 
     /* FEATURES PREVIEW */
-    .feat-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-    }
     .feat-card {
       background: var(--white); border-radius: var(--r);
       border: 1px solid var(--border); padding: 32px;
       transition: all 0.3s;
     }
     .feat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .feat-card.accent { background: var(--green-dark); color: white; }
-    .feat-card.accent .feat-title { color: white; }
-    .feat-card.accent p { color: rgba(255,255,255,0.75); }
-    .feat-card.tall { grid-row: span 2; }
     .feat-title { font-family: 'Instrument Serif', serif; font-size: 1.4rem; margin: 12px 0 8px; }
     .feat-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
 
@@ -148,7 +141,7 @@
       border: 1px solid var(--border); padding: 32px;
       text-align: center;
     }
-    .country-flag { font-size: 2.5rem; margin-bottom: 12px; }
+    .country-code { font-family: 'Instrument Serif', serif; font-size: 1.8rem; color: var(--charcoal); margin-bottom: 6px; letter-spacing: -1px; }
     .country-name { font-family: 'Instrument Serif', serif; font-size: 1.3rem; margin-bottom: 6px; }
     .country-stat { font-size: 1.8rem; font-family: 'Instrument Serif', serif; color: var(--green); }
     .country-stat-label { font-size: 0.8rem; color: var(--muted); }
@@ -192,11 +185,11 @@
     <div class="container" style="width:100%">
       <div class="hero-inner">
         <div>
-          <div class="hero-tag fade-up"><span></span> BPA NLC 2026 · Global Marketing Team</div>
+          <div class="hero-tag fade-up"><span></span> BPA NLC 2026 &middot; Global Marketing Team</div>
           <h1 class="fade-up-2">Mental wellness for <em>every</em> student on Earth</h1>
-          <p class="fade-up-3">ThriveSpace is an AI-powered mental wellness app built for teens aged 12–25. From guided meditation to CBT exercises, we're closing the mental health gap one student at a time.</p>
+          <p class="fade-up-3">ThriveSpace is an AI-powered mental wellness app built for teens aged 12 to 25. From guided meditation to CBT exercises, we're closing the mental health gap one student at a time.</p>
           <div class="hero-btns fade-up-4">
-            <a href="demo.html" class="btn btn-primary">Try the Demo →</a>
+            <a href="demo.html" class="btn btn-primary">Try the Demo &rarr;</a>
             <a href="features.html" class="btn btn-outline">See Features</a>
           </div>
           <div class="hero-stats fade-up-4">
@@ -220,18 +213,18 @@
           <div class="phone float">
             <div class="phone-screen">
               <div class="phone-notch"></div>
-              <div class="phone-time">9:41 AM · Monday</div>
-              <div class="phone-greeting">Good morning, Priya 🌿</div>
+              <div class="phone-time">9:41 AM &middot; Monday</div>
+              <div class="phone-greeting">Good morning, Priya &#127807;</div>
               <div class="phone-sub">How are you feeling today?</div>
               <div class="phone-card">
                 <div class="phone-card-title">Today's Check-In</div>
-                <div class="phone-card-main">Calm &amp; Focused ✨</div>
+                <div class="phone-card-main">Calm &amp; Focused &#10024;</div>
               </div>
               <div class="phone-icons">
-                <div class="phone-icon-item">🧘<div class="phone-icon-label">Meditate</div></div>
-                <div class="phone-icon-item">📓<div class="phone-icon-label">Journal</div></div>
-                <div class="phone-icon-item">💬<div class="phone-icon-label">AI Chat</div></div>
-                <div class="phone-icon-item">📈<div class="phone-icon-label">Progress</div></div>
+                <div class="phone-icon-item">&#129496;<div class="phone-icon-label">Meditate</div></div>
+                <div class="phone-icon-item">&#128211;<div class="phone-icon-label">Journal</div></div>
+                <div class="phone-icon-item">&#128172;<div class="phone-icon-label">AI Chat</div></div>
+                <div class="phone-icon-item">&#128200;<div class="phone-icon-label">Progress</div></div>
               </div>
             </div>
           </div>
@@ -241,7 +234,7 @@
           </div>
           <div class="floating-badge fb-2">
             <div class="fb-dot dot-gold"></div>
-            4.8 ★ user rating
+            4.8 &#9733; user rating
           </div>
         </div>
       </div>
@@ -260,7 +253,7 @@
           <p>of young people report worsened mental health since the pandemic, yet most never seek professional support</p>
         </div>
         <div class="stat-card">
-          <div class="stat-num">3–6 mo</div>
+          <div class="stat-num">3 to 6 mo</div>
           <p>NHS therapy wait times in the UK leave students without care when they need it most</p>
         </div>
         <div class="stat-card">
@@ -280,7 +273,7 @@
 
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:24px;">
         <div class="feat-card" style="grid-row:span 2;background:var(--green-dark);color:white;">
-          <div class="icon-box" style="background:rgba(255,255,255,0.15);">🧘</div>
+          <div class="icon-box" style="background:rgba(255,255,255,0.15);">&#129496;</div>
           <div class="feat-title" style="color:white;font-size:1.7rem;">Guided Meditation</div>
           <p style="color:rgba(255,255,255,0.75);">Culturally adapted meditation sessions for exam stress, social anxiety, and burnout. Available in Hindi, Japanese, and English.</p>
           <div style="margin-top:28px;padding:20px;background:rgba(255,255,255,0.1);border-radius:12px;">
@@ -292,28 +285,28 @@
           </div>
         </div>
         <div class="feat-card">
-          <div class="icon-box icon-gold">📓</div>
+          <div class="icon-box icon-gold">&#128211;</div>
           <div class="feat-title">Smart Journaling</div>
           <p>AI-powered prompts that adapt to your mood. Track patterns, celebrate growth, and gain insight over time.</p>
         </div>
         <div class="feat-card">
-          <div class="icon-box icon-rose">💬</div>
+          <div class="icon-box icon-rose">&#128172;</div>
           <div class="feat-title">AI Mental Health Chat</div>
           <p>Always-on CBT-based support. Detects crisis keywords and routes to local emergency resources immediately.</p>
         </div>
         <div class="feat-card">
-          <div class="icon-box icon-blue">📊</div>
+          <div class="icon-box icon-blue">&#128202;</div>
           <div class="feat-title">Mood Tracking</div>
-          <p>Daily check-ins with visual progress graphs. Share reports with counselors or keep them private your choice.</p>
+          <p>Daily check-ins with visual progress graphs. Share reports with counselors or keep them private, your choice.</p>
         </div>
         <div class="feat-card">
-          <div class="icon-box icon-green">🎯</div>
+          <div class="icon-box icon-green">&#127919;</div>
           <div class="feat-title">CBT Exercises</div>
           <p>Evidence-based cognitive behavioral therapy exercises for exam anxiety, perfectionism, and peer pressure.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:40px;">
-        <a href="features.html" class="btn btn-outline">Explore all features →</a>
+        <a href="features.html" class="btn btn-outline">Explore all features &rarr;</a>
       </div>
     </div>
   </section>
@@ -326,28 +319,28 @@
       <p class="section-sub" style="margin-bottom:48px;">Selected for youth population size, smartphone penetration, and unmet mental health demand.</p>
       <div class="g3">
         <div class="country-card">
-          <div class="country-flag">🇮🇳</div>
+          <div class="country-code">IN</div>
           <div class="country-name">India</div>
           <div class="country-stat">250M+</div>
-          <div class="country-stat-label">youth aged 12–25</div>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Android-first · UPI payments · WhatsApp outreach</p>
-          <a href="markets.html#india" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more →</a>
+          <div class="country-stat-label">youth aged 12 to 25</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Android-first &middot; UPI payments &middot; WhatsApp outreach</p>
+          <a href="markets.html#india" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more &rarr;</a>
         </div>
         <div class="country-card" style="border-color:var(--green);box-shadow:0 0 0 1px var(--green);">
-          <div class="country-flag">🇯🇵</div>
+          <div class="country-code">JP</div>
           <div class="country-name">Japan</div>
           <div class="country-stat">15M+</div>
-          <div class="country-stat-label">students (12–25)</div>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Anime themes · Konbini payments · Discreet UI</p>
-          <a href="markets.html#japan" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more →</a>
+          <div class="country-stat-label">students aged 12 to 25</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Anime themes &middot; Konbini payments &middot; Discreet UI</p>
+          <a href="markets.html#japan" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more &rarr;</a>
         </div>
         <div class="country-card">
-          <div class="country-flag">UK</div>
+          <div class="country-code">UK</div>
           <div class="country-name">United Kingdom</div>
           <div class="country-stat">12M+</div>
-          <div class="country-stat-label">teens (12–25)</div>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">NHS complement · TikTok campaigns · Student unions</p>
-          <a href="markets.html#uk" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more →</a>
+          <div class="country-stat-label">teens aged 12 to 25</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">NHS complement &middot; TikTok campaigns &middot; Student unions</p>
+          <a href="markets.html#uk" class="btn btn-outline" style="margin-top:18px;font-size:0.82rem;">Learn more &rarr;</a>
         </div>
       </div>
     </div>
@@ -362,30 +355,30 @@
         <div class="testimonial">
           <div class="testimonial-quote">"ThriveSpace helped me manage my JEE prep anxiety. I finally felt like someone understood the pressure I was under."</div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:var(--green-pale);">👩</div>
+            <div class="testimonial-avatar" style="background:var(--green-pale);">&#128105;</div>
             <div>
               <div class="testimonial-name">Priya S.</div>
-              <div class="testimonial-role">12th Grade · Mumbai, India</div>
+              <div class="testimonial-role">12th Grade &middot; Mumbai, India</div>
             </div>
           </div>
         </div>
         <div class="testimonial">
-          <div class="testimonial-quote">"試験前の不安を静める瞑想がとても役立ちました。誰にも言わずに使えるのが良いです。"</div>
+          <div class="testimonial-quote">"&#35430;&#39443;&#21069;&#12398;&#19981;&#23433;&#12434;&#38745;&#12417;&#12427;&#�039;&#24499;&#12364;&#12392;&#12390;&#12418;&#24441;&#31435;&#12385;&#12414;&#12375;&#12383;&#12290;&#35504;&#12395;&#12418;&#35328;&#12431;&#12378;&#12395;&#20351;&#12360;&#12427;&#12398;&#12364;&#826;&#12356;&#12391;&#12377;&#12290;"</div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:#FBF3E0;">🧑</div>
+            <div class="testimonial-avatar" style="background:#FBF3E0;">&#129489;</div>
             <div>
               <div class="testimonial-name">Kenji T.</div>
-              <div class="testimonial-role">University Student · Tokyo, Japan</div>
+              <div class="testimonial-role">University Student &middot; Tokyo, Japan</div>
             </div>
           </div>
         </div>
         <div class="testimonial">
           <div class="testimonial-quote">"The CBT exercises are so much better than waiting 3 months for an NHS appointment. It's genuinely helped my anxiety."</div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:#E8EFF8;">👧</div>
+            <div class="testimonial-avatar" style="background:#E8EFF8;">&#128103;</div>
             <div>
               <div class="testimonial-name">Ella M.</div>
-              <div class="testimonial-role">Year 12 · London, UK</div>
+              <div class="testimonial-role">Year 12 &middot; London, UK</div>
             </div>
           </div>
         </div>
@@ -401,7 +394,7 @@
       <h2>Ready to thrive?</h2>
       <p>Join thousands of students already managing stress, anxiety, and burnout with ThriveSpace.</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-        <a href="demo.html" class="btn btn-white">Try the Demo →</a>
+        <a href="demo.html" class="btn btn-white">Try the Demo &rarr;</a>
         <a href="pricing.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;">View Pricing</a>
       </div>
     </div>
