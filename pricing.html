@@ -11,7 +11,7 @@
       padding: 120px 0 80px; text-align: center;
     }
     .pricing-hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 14px; }
-    .pricing-hero p { font-size: 1.05rem; color: var(--muted); max-width: 500px; margin: 0 auto; }
+    .pricing-hero p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.75; }
 
     .toggle-wrap {
       display: flex; align-items: center; justify-content: center; gap: 14px;
@@ -19,18 +19,19 @@
     }
     .toggle {
       width: 52px; height: 28px; background: var(--green);
-      border-radius: 100px; cursor: pointer; position: relative;
-      transition: background 0.2s;
+      border-radius: 100px; cursor: pointer; position: relative; transition: background 0.2s;
     }
     .toggle::after {
-      content: '';
-      position: absolute; top: 4px; left: 4px;
+      content: ''; position: absolute; top: 4px; left: 4px;
       width: 20px; height: 20px; background: white;
       border-radius: 50%; transition: transform 0.2s;
     }
     .toggle.monthly::after { transform: translateX(0); }
     .toggle.annual::after { transform: translateX(24px); }
-    .save-badge { background: var(--green-pale); color: var(--green-dark); font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; }
+    .save-badge {
+      background: var(--green-pale); color: var(--green-dark);
+      font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+    }
 
     .pricing-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -38,91 +39,103 @@
     }
     .pricing-card {
       background: white; border-radius: var(--r-lg);
-      border: 1px solid var(--border); padding: 40px 32px;
+      border: 1px solid var(--border-warm); padding: 40px 32px;
       position: relative; transition: transform 0.3s, box-shadow 0.3s;
     }
     .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .pricing-card.featured {
       background: var(--green-dark); color: white;
-      border-color: var(--green-dark);
-      transform: scale(1.04);
+      border-color: var(--green-dark); transform: scale(1.04);
     }
     .pricing-card.featured:hover { transform: scale(1.04) translateY(-4px); }
     .popular-tag {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
       background: var(--gold); color: white;
       padding: 5px 18px; border-radius: 100px;
-      font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap;
     }
-    .plan-name { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; opacity: 0.7; }
+    .plan-name {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 8px; opacity: 0.65;
+    }
     .plan-price {
-      font-family: 'Instrument Serif', serif; font-size: 3.5rem;
+      font-family: 'DM Serif Display', serif; font-size: 3.5rem;
       line-height: 1; margin-bottom: 4px;
     }
     .plan-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 12px; }
-    .plan-period { font-size: 0.85rem; opacity: 0.6; margin-bottom: 8px; }
-    .plan-desc { font-size: 0.88rem; opacity: 0.75; margin-bottom: 28px; line-height: 1.6; }
+    .plan-period { font-size: 0.84rem; opacity: 0.6; margin-bottom: 8px; }
+    .plan-desc { font-size: 0.87rem; opacity: 0.75; margin-bottom: 28px; line-height: 1.65; }
     .plan-divider { height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 24px; }
-    .plan-divider-dark { height: 1px; background: var(--border); margin-bottom: 24px; }
+    .plan-divider-dark { height: 1px; background: var(--border-warm); margin-bottom: 24px; }
     .plan-features { list-style: none; margin-bottom: 32px; }
     .plan-features li {
       display: flex; align-items: flex-start; gap: 10px;
-      font-size: 0.88rem; margin-bottom: 10px; opacity: 0.9;
+      font-size: 0.87rem; margin-bottom: 10px; opacity: 0.9; line-height: 1.55;
     }
-    .plan-features li .check { color: var(--green); flex-shrink: 0; font-weight: 700; }
-    .plan-features li .check-w { color: white; flex-shrink: 0; font-weight: 700; }
-    .plan-features li .dim { opacity: 0.4; }
+    .chk { color: var(--green); flex-shrink: 0; font-weight: 700; }
+    .chk-w { color: white; flex-shrink: 0; font-weight: 700; }
+    .dim { opacity: 0.35; }
     .btn-plan {
       width: 100%; text-align: center; padding: 14px;
-      border-radius: 12px; font-weight: 600; font-size: 0.92rem;
+      border-radius: 12px; font-weight: 600; font-size: 0.9rem;
       cursor: pointer; border: none; transition: all 0.2s;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     }
-    .btn-plan-outline { background: transparent; border: 1.5px solid rgba(26,26,36,0.15); color: var(--charcoal); }
-    .btn-plan-outline:hover { border-color: var(--green); color: var(--green); }
+    .btn-plan-outline {
+      background: transparent; border: 1.5px solid var(--border-warm); color: var(--charcoal);
+    }
+    .btn-plan-outline:hover { border-color: var(--green); color: var(--green-dark); }
     .btn-plan-white { background: white; color: var(--green-dark); }
     .btn-plan-white:hover { background: var(--cream); }
     .btn-plan-green { background: var(--green); color: white; }
     .btn-plan-green:hover { background: var(--green-dark); }
 
-    /* FINANCIAL ANALYSIS */
-    .finance-section { background: var(--cream-2); padding: 80px 0; }
-    .finance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .finance-card { background: white; border-radius: var(--r); border: 1px solid var(--border); padding: 32px; }
-    .finance-title { font-family: 'Instrument Serif', serif; font-size: 1.4rem; margin-bottom: 20px; }
-    .finance-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-    .finance-row:last-child { border-bottom: none; }
-    .finance-row .label { color: var(--muted); }
-    .finance-row .value { font-weight: 600; }
-    .finance-row .value.green { color: var(--green); }
-    .finance-row .value.gold { color: var(--gold); }
+    /* LOCALIZED PRICING */
+    .locale-pricing { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .locale-price-card {
+      background: white; border-radius: var(--r);
+      border: 1px solid var(--border-warm); padding: 28px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .locale-price-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .locale-price-card.featured { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
+    .lp-flag { font-size: 2rem; margin-bottom: 10px; line-height: 1; }
+    .lp-country { font-family: 'DM Serif Display', serif; font-size: 1.1rem; margin-bottom: 6px; }
+    .lp-price { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--green); }
+    .lp-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; }
+    .lp-payments { font-size: 0.8rem; color: var(--muted); padding-top: 10px; border-top: 1px solid var(--border-warm); }
 
-    .funnel { padding: 28px; }
+    /* FINANCIAL */
+    .finance-section { background: var(--cream-2); padding: 80px 0; }
+    .finance-card {
+      background: white; border-radius: var(--r);
+      border: 1px solid var(--border-warm); padding: 32px;
+    }
+    .finance-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 24px; }
+    .finance-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid var(--border-warm); font-size: 0.9rem;
+    }
+    .finance-row:last-child { border-bottom: none; }
+    .finance-row .lbl { color: var(--muted); }
+    .finance-row .val { font-weight: 600; }
+    .finance-row .val-green { font-weight: 600; color: var(--green-dark); }
+    .finance-row .val-gold { font-weight: 600; color: var(--gold); }
+
     .funnel-step {
       display: flex; align-items: center; gap: 16px;
-      padding: 14px 0; border-bottom: 1px solid var(--border);
+      padding: 14px 0; border-bottom: 1px solid var(--border-warm);
     }
     .funnel-step:last-child { border-bottom: none; }
     .funnel-bar-wrap { flex: 1; height: 10px; background: var(--cream-2); border-radius: 100px; overflow: hidden; }
     .funnel-bar { height: 100%; border-radius: 100px; background: var(--green); }
-    .funnel-label { font-size: 0.85rem; color: var(--charcoal-mid); width: 120px; flex-shrink: 0; }
-    .funnel-num { font-size: 0.85rem; font-weight: 600; width: 70px; text-align: right; flex-shrink: 0; }
-
-    /* LOCALIZED PRICING */
-    .locale-pricing { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-    .locale-price-card {
-      background: white; border-radius: var(--r); border: 1px solid var(--border); padding: 24px;
-    }
-    .locale-price-card .flag { font-size: 1.8rem; margin-bottom: 10px; }
-    .locale-price-card .country { font-weight: 700; margin-bottom: 4px; }
-    .locale-price-card .price { font-family: 'Instrument Serif', serif; font-size: 1.8rem; color: var(--green); }
-    .locale-price-card .price-note { font-size: 0.78rem; color: var(--muted); }
-    .locale-price-card .payments { margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
+    .funnel-label { font-size: 0.84rem; color: var(--charcoal-mid); width: 130px; flex-shrink: 0; }
+    .funnel-num { font-size: 0.84rem; font-weight: 600; width: 70px; text-align: right; flex-shrink: 0; }
 
     /* FAQ */
-    .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
-    .faq-q { font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; }
-    .faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+    .faq-item { border-bottom: 1px solid var(--border-warm); padding: 24px 0; }
+    .faq-q { font-weight: 600; font-size: 0.95rem; margin-bottom: 10px; }
+    .faq-a { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
   </style>
 </head>
 <body>
@@ -133,7 +146,7 @@
   <section class="pricing-hero">
     <div class="container">
       <div class="eyebrow">Pricing</div>
-      <h1>Mental wellness shouldn't<br/>cost a fortune</h1>
+      <h1>Mental wellness shouldn't cost a fortune</h1>
       <p>A free tier that genuinely helps, and a premium plan that costs less than a Spotify subscription.</p>
 
       <div class="toggle-wrap">
@@ -149,58 +162,57 @@
           <div class="plan-name">Free</div>
           <div class="plan-price"><sup>$</sup>0</div>
           <div class="plan-period">forever</div>
-          <div class="plan-desc">Core tools for every student who needs support no credit card, no catch.</div>
+          <div class="plan-desc">Core tools for every student who needs support, no credit card, no catch.</div>
           <div class="plan-divider-dark"></div>
           <ul class="plan-features">
-            <li><span class="check">✓</span> 3 guided meditation sessions/week</li>
-            <li><span class="check">✓</span> Daily mood check-in</li>
-            <li><span class="check">✓</span> Basic journaling (5 prompts/week)</li>
-            <li><span class="check">✓</span> AI chat (10 messages/day)</li>
-            <li><span class="check">✓</span> Crisis detection &amp; hotlines</li>
-            <li><span class="dim">✗</span> <span style="opacity:0.4">Advanced meditation library</span></li>
-            <li><span class="dim">✗</span> <span style="opacity:0.4">Personalized AI recommendations</span></li>
-            <li><span class="dim">✗</span> <span style="opacity:0.4">Expert-led workshops</span></li>
+            <li><span class="chk">&#10003;</span> 3 guided meditation sessions per week</li>
+            <li><span class="chk">&#10003;</span> Daily mood check-in</li>
+            <li><span class="chk">&#10003;</span> Basic journaling (5 prompts per week)</li>
+            <li><span class="chk">&#10003;</span> AI chat (10 messages per day)</li>
+            <li><span class="chk">&#10003;</span> Crisis detection &amp; hotlines</li>
+            <li><span class="dim">&#10007;</span> <span style="opacity:0.4">Advanced meditation library</span></li>
+            <li><span class="dim">&#10007;</span> <span style="opacity:0.4">Personalized AI recommendations</span></li>
+            <li><span class="dim">&#10007;</span> <span style="opacity:0.4">Expert-led workshops</span></li>
           </ul>
-          <button class="btn-plan btn-plan-outline" onclick="window.location='demo.html'">Start Free →</button>
+          <button class="btn-plan btn-plan-outline" onclick="window.location='demo.html'">Start Free &rarr;</button>
         </div>
 
         <!-- PREMIUM -->
         <div class="pricing-card featured">
-          <div class="popular-tag">⭐ Most Popular</div>
-          <div class="plan-name" style="color:rgba(255,255,255,0.6)">Premium</div>
+          <div class="popular-tag">Most Popular</div>
+          <div class="plan-name" style="color:rgba(255,255,255,0.55)">Premium</div>
           <div class="plan-price" id="premium-price"><sup>$</sup>7.99</div>
           <div class="plan-period" id="premium-period">per month</div>
-          <div class="plan-desc">The full ThriveSpace experience personalized, unlimited, and culturally adapted.</div>
+          <div class="plan-desc">The full ThriveSpace experience, personalized, unlimited, and culturally adapted.</div>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="check-w">✓</span> Everything in Free</li>
-            <li><span class="check-w">✓</span> Unlimited meditation sessions</li>
-            <li><span class="check-w">✓</span> Unlimited AI chat</li>
-            <li><span class="check-w">✓</span> Personalized AI recommendations</li>
-            <li><span class="check-w">✓</span> Expert-led live workshops</li>
-            <li><span class="check-w">✓</span> Progress analytics &amp; reports</li>
-            <li><span class="check-w">✓</span> Cultural content packs</li>
-            <li><span class="check-w">✓</span> Priority support</li>
+            <li><span class="chk-w">&#10003;</span> Everything in Free</li>
+            <li><span class="chk-w">&#10003;</span> Unlimited meditation sessions</li>
+            <li><span class="chk-w">&#10003;</span> Unlimited AI chat</li>
+            <li><span class="chk-w">&#10003;</span> Personalized AI recommendations</li>
+            <li><span class="chk-w">&#10003;</span> Expert-led live workshops</li>
+            <li><span class="chk-w">&#10003;</span> Progress analytics &amp; reports</li>
+            <li><span class="chk-w">&#10003;</span> Cultural content packs</li>
+            <li><span class="chk-w">&#10003;</span> Priority support</li>
           </ul>
-          <button class="btn-plan btn-plan-white" onclick="window.location='demo.html'">Start Free Trial →</button>
+          <button class="btn-plan btn-plan-white" onclick="window.location='demo.html'">Start Free Trial &rarr;</button>
         </div>
 
         <!-- ADD-ONS -->
         <div class="pricing-card">
           <div class="plan-name">Add-Ons</div>
-          <div class="plan-price" style="font-size:2rem;margin-bottom:8px;">À la carte</div>
-          <div class="plan-period"></div>
+          <div class="plan-price" style="font-size:2rem;margin-bottom:8px;">A la carte</div>
           <div class="plan-desc">Enhance any plan with targeted packs for specific needs.</div>
           <div class="plan-divider-dark"></div>
           <ul class="plan-features">
-            <li><span class="check">✓</span> <strong>Exam Prep Pack</strong> - $3.99 · Stress-specific tools</li>
-            <li><span class="check">✓</span> <strong>Sleep Toolkit</strong> - $2.99 · Pre-sleep routines</li>
-            <li><span class="check">✓</span> <strong>1:1 Virtual Coaching</strong> - $14.99/session</li>
-            <li><span class="check">✓</span> <strong>Japan Cultural Pack</strong> - $2.99</li>
-            <li><span class="check">✓</span> <strong>India Exam Season</strong> - $2.99</li>
-            <li><span class="check">✓</span> <strong>UK University Pack</strong> - $2.99</li>
+            <li><span class="chk">&#10003;</span> <strong>Exam Prep Pack</strong> &mdash; $3.99</li>
+            <li><span class="chk">&#10003;</span> <strong>Sleep Toolkit</strong> &mdash; $2.99</li>
+            <li><span class="chk">&#10003;</span> <strong>1:1 Virtual Coaching</strong> &mdash; $14.99/session</li>
+            <li><span class="chk">&#10003;</span> <strong>Japan Cultural Pack</strong> &mdash; $2.99</li>
+            <li><span class="chk">&#10003;</span> <strong>India Exam Season Pack</strong> &mdash; $2.99</li>
+            <li><span class="chk">&#10003;</span> <strong>UK University Pack</strong> &mdash; $2.99</li>
           </ul>
-          <button class="btn-plan btn-plan-green" onclick="window.location='demo.html'">Explore Add-Ons →</button>
+          <button class="btn-plan btn-plan-green" onclick="window.location='demo.html'">Explore Add-Ons &rarr;</button>
         </div>
       </div>
     </div>
@@ -210,29 +222,29 @@
   <section class="section">
     <div class="container">
       <div class="eyebrow">Localized Pricing</div>
-      <h2 class="section-title" style="margin-bottom:14px;">Adapted for each market</h2>
-      <p class="section-sub" style="margin-bottom:40px;">Premium pricing reflects local purchasing power accessible everywhere.</p>
+      <h2 class="section-title" style="margin-bottom:12px;">Adapted for each market</h2>
+      <p class="section-sub" style="margin-bottom:44px;">Premium pricing reflects local purchasing power, accessible everywhere.</p>
       <div class="locale-pricing">
         <div class="locale-price-card">
-          <div class="flag">🇮🇳</div>
-          <div class="country">India</div>
-          <div class="price">₹199<span style="font-size:1rem;">/mo</span></div>
-          <div class="price-note">≈ $2.40 USD · Annual: ₹1,499</div>
-          <div class="payments">💳 UPI · Paytm · Debit · Net Banking</div>
+          <div class="lp-flag">&#127470;&#127475;</div>
+          <div class="lp-country">India</div>
+          <div class="lp-price">&#8377;199<span style="font-size:1rem;font-family:'DM Sans',sans-serif;">/mo</span></div>
+          <div class="lp-note">approx. $2.40 USD &middot; Annual: &#8377;1,499</div>
+          <div class="lp-payments">UPI &middot; Paytm &middot; Debit &middot; Net Banking</div>
         </div>
-        <div class="locale-price-card" style="border-color:var(--green);">
-          <div class="flag">🇯🇵</div>
-          <div class="country">Japan</div>
-          <div class="price">¥900<span style="font-size:1rem;">/mo</span></div>
-          <div class="price-note">≈ $6 USD · Annual: ¥8,000</div>
-          <div class="payments">💳 Konbini · Apple Pay · LINE Pay</div>
+        <div class="locale-price-card featured">
+          <div class="lp-flag">&#127471;&#127477;</div>
+          <div class="lp-country">Japan</div>
+          <div class="lp-price">&yen;900<span style="font-size:1rem;font-family:'DM Sans',sans-serif;">/mo</span></div>
+          <div class="lp-note">approx. $6 USD &middot; Annual: &yen;8,000</div>
+          <div class="lp-payments">Konbini &middot; Apple Pay &middot; LINE Pay</div>
         </div>
         <div class="locale-price-card">
-          <div class="flag">🇬🇧</div>
-          <div class="country">United Kingdom</div>
-          <div class="price">£5.99<span style="font-size:1rem;">/mo</span></div>
-          <div class="price-note">Annual: £59.99 · Student 20% off via UNiDAYS</div>
-          <div class="payments">💳 Apple Pay · Google Pay · Debit</div>
+          <div class="lp-flag">&#127468;&#127463;</div>
+          <div class="lp-country">United Kingdom</div>
+          <div class="lp-price">&pound;5.99<span style="font-size:1rem;font-family:'DM Sans',sans-serif;">/mo</span></div>
+          <div class="lp-note">Annual: &pound;59.99 &middot; Student 20% off via UNiDAYS</div>
+          <div class="lp-payments">Apple Pay &middot; Google Pay &middot; Debit</div>
         </div>
       </div>
     </div>
@@ -242,52 +254,46 @@
   <section class="finance-section">
     <div class="container">
       <div class="eyebrow">Financial Model</div>
-      <h2 class="section-title" style="margin-bottom:40px;">The business case</h2>
-      <div class="finance-grid">
-        <div>
-          <div class="finance-card">
-            <div class="finance-title">Year 1 Projections</div>
-            <div class="finance-row"><span class="label">Total Downloads (Goal)</span><span class="value">60,000</span></div>
-            <div class="finance-row"><span class="label">Free-to-Premium Conversion</span><span class="value">5%</span></div>
-            <div class="finance-row"><span class="label">Paid Users (Year 1)</span><span class="value">4,000</span></div>
-            <div class="finance-row"><span class="label">Avg. Annual Revenue / User</span><span class="value">$79.99</span></div>
-            <div class="finance-row"><span class="label">Year 1 Revenue</span><span class="value green">~$319,960</span></div>
-            <div class="finance-row"><span class="label">Customer Acquisition Cost</span><span class="value">$3.15</span></div>
-            <div class="finance-row"><span class="label">Lifetime Value (LTV)</span><span class="value">$48.00</span></div>
-            <div class="finance-row"><span class="label">LTV:CAC Ratio</span><span class="value gold">15:1</span></div>
-            <div class="finance-row"><span class="label">Break-Even (Paid Users)</span><span class="value">9,000 (Year 2–3)</span></div>
-            <div class="finance-row"><span class="label">5-Year Profit Margin Target</span><span class="value green">~15%</span></div>
-          </div>
+      <h2 class="section-title" style="margin-bottom:44px;">The business case</h2>
+      <div class="g2">
+        <div class="finance-card">
+          <div class="finance-title">Year 1 Projections</div>
+          <div class="finance-row"><span class="lbl">Total Downloads (Goal)</span><span class="val">60,000</span></div>
+          <div class="finance-row"><span class="lbl">Free-to-Premium Conversion</span><span class="val">5%</span></div>
+          <div class="finance-row"><span class="lbl">Paid Users (Year 1)</span><span class="val">4,000</span></div>
+          <div class="finance-row"><span class="lbl">Avg. Annual Revenue / User</span><span class="val">$79.99</span></div>
+          <div class="finance-row"><span class="lbl">Year 1 Revenue</span><span class="val-green">~$319,960</span></div>
+          <div class="finance-row"><span class="lbl">Customer Acquisition Cost</span><span class="val">$3.15</span></div>
+          <div class="finance-row"><span class="lbl">Lifetime Value (LTV)</span><span class="val">$48.00</span></div>
+          <div class="finance-row"><span class="lbl">LTV:CAC Ratio</span><span class="val-gold">15:1</span></div>
+          <div class="finance-row"><span class="lbl">Break-Even (Paid Users)</span><span class="val">9,000 (Year 2 to 3)</span></div>
+          <div class="finance-row"><span class="lbl">5-Year Profit Margin Target</span><span class="val-green">~15%</span></div>
         </div>
-        <div>
-          <div class="finance-card">
-            <div class="finance-title">User Acquisition Funnel</div>
-            <div class="funnel">
-              <div class="funnel-step">
-                <div class="funnel-label">Total Downloads</div>
-                <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%"></div></div>
-                <div class="funnel-num">60,000</div>
-              </div>
-              <div class="funnel-step">
-                <div class="funnel-label">Monthly Active</div>
-                <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:75%"></div></div>
-                <div class="funnel-num">15,000</div>
-              </div>
-              <div class="funnel-step">
-                <div class="funnel-label">90-Day Retained</div>
-                <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:25%;background:var(--gold)"></div></div>
-                <div class="funnel-num">7,500</div>
-              </div>
-              <div class="funnel-step">
-                <div class="funnel-label">Paid Subscribers</div>
-                <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:13%;background:var(--rose)"></div></div>
-                <div class="funnel-num">4,000</div>
-              </div>
-            </div>
-            <div style="background:var(--green-pale);border-radius:12px;padding:16px;margin-top:16px;">
-              <div style="font-size:0.78rem;color:var(--green-dark);font-weight:700;margin-bottom:4px;">NOTE ON LTV:CAC</div>
-              <div style="font-size:0.82rem;color:var(--charcoal-mid);line-height:1.6;">Our 15:1 LTV:CAC ratio exceeds the 3:1 industry standard. This is achievable through low-cost micro-influencer campaigns ($0.01–0.05 CPM on TikTok) and viral WhatsApp sharing in India.</div>
-            </div>
+        <div class="finance-card">
+          <div class="finance-title">User Acquisition Funnel</div>
+          <div class="funnel-step">
+            <div class="funnel-label">Total Downloads</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%"></div></div>
+            <div class="funnel-num">60,000</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">Monthly Active</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:75%"></div></div>
+            <div class="funnel-num">15,000</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">90-Day Retained</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:25%;background:var(--gold)"></div></div>
+            <div class="funnel-num">7,500</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">Paid Subscribers</div>
+            <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:13%;background:var(--rose)"></div></div>
+            <div class="funnel-num">4,000</div>
+          </div>
+          <div style="background:var(--green-pale);border-radius:12px;padding:16px;margin-top:20px;">
+            <div style="font-size:0.72rem;color:var(--green-dark);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Note on LTV:CAC</div>
+            <div style="font-size:0.84rem;color:var(--charcoal-mid);line-height:1.65;">Our 15:1 LTV:CAC ratio exceeds the 3:1 industry standard. This is achievable through low-cost micro-influencer campaigns on TikTok and viral WhatsApp sharing in India.</div>
           </div>
         </div>
       </div>
@@ -299,22 +305,22 @@
     <div class="container">
       <div class="eyebrow">FAQ</div>
       <h2 class="section-title" style="margin-bottom:40px;">Common questions</h2>
-      <div style="max-width:720px;">
+      <div style="max-width:700px;">
         <div class="faq-item">
           <div class="faq-q">Is the free tier genuinely useful, or just a trial?</div>
-          <div class="faq-a">The free tier is a permanent, full-featured option. We believe mental health support shouldn't be gated behind payment. Core meditation, journaling, AI chat, and mood tracking are always free.</div>
+          <div class="faq-a">The free tier is a permanent, full-featured option. Core meditation, journaling, AI chat, and mood tracking are always free. Mental health support should not be gated behind payment.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">How does ThriveSpace compare to Calm or Headspace on price?</div>
-          <div class="faq-a">ThriveSpace Premium is $7.99/month vs Calm at $14.99 and Headspace at $12.99 and we're the only one built specifically for students with cultural localization and exam-focused content.</div>
+          <div class="faq-a">ThriveSpace Premium is $7.99 per month versus Calm at $14.99 and Headspace at $12.99. We are also the only one built specifically for students, with cultural localization and exam-focused content.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Is my data private and secure?</div>
-          <div class="faq-a">Yes. Journals and mood logs are end-to-end encrypted. We comply with GDPR (UK), Japan's APPI, and India's DPDP Act. You can download or delete all your data at any time.</div>
+          <div class="faq-a">Yes. Journals and mood logs are end-to-end encrypted. We comply with GDPR in the UK, Japan's APPI, and India's DPDP Act. You can download or delete all your data at any time.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Can ThriveSpace replace therapy?</div>
-          <div class="faq-a">No and we're transparent about this. ThriveSpace is designed as a supplement to professional care, not a replacement. We actively encourage users to seek therapy and route crisis situations to local emergency resources.</div>
+          <div class="faq-a">No, and we are transparent about this. ThriveSpace is designed as a supplement to professional care, not a replacement. We actively encourage users to seek therapy and route crisis situations to local emergency resources.</div>
         </div>
       </div>
     </div>
